@@ -1,5 +1,5 @@
 import { LanguagePickerViewer } from '@/components/LanguagePicker/LanguagePickerViewer';
-import { Navbar } from '@/components/Navbar';
+import { Navbar } from '@/components/Navbar/Navbar';
 import { GoBackButton } from '@/components/buttons/GoBackButton';
 import { getDictionary } from '@/lib/getDictionary';
 import { Locale, i18n } from '@/lib/i18n-config';
