@@ -52,14 +52,7 @@ export default async function Home({
                     };
                 })}
         >
-            <Hero
-                dictionary={dictionary.hero}
-                firstCategoryName={
-                    categories[0]
-                        ? getLocalizedString(categories[0].name, lang)
-                        : ''
-                }
-            />
+            <Hero dictionary={dictionary.hero} />
             <main className="vertical-list w-full max-w-screen-lg p-4">
                 {categories
                     ?.sort((a, b) => (b.index ?? 0) - (a.index ?? 0))
