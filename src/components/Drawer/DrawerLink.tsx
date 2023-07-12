@@ -2,7 +2,7 @@
 
 import { scrollElementIntoView } from '@/utils/client/scrollElementIntoView';
 import { Header } from './Header';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export interface DrawerLinkProps {
     header: Header;
