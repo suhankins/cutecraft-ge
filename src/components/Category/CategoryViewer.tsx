@@ -10,7 +10,10 @@ export interface CategoryProps {
 
 export function CategoryViewer({ category, lang }: CategoryProps) {
     return (
-        <article className="card card-compact w-full max-w-2xl bg-base-200">
+        <Link
+            href={`/category/${category.slug}`}
+            className="card card-compact w-full max-w-2xl bg-base-200"
+        >
             {category.image && (
                 <ImageViewer
                     src={category.image}
@@ -19,11 +22,11 @@ export function CategoryViewer({ category, lang }: CategoryProps) {
             )}
             <div className="card-body">
                 <header className={`flex flex-col gap-4 lg:flex-grow`}>
-                    <Link href={} className="text-center text-xl font-bold">
+                    <span className="link-hover link text-center text-xl font-bold">
                         {getLocalizedString(category.name, lang)}
-                    </Link>
+                    </span>
                 </header>
             </div>
-        </article>
+        </Link>
     );
 }
