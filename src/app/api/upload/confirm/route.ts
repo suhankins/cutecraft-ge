@@ -1,5 +1,5 @@
 import { googleStorage } from '@/lib/googleStorage';
-import { handleUploadQuery } from '@/utils/server/handleUploadQuery';
+import { handleUploadQuery } from '@/app/api/upload/handleUploadQuery';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
@@ -17,17 +17,19 @@ export async function POST(request: NextRequest) {
     if (!model.items)
         return new NextResponse('No items found', { status: 400 });
 
-    const item = model.items[itemIndex];
-    if (item.image !== undefined && item.image !== '' && item.image !== null) {
+    // TODO: Implement deleting old image with new array of images
+    /*if (item.image !== undefined && item.image !== '' && item.image !== null) {
         const parts = item.image.split('/');
         const filename =
             parts[parts.length - 1] === ''
                 ? parts[parts.length - 2]
                 : parts[parts.length - 1];
         googleStorage.file(filename).delete();
-    }
+    }*/
 
-    item.image = file.publicUrl();
+    if (itemIndex === undefined) model.image = file.publicUrl();
+    // TODO: Implement uploading array of images
+    else model.items[itemIndex].images[0] = file.publicUrl();
     model.save();
 
     return new NextResponse('File confirmed', { status: 200 });

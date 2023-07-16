@@ -4,7 +4,7 @@ import {
     confirmUploadRequest,
     getSignedUrlRequest,
     uploadToGoogleStorage,
-} from '@/utils/client/image/uploadImage';
+} from '@/components/buttons/UploadButton/uploadImage';
 import { ChangeEvent, useId, useMemo, useState } from 'react';
 import { PhotoIcon } from '@heroicons/react/24/outline';
 import { mutate } from 'swr';
@@ -15,7 +15,7 @@ export function UploadButton({
     categoryId,
 }: {
     className?: string;
-    itemIndex: number;
+    itemIndex?: number;
     categoryId: string;
 }) {
     const fileUploaderId = useId();
@@ -25,13 +25,13 @@ export function UploadButton({
         const file = event.target.files?.[0];
         if (file === undefined) return;
         try {
-            const fileExtension = file.name.split('.').slice(-1)[0];
+            const fileExtension = file.name.split('.').at(-1) ?? '';
 
             setLoadingText('Asking permission...');
             const { url, fields } = await getSignedUrlRequest(
-                itemIndex,
                 categoryId,
-                fileExtension
+                fileExtension,
+                itemIndex
             );
 
             const key = fields.key;
@@ -41,7 +41,7 @@ export function UploadButton({
             await uploadToGoogleStorage(url, fields, file);
 
             setLoadingText('Confirming...');
-            await confirmUploadRequest(itemIndex, categoryId, key);
+            await confirmUploadRequest(categoryId, key, itemIndex);
 
             setLoadingText('Fetching new data...');
             await mutate('/api/category');

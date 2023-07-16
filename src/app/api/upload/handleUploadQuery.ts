@@ -1,6 +1,6 @@
 import 'server-only';
 import { NextRequest, NextResponse } from 'next/server';
-import { allowedImageTypes } from '../../lib/allowedImageTypes';
+import { allowedImageTypes } from '../../../lib/allowedImageTypes';
 import { mongoose } from '@typegoose/typegoose';
 import { CategoryClass, CategoryModel } from '@/models/Category';
 
@@ -8,7 +8,7 @@ export interface HandledUploadQuery {
     filetype?: string;
     filename?: string;
     id: mongoose.Types.ObjectId;
-    itemIndex: number;
+    itemIndex?: number;
     model: mongoose.Document & CategoryClass;
 }
 
@@ -44,18 +44,20 @@ export async function handleUploadQuery(
     if (model === null || model === undefined)
         return new NextResponse('Category does not exist', { status: 400 });
 
-    let itemIndex: string | null | number = query.get('itemIndex');
-    if (itemIndex === null || itemIndex.length === 0)
-        return new NextResponse('No itemIndex provided', { status: 400 });
-
-    itemIndex = parseInt(itemIndex);
-    if (
-        isNaN(itemIndex) ||
-        model.items === undefined ||
-        itemIndex < 0 ||
-        itemIndex > model.items.length
-    )
-        return new NextResponse('Invalid itemIndex provided', { status: 400 });
+    let itemIndex: string | undefined | number =
+        query.get('itemIndex') ?? undefined;
+    if (itemIndex !== undefined) {
+        itemIndex = parseInt(itemIndex);
+        if (
+            isNaN(itemIndex) ||
+            model.items === undefined ||
+            itemIndex < 0 ||
+            itemIndex > model.items.length
+        )
+            return new NextResponse('Invalid itemIndex provided', {
+                status: 400,
+            });
+    }
 
     return {
         filetype: filetype,

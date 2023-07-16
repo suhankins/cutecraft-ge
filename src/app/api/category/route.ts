@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
         // Moving everything up by 1
         await CategoryModel.updateMany(
             { _id: { $ne: category._id } },
-            { $inc: { index: 1 } }
+            { $inc: { priority: 1 } }
         ).exec();
     } catch (e) {
         return handleDbError(e);

@@ -11,7 +11,7 @@ type pathParams = { params: { id: string; itemIndex: number; field: string } };
 /**
  * Meant for deleting fields of items (e.g. image)
  */
-export async function DELETE(
+/* export async function DELETE(
     _request: NextRequest,
     { params: { id, itemIndex, field } }: pathParams
 ) {
@@ -45,7 +45,7 @@ export async function DELETE(
     }
 
     return new NextResponse(`${field} successfully updated`, { status: 200 });
-}
+} */
 
 export async function PATCH(
     request: NextRequest,
@@ -75,6 +75,8 @@ export async function PATCH(
             for (const lang of i18n.locales) {
                 if (body[lang]) item.description.set(lang, body[lang]);
             }
+        } else {
+            item[key] = body.value ?? item[key];
         }
 
         category.save();

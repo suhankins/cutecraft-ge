@@ -5,10 +5,10 @@ import 'server-only';
  */
 export function getFileName(
     id: string,
-    itemIndex: number,
-    filetype: string
+    filetype: string,
+    itemIndex?: number
 ): string {
-    return `${id}_${itemIndex}_${
-        Math.random().toString().split('.')[1]
+    return `${id}_${itemIndex ?? 'category'}_${
+        Math.random().toString().split('.').at(-1) ?? 0
     }.${filetype}`;
 }

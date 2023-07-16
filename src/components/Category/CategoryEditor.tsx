@@ -9,6 +9,7 @@ import { MoveButton } from '../buttons/MoveButton';
 import { Position, getPosition } from '@/utils/client/Position';
 import { SizeEditor } from './SizeEditor';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
+import { UploadButton } from '../buttons/UploadButton/UploadButton';
 
 export function CategoryEditor({
     lang,
@@ -31,7 +32,7 @@ export function CategoryEditor({
                         valueName={lang}
                         method="PATCH"
                         fetchUrl={`/api/category/${category._id}/name`}
-                        className="input-bordered input w-48 text-center text-xl font-bold xs:w-64"
+                        className="xs:w-64 input-bordered input w-48 text-center text-xl font-bold"
                         placeholder="Category name"
                     />
                     <EllipsisMenu>
@@ -70,11 +71,7 @@ export function CategoryEditor({
                             />
                         </li>
                         <li>
-                            <SizeEditor
-                                sizes={category.sizes}
-                                categoryId={category._id}
-                                className=""
-                            />
+                            <UploadButton categoryId={category._id} />
                         </li>
                     </EllipsisMenu>
                 </>

@@ -32,13 +32,6 @@ export async function PUT(
     const item = category.items[itemIndex];
 
     switch (key) {
-        case 'price':
-            if (!(arrayIndex in item.price))
-                return new NextResponse('Invalid array index', {
-                    status: 400,
-                });
-            item.price[arrayIndex] = body.value;
-            break;
         default:
             return new NextResponse('Invalid field', { status: 400 });
     }
@@ -68,13 +61,6 @@ export async function DELETE(
     const item = category.items[itemIndex];
 
     switch (key) {
-        case 'price':
-            if (!(arrayIndex in item.price))
-                return new NextResponse('Invalid array index', {
-                    status: 400,
-                });
-            item.price.splice(arrayIndex, 1);
-            break;
         default:
             return new NextResponse('Invalid field', { status: 400 });
     }

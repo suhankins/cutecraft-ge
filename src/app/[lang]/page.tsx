@@ -7,6 +7,8 @@ import { Locale, getLocalizedString, i18n } from '@/lib/i18n-config';
 import { LanguagePickerViewer } from '@/components/LanguagePicker/LanguagePickerViewer';
 import { CartDisplay } from '@/components/Cart/CartDisplay';
 import { Hero } from './components/Hero';
+import { CategoryGrid } from '@/components/Category/CategoryGrid';
+import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 
 async function getCategories() {
     const categories = (await CategoryModel.find()).map(
@@ -53,21 +55,12 @@ export default async function Home({
                 })}
         >
             <Hero dictionary={dictionary.hero} />
-            <main className="vertical-list w-full max-w-screen-lg p-4">
-                {categories
-                    ?.sort((a, b) => (b.index ?? 0) - (a.index ?? 0))
-                    .map((category, index) => (
-                        <CategoryViewer
-                            lang={lang}
-                            id={getCategoryElementId(
-                                getLocalizedString(category.name, lang),
-                                index
-                            )}
-                            key={index}
-                            category={category}
-                        />
-                    ))}
-            </main>
+            <MainBodyWidthContainer>
+                <CategoryGrid categories={categories} lang={lang} />
+                <button className="btn-primary btn-wide btn mx-auto">
+                    {dictionary.seeMore}
+                </button>
+            </MainBodyWidthContainer>
         </Drawer>
     );
 }

@@ -1,10 +1,10 @@
 import { EditableText } from '@/components/EditableText';
 import { Item } from './Item';
-import { ImageEditor } from '@/components/Item/Image/ImageEditor';
+import { ImageEditor } from '@/components/Image/ImageEditor';
 import { ItemClass } from '@/models/Item';
 import { PriceSelectorEditor } from '@/components/PriceSelector/PriceSelectorEditor';
 import { DeleteButton } from '@/components/buttons/DeleteButton';
-import { UploadButton } from '@/components/buttons/UploadButton';
+import { UploadButton } from '@/components/buttons/UploadButton/UploadButton';
 import { EllipsisMenu } from '../EllipsisMenu';
 import { Position } from '@/utils/client/Position';
 import { MoveButton } from '../buttons/MoveButton';
@@ -29,13 +29,9 @@ export function ItemEditor({
     return (
         <Item
             image={
-                item.image && (
-                    <ImageEditor
-                        categoryId={categoryId}
-                        itemIndex={itemIndex}
-                        image={item.image}
-                    />
-                )
+                <span>
+                    TODO: Handle image<b>s</b>
+                </span>
             }
             title={
                 <EditableText
@@ -69,13 +65,12 @@ export function ItemEditor({
                 <PriceSelectorEditor
                     categoryId={categoryId}
                     itemIndex={itemIndex}
-                    sizes={category.sizes}
-                    prices={item.price}
+                    price={item.price}
                 />
             }
         >
             <EllipsisMenu className="absolute top-0 right-0 z-30">
-                {!item.image && (
+                {!item.images && (
                     <li>
                         <UploadButton
                             itemIndex={itemIndex}

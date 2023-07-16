@@ -21,15 +21,14 @@ export class ItemClass {
     public description?: LocalizedString;
 
     /**
-     * Price in lari. If no sizes are specified, then only first element of the array is used.
+     * Price in lari.
      */
     @prop({
-        type: () => [Number],
-        required: [true, 'Price is required!'],
-        validate: [(v: number[]) => v.length > 0, 'Price is required!'],
+        type: () => Number,
+        default: 0,
     })
-    public price!: (number | null)[];
+    public price!: number;
 
-    @prop()
-    public image?: string;
+    @prop({ type: () => [String], default: [] }, PropType.ARRAY)
+    public images!: string[];
 }

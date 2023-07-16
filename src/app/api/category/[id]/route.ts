@@ -11,13 +11,13 @@ export async function DELETE(
     if (category instanceof NextResponse) return category;
 
     try {
-        const index = category.index;
+        const index = category.priority;
         await category.delete();
 
         // Moving everything down by 1
         await CategoryModel.updateMany(
-            { index: { $gt: index } },
-            { $inc: { index: -1 } }
+            { priority: { $gt: index } },
+            { $inc: { priority: -1 } }
         ).exec();
     } catch (e) {
         return handleDbError(e);

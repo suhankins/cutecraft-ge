@@ -18,8 +18,8 @@ export type SimpleCategory = {
     name: LocalizedString;
     index?: number;
     depth?: number;
-    sizes: string[];
     items?: ItemClass[];
+    image?: string;
 };
 
 @post<CategoryClass>('save', () => {
@@ -52,22 +52,25 @@ export class CategoryClass implements defaultClasses.Base {
     public _id!: mongoose.Types.ObjectId;
     public id!: string;
 
-    public static fields = ['name', 'index', 'items', 'depth'];
+    public static fields = ['name', 'index', 'slug', 'items', 'depth'];
 
     @prop({ type: () => String }, PropType.MAP)
     public name!: LocalizedString;
+
+    @prop()
+    public slug!: string;
+
+    @prop()
+    public image?: string;
 
     /**
      * More like priority actually. Higher index means higher priority, so it's on the top of the screen. Bottom is always 0.
      */
     @prop({ default: 0 })
-    public index?: number;
+    public priority?: number;
 
     @prop({ type: () => [ItemClass], default: [] }, PropType.ARRAY)
     public items?: ItemClass[];
-
-    @prop({ type: () => [String], default: [] }, PropType.ARRAY)
-    public sizes?: string[];
 
     /**
      * Depth of the category. 0 means it's on the top level, 1 means it's in the first subcategory, etc.
@@ -76,7 +79,6 @@ export class CategoryClass implements defaultClasses.Base {
     public depth?: number;
 
     public async addItem(this: DocumentType<CategoryClass>, item: ItemClass) {
-        item.price = Array(this.sizes?.length || 1).map((value) => null);
         this.items?.push(item);
         await this.save();
     }
