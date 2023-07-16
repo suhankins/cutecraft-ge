@@ -6,22 +6,31 @@ import {
     modelOptions,
     mongoose,
     post,
+    pre,
     prop,
 } from '@typegoose/typegoose';
 import '@/lib/mongodb'; // Importing library to connect to MongoDB
 import { ItemClass } from './Item';
 import type { LocalizedString } from '@/lib/i18n-config';
 import { revalidatePath } from 'next/cache';
+import slugify from 'slugify';
 
 export type SimpleCategory = {
     _id: string;
     name: LocalizedString;
+    slug: string;
     index?: number;
     depth?: number;
     items?: ItemClass[];
     image?: string;
 };
 
+@pre<CategoryClass>('save', function (next) {
+    this.slug = slugify(this.name.get('en') ?? this._id.toString(), {
+        lower: true,
+    });
+    next();
+})
 @post<CategoryClass>('save', () => {
     revalidatePath('/[lang]');
 })
