@@ -9,6 +9,7 @@ import { CartDisplay } from '@/components/Cart/CartDisplay';
 import { Hero } from './components/Hero';
 import { CategoryGrid } from '@/components/Category/CategoryGrid';
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
+import { ContactUs } from './components/ContactUs';
 
 async function getCategories() {
     const categories = (await CategoryModel.find()).map(
@@ -61,6 +62,7 @@ export default async function Home({
                     {dictionary.seeMore}
                 </button>
             </MainBodyWidthContainer>
+            <ContactUs dictionary={dictionary.contactUs} />
         </Drawer>
     );
 }

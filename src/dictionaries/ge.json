@@ -5,5 +5,9 @@
         "catalogButton": "Catalog"
     },
     "companyName": "Cutecraft",
-    "seeMore": "See more"
+    "seeMore": "See more",
+    "contactUs": {
+        "header": "Contact us",
+        "body": "If you want something made with your custom design, or just want your logo on one of our products, contact us!"
+    }
 }
