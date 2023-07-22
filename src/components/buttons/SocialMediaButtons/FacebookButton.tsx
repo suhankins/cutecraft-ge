@@ -5,7 +5,8 @@ export function FacebookButton() {
             href="https://www.instagram.com/cute_craft.ge/" // TODO: Find them on facebook
             target="_blank"
         >
-            <span>@cute_craft.ge</span>
+            <span>Facebook</span>{' '}
+            {/* Facebook doesn't offer nice look @ usernames */}
             <img
                 alt="Facebook logo"
                 src="/static/facebook.png"
