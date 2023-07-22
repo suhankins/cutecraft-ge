@@ -1,13 +1,22 @@
 {
     "hero": {
-        "top": "Cutecraft",
+        "top": "Cute Craft",
         "bottom": "Tasty treats and coffee delivery.",
         "catalogButton": "Catalog"
     },
-    "companyName": "Cutecraft",
+    "companyName": "Cute Craft",
     "seeMore": "See more",
     "contactUs": {
         "header": "Contact us",
         "body": "If you want something made with your custom design, or just want your logo on one of our products, contact us!"
+    },
+    "footer": {
+        "companyName": "Cute Craft",
+        "aboutLink": "About",
+        "contactLink": "Contact",
+        "catalogLink": "Catalog",
+        "cartLink": "Cart",
+        "privacyPolicyLink": "Privacy Policy",
+        "termsOfServiceLink": "Terms of Service"
     }
 }

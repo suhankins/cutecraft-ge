@@ -1,13 +1,22 @@
 {
     "hero": {
-        "top": "Cutecraft",
+        "top": "Cute Craft",
         "bottom": "Деревянные изделия сделанные с любовью",
         "catalogButton": "Каталог"
     },
-    "companyName": "Cutecraft",
+    "companyName": "Cute Craft",
     "seeMore": "Посмотреть еще",
     "contactUs": {
         "header": "Свяжитесь с нами",
         "body": "Если вы хотите что-нибудь со своим дизайном или просто хотите видеть свой логотип на одном из наших товаров, пожалуйста, свяжитесь с нами!"
+    },
+    "footer": {
+        "companyName": "Cute Craft",
+        "aboutLink": "О нас",
+        "contactLink": "Контакты",
+        "catalogLink": "Каталог",
+        "cartLink": "Корзина",
+        "privacyPolicyLink": "Политика конфиденциальности",
+        "termsOfServiceLink": "Условия обслуживания"
     }
 }
