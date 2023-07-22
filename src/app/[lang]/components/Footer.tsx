@@ -6,9 +6,15 @@ interface link {
     href: string;
 }
 
-const Section = ({ links }: { links: link[] }) => {
+const Section = ({
+    links,
+    children,
+}: {
+    links: link[];
+    children?: React.ReactNode;
+}) => {
     return (
-        <section className="flex h-full flex-col items-start justify-end">
+        <section className="flex h-full flex-col items-start justify-start">
             {links.map((link, index) => {
                 return (
                     <Link
@@ -20,6 +26,7 @@ const Section = ({ links }: { links: link[] }) => {
                     </Link>
                 );
             })}
+            {children}
         </section>
     );
 };
@@ -48,7 +55,7 @@ export function Footer({
     },
 }: FooterProps) {
     return (
-        <footer className="footer-center mt-4 w-full bg-neutral p-4 text-neutral-content">
+        <footer className="footer-center w-full bg-neutral p-4 text-neutral-content">
             <MainBodyWidthContainer>
                 <div className="grid w-full grid-cols-3">
                     <Section
@@ -83,7 +90,9 @@ export function Footer({
                                 href: '/terms-of-service',
                             },
                         ]}
-                    />
+                    >
+                        <p>&copy; 2023</p>
+                    </Section>
                 </div>
             </MainBodyWidthContainer>
         </footer>

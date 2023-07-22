@@ -11,7 +11,7 @@ export function ContactUs({
     };
 }) {
     return (
-        <section className="my-2 flex h-48 w-full items-center bg-base-200 py-4">
+        <section className="mt-2 flex h-48 w-full items-center bg-base-200 py-4">
             <MainBodyWidthContainer>
                 <div className="flex w-full gap-2">
                     <div>
