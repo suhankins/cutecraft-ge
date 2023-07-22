@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function Hero({
     dictionary: { top, bottom, catalogButton },
 }: {
@@ -20,9 +22,12 @@ export function Hero({
                     <h1 className="mb-5 text-5xl font-bold">{top}</h1>
                     <p className="mb-5">{bottom}</p>
                 </div>
-                <button className="btn-primary btn-wide btn absolute bottom-8 self-end">
+                <Link
+                    href="/catalog"
+                    className="btn-primary btn-wide btn absolute bottom-8 self-end"
+                >
                     {catalogButton}
-                </button>
+                </Link>
             </div>
         </div>
     );

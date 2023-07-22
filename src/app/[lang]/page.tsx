@@ -5,9 +5,10 @@ import { Hero } from './components/Hero';
 import { CategoryGrid } from '@/components/Category/CategoryGrid';
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import { ContactUs } from './components/ContactUs';
+import Link from 'next/link';
 
 async function getCategories() {
-    const categories = (await CategoryModel.find()).map(
+    const categories = (await CategoryModel.find().limit(6)).map(
         (category) => category.toObject() as SimpleCategory
     );
     return categories;
@@ -33,9 +34,12 @@ export default async function Home({
             <Hero dictionary={dictionary.hero} />
             <MainBodyWidthContainer>
                 <CategoryGrid categories={categories} lang={lang} />
-                <button className="btn-primary btn-wide btn mx-auto">
+                <Link
+                    href="/catalog"
+                    className="btn-primary btn-wide btn mx-auto"
+                >
                     {dictionary.seeMore}
-                </button>
+                </Link>
             </MainBodyWidthContainer>
             <ContactUs dictionary={dictionary.contactUs} />
         </>
