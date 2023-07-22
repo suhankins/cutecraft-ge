@@ -20,13 +20,31 @@ export default async function Layout({
         <CartProvider>
             <Navbar>
                 <Link href="/" className="btn-ghost btn text-xl normal-case">
-                    {dictionary.companyName ?? 'Cutecraft'}
+                    {dictionary.companyName}
                 </Link>
+                <ul className="menu menu-horizontal flex-grow items-center justify-center">
+                    <li>
+                        <Link href="/">{dictionary.links.homeLink}</Link>
+                    </li>
+                    <li>
+                        <Link href="/catalog">
+                            {dictionary.links.catalogLink}
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/about">{dictionary.links.aboutLink}</Link>
+                    </li>
+                    <li>
+                        <Link href="/contact">
+                            {dictionary.links.contactLink}
+                        </Link>
+                    </li>
+                </ul>
                 <LanguagePickerViewer selectedLang={lang} />
                 <CartDisplay />
             </Navbar>
             {children}
-            <Footer dictionary={dictionary.footer} />
+            <Footer dictionary={dictionary.links} />
         </CartProvider>
     );
 }

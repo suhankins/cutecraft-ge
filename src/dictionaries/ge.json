@@ -10,7 +10,8 @@
         "header": "Contact us",
         "body": "If you want something made with your custom design, or just want your logo on one of our products, contact us!"
     },
-    "footer": {
+    "links": {
+        "homeLink": "Home",
         "companyName": "Cute Craft",
         "aboutLink": "About",
         "contactLink": "Contact",
