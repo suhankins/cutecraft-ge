@@ -13,7 +13,7 @@ export function CategoryGrid({
 }) {
     return (
         <section
-            className={`grid w-full grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 ${
+            className={`flex w-full flex-wrap justify-evenly gap-2 ${
                 className ?? ''
             }`}
         >

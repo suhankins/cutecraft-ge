@@ -12,7 +12,7 @@ export function CategoryViewer({ category, lang }: CategoryProps) {
     return (
         <Link
             href={`/category/${category.slug}`}
-            className="card card-compact w-full max-w-2xl bg-base-200"
+            className="card card-compact w-64 max-w-2xl bg-base-200"
         >
             {category.image && (
                 <ImageViewer
