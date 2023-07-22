@@ -43,7 +43,7 @@ export default async function Layout({
                 <LanguagePickerViewer selectedLang={lang} />
                 <CartDisplay />
             </Navbar>
-            {children}
+            <main className="h-full w-full flex-grow">{children}</main>
             <Footer dictionary={dictionary.links} />
         </CartProvider>
     );

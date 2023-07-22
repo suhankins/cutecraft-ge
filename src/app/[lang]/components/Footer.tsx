@@ -55,7 +55,7 @@ export function Footer({
     },
 }: FooterProps) {
     return (
-        <footer className="footer-center w-full bg-neutral p-4 text-neutral-content">
+        <footer className="footer footer-center bg-neutral p-4 text-neutral-content">
             <MainBodyWidthContainer>
                 <div className="grid w-full grid-cols-3">
                     <Section

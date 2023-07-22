@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
 .skeleton {
     @apply animate-pulse bg-primary;
 }
