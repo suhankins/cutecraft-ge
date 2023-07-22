@@ -1,17 +1,17 @@
 'use client';
 
-import { Drawer } from '@/components/Drawer/Drawer';
 import { LogoutButton } from '@/components/buttons/LogoutButton';
 import { getCategoryElementId } from '@/utils/client/getCategoryElementId';
 import { SimpleCategory } from '@/models/Category';
 import { CategoryEditor } from '@/components/Category/CategoryEditor';
 import { CategorySkeleton } from '@/components/Category/CategorySkeleton';
-import { useEffect, useId, useMemo, useState } from 'react';
+import { useId, useState } from 'react';
 import useSwr from 'swr';
 import { NewCategory } from '@/components/Category/NewCategory';
 import { getPosition } from '@/utils/client/Position';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import { LanguagePickerEditor } from '@/components/LanguagePicker/LanguagePickerEditor';
+import { Navbar } from '@/components/Navbar/Navbar';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -25,47 +25,16 @@ export default function AdminPage() {
         fetcher
     );
 
-    const headers = useMemo(() => {
-        console.log("Headers re-rendered")
-        return [
-            {
-                name: 'Categories',
-                id: categoriesHeaderId,
-            },
-            ...(data
-                ?.sort((a, b) => (b.index ?? 0) - (a.index ?? 0))
-                .map((category, index) => {
-                    return {
-                        name: getLocalizedString(category.name, lang),
-                        id: getCategoryElementId(
-                            getLocalizedString(category.name, lang),
-                            index
-                        ),
-                        depth: (category.depth ?? 0) + 1,
-                    };
-                }) ?? []),
-            {
-                name: 'Account',
-                id: accountHeaderId,
-            },
-        ];
-    }, [data, lang, categoriesHeaderId, accountHeaderId]);
-
     return (
-        <Drawer
-            navbarElements={
-                <>
-                    <LanguagePickerEditor
-                        className="ml-auto"
-                        selectedLang={lang}
-                        setLang={setLang}
-                    />
-                    <LogoutButton className="ml-2" />
-                </>
-            }
-            name="Admin Panel"
-            headers={headers}
-        >
+        <>
+            <Navbar>
+                <LanguagePickerEditor
+                    className="ml-auto"
+                    selectedLang={lang}
+                    setLang={setLang}
+                />
+                <LogoutButton className="ml-2" />
+            </Navbar>
             <main className="vertical-list w-full max-w-screen-lg p-4">
                 <h1 className="text-2xl font-bold" id={categoriesHeaderId}>
                     Categories
@@ -98,6 +67,6 @@ export default function AdminPage() {
                 </h1>
                 {/* TODO: Account customization */}
             </main>
-        </Drawer>
+        </>
     );
 }
