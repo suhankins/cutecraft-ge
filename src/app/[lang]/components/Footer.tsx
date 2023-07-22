@@ -71,11 +71,11 @@ export function Footer({
                         links={[
                             {
                                 name: 'Facebook',
-                                href: 'https://www.facebook.com/cutecraftph',
+                                href: 'https://www.facebook.com/cutecraftph', // TODO: Real URLS
                             },
                             {
                                 name: 'Instagram',
-                                href: 'https://www.instagram.com/cutecraftph',
+                                href: 'https://www.instagram.com/cutecraftph', // TODO: Real URLS
                             },
                         ]}
                     />
