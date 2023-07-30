@@ -1,10 +1,10 @@
 import { CategoryModel, SimpleCategory } from '@/models/Category';
 import { getDictionary } from '@/lib/getDictionary';
 import { Locale, i18n } from '@/lib/i18n-config';
-import { Hero } from './components/Hero';
+import { Hero } from './_components/Hero';
 import { CategoryGrid } from '@/components/Category/CategoryGrid';
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
-import { ContactUs } from './components/ContactUs';
+import { ContactUs } from './_components/ContactUs';
 import Link from 'next/link';
 
 async function getCategories() {

@@ -1,5 +1,5 @@
 import { CartProvider } from '@/components/Cart/CartProvider';
-import { Footer } from './components/Footer';
+import { Footer } from './_components/Footer';
 import { Locale } from '@/lib/i18n-config';
 import { getDictionary } from '@/lib/getDictionary';
 import { Navbar } from '@/components/Navbar/Navbar';
