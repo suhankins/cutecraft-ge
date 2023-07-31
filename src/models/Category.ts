@@ -66,7 +66,7 @@ export class CategoryClass implements defaultClasses.Base {
     @prop({ type: () => String }, PropType.MAP)
     public name!: LocalizedString;
 
-    @prop()
+    @prop({ required: true, unique: true, index: true })
     public slug!: string;
 
     @prop()
