@@ -25,7 +25,7 @@ export default async function Catalog({
     const categories = await getCategories();
 
     return (
-        <MainBodyWidthContainer>
+        <MainBodyWidthContainer className="my-4">
             <CategoryGrid categories={categories} lang={lang} />
         </MainBodyWidthContainer>
     );
