@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { EditableText } from '../EditableText';
-import { PriceSelector } from './PriceSelector';
 
 export interface PriceSelectorEdtiorProps {
     categoryId: string;
@@ -15,7 +14,6 @@ export function PriceSelectorEditor({
     itemIndex,
     price,
 }: PriceSelectorEdtiorProps) {
-    const [selectedSize, setSelectedSize] = useState(0);
     const [loading, setLoading] = useState(false);
 
     return (
@@ -27,9 +25,9 @@ export function PriceSelectorEditor({
                 defaultValue={price.toString()}
                 type="number"
                 className="input-ghost input w-10 rounded px-0 py-1 text-right text-3xl font-bold focus:text-center"
-                fetchUrl={`/api/category/${categoryId}/items/${itemIndex}/price/${selectedSize}`}
+                fetchUrl={`/api/category/${categoryId}/items/${itemIndex}/price/`}
             />
-            <span>&#8382; {/* Georgian lari symbol */}</span>
+            <span>&#8382;{/* Georgian lari symbol */}</span>
         </p>
     );
 }
