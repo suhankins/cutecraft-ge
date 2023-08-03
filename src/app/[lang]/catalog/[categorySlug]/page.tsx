@@ -5,7 +5,7 @@ import { Locale, i18n, getLocalizedString } from '@/lib/i18n-config';
 import { CategoryModel } from '@/models/Category';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Breadcrumbs } from '../Breadcrumbs';
+import { Breadcrumbs } from '../_components/Breadcrumbs';
 
 async function getCategory(slug: string) {
     return await CategoryModel.findOne({ slug: slug });

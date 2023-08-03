@@ -3,7 +3,7 @@ import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import { getDictionary } from '@/lib/getDictionary';
 import { Locale, i18n } from '@/lib/i18n-config';
 import { CategoryModel, SimpleCategory } from '@/models/Category';
-import { Breadcrumbs } from './Breadcrumbs';
+import { Breadcrumbs } from './_components/Breadcrumbs';
 
 async function getCategories() {
     const categories = (await CategoryModel.find()).map(
