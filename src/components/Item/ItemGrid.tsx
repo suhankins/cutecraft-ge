@@ -4,15 +4,22 @@ import { ItemClass } from '@/models/Item';
 
 export function ItemGrid({
     items,
+    categorySlug,
     lang,
 }: {
     items: ItemClass[];
+    categorySlug: string;
     lang: Locale;
 }) {
     return (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {items.map((item, index) => (
-                <ItemViewer key={index} item={item} lang={lang} />
+                <ItemViewer
+                    key={index}
+                    categorySlug={categorySlug}
+                    item={item}
+                    lang={lang}
+                />
             ))}
         </div>
     );

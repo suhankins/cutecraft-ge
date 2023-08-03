@@ -38,7 +38,11 @@ export default async function Catalog({
                     getLocalizedString(categories.name, lang),
                 ]}
             />
-            <ItemGrid items={categories.items ?? []} lang={lang} />
+            <ItemGrid
+                categorySlug={categorySlug}
+                items={categories.items ?? []}
+                lang={lang}
+            />
         </MainBodyWidthContainer>
     );
 }
