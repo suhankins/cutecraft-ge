@@ -1,7 +1,14 @@
-import { PropType, modelOptions, prop } from '@typegoose/typegoose';
+import { PropType, modelOptions, pre, prop } from '@typegoose/typegoose';
 import '@/lib/mongodb'; // Importing library to connect to MongoDB
 import type { LocalizedString } from '@/lib/i18n-config';
+import slugify from 'slugify';
 
+@pre<ItemClass>('save', function (next) {
+    this.slug = slugify(this.name.get('en') ?? this._id.toString(), {
+        lower: true,
+    });
+    next();
+})
 @modelOptions({
     schemaOptions: {
         _id: false,
@@ -23,11 +30,11 @@ export class ItemClass {
     /**
      * Price in lari.
      */
-    @prop({
-        type: () => Number,
-        default: 0,
-    })
+    @prop({ default: 0 })
     public price!: number;
+
+    @prop()
+    public slug!: string;
 
     @prop({ type: () => [String], default: [] }, PropType.ARRAY)
     public images!: string[];
