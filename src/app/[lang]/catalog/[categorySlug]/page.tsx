@@ -7,16 +7,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '../_components/Breadcrumbs';
 
-async function getCategory(slug: string) {
+export async function getCategory(slug: string) {
     return await CategoryModel.findOne({ slug: slug });
 }
 
-export const revalidate = false;
-export async function generateStaticParams() {
-    return i18n.locales.map((locale) => ({
-        lang: locale,
-    }));
-}
+// TODO: Add revalidate
 
 export default async function Catalog({
     params: { lang, categorySlug },
@@ -24,9 +19,9 @@ export default async function Catalog({
     params: { lang: Locale; categorySlug: string };
 }) {
     const dictionary = await getDictionary(lang);
-    const categories = await getCategory(categorySlug);
+    const category = await getCategory(categorySlug);
 
-    if (!categories) {
+    if (!category) {
         notFound();
     }
 
@@ -35,12 +30,12 @@ export default async function Catalog({
             <Breadcrumbs
                 items={[
                     <Link href="/catalog">{dictionary.links.catalogLink}</Link>,
-                    getLocalizedString(categories.name, lang),
+                    getLocalizedString(category.name, lang),
                 ]}
             />
             <ItemGrid
                 categorySlug={categorySlug}
-                items={categories.items ?? []}
+                items={category.items ?? []}
                 lang={lang}
             />
         </MainBodyWidthContainer>
