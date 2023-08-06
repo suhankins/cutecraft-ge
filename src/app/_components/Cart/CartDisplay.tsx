@@ -32,7 +32,7 @@ export function CartDisplay() {
         >
             <div className="indicator absolute">
                 {cartItemCount !== 0 && (
-                    <span className="indicator-start indicator-bottom badge-secondary badge indicator-item">
+                    <span className="indicator-start indicator-bottom badge badge-secondary indicator-item">
                         {cartItemCount}
                     </span>
                 )}

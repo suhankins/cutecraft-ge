@@ -19,10 +19,7 @@ export function LanguagePickerEditor({
             defaultValue={selectedLang}
         >
             {languages.map((lang, index) => (
-                <option
-                    className="uppercase"
-                    key={index}
-                >
+                <option className="uppercase" key={index}>
                     {lang}
                 </option>
             ))}

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { PriceSelector } from './PriceSelector';
-import { AddToCartButton } from '../buttons/AddToCartButton';
+import { AddToCartButton } from '../../app/_components/Cart/AddToCartButton';
 import { LocalizedStringObject } from '@/lib/i18n-config';
 
 export interface PriceSelectorViewerProps {

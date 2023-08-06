@@ -1,13 +1,11 @@
 import { EditableText } from '@/components/EditableText';
-import { Item } from './Item';
-import { ImageEditor } from '@/components/Image/ImageEditor';
 import { ItemClass } from '@/models/Item';
 import { PriceSelectorEditor } from '@/components/PriceSelector/PriceSelectorEditor';
 import { DeleteButton } from '@/components/buttons/DeleteButton';
 import { UploadButton } from '@/components/buttons/UploadButton/UploadButton';
-import { EllipsisMenu } from '../EllipsisMenu';
+import { EllipsisMenu } from '../../../components/EllipsisMenu';
 import { Position } from '@/utils/client/Position';
-import { MoveButton } from '../buttons/MoveButton';
+import { MoveButton } from '../../../components/buttons/MoveButton';
 import { SimpleCategory } from '@/models/Category';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 
@@ -27,48 +25,7 @@ export function ItemEditor({
     lang: Locale;
 }) {
     return (
-        <Item
-            image={
-                <span>
-                    TODO: Handle image<b>s</b>
-                </span>
-            }
-            title={
-                <EditableText
-                    fetchUrl={`/api/category/${categoryId}/items/${itemIndex}/name`}
-                    placeholder="Title"
-                    valueName={lang}
-                    method="PATCH"
-                    defaultValue={getLocalizedString(item.name, lang)}
-                    textarea={true}
-                    className="input-ghost input card-title w-full resize-none overflow-hidden rounded pl-0 pr-0 text-2xl"
-                />
-            }
-            description={
-                <EditableText
-                    nullable={true}
-                    allowNewLine={true}
-                    fetchUrl={`/api/category/${categoryId}/items/${itemIndex}/description`}
-                    valueName={lang}
-                    method="PATCH"
-                    placeholder="Description"
-                    defaultValue={getLocalizedString(
-                        item.description,
-                        lang,
-                        false
-                    )}
-                    textarea={true}
-                    className="input-ghost input w-full resize-none overflow-hidden rounded pl-0 pr-0"
-                />
-            }
-            priceSelector={
-                <PriceSelectorEditor
-                    categoryId={categoryId}
-                    itemIndex={itemIndex}
-                    price={item.price}
-                />
-            }
-        >
+        <article className="card-compact card w-full max-w-2xl bg-base-200">
             <EllipsisMenu className="absolute top-0 right-0 z-30">
                 {!item.images && (
                     <li>
@@ -108,6 +65,42 @@ export function ItemEditor({
                     </>
                 )}
             </EllipsisMenu>
-        </Item>
+            <span>
+                TODO: Handle image<b>s</b>
+            </span>
+            <div className="card-body">
+                <header className={`flex flex-col gap-4 lg:flex-grow`}>
+                    <EditableText
+                        fetchUrl={`/api/category/${categoryId}/items/${itemIndex}/name`}
+                        placeholder="Title"
+                        valueName={lang}
+                        method="PATCH"
+                        defaultValue={getLocalizedString(item.name, lang)}
+                        textarea={true}
+                        className="input-ghost input card-title w-full resize-none overflow-hidden rounded pl-0 pr-0 text-2xl"
+                    />
+                    <EditableText
+                        nullable={true}
+                        allowNewLine={true}
+                        fetchUrl={`/api/category/${categoryId}/items/${itemIndex}/description`}
+                        valueName={lang}
+                        method="PATCH"
+                        placeholder="Description"
+                        defaultValue={getLocalizedString(
+                            item.description,
+                            lang,
+                            false
+                        )}
+                        textarea={true}
+                        className="input-ghost input w-full resize-none overflow-hidden rounded pl-0 pr-0"
+                    />
+                </header>
+                <PriceSelectorEditor
+                    categoryId={categoryId}
+                    itemIndex={itemIndex}
+                    price={item.price}
+                />
+            </div>
+        </article>
     );
 }
