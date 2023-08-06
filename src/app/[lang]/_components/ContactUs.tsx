@@ -1,6 +1,6 @@
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
-import { FacebookButton } from './SocialMediaButtons/FacebookButton';
-import { InstagramButton } from './SocialMediaButtons/InstagramButton';
+import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton';
+import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton';
 
 export function ContactUs({
     dictionary,
