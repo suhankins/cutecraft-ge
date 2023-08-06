@@ -1,11 +1,11 @@
-import { CartProvider } from '@/app/_components/Cart/CartProvider';
+import { CartProvider } from '@/components/Cart/CartProvider';
 import { Footer } from './_components/Footer';
 import { Locale } from '@/lib/i18n-config';
 import { getDictionary } from '@/lib/getDictionary';
-import { Navbar } from '@/app/_components/Navbar';
+import { Navbar } from '@/components/Navbar/Navbar';
 import Link from 'next/link';
-import { LanguagePickerViewer } from '@/app/[lang]/_components/LanguagePickerViewer';
-import { CartDisplay } from '@/app/_components/Cart/CartDisplay';
+import { LanguagePickerViewer } from '@/components/LanguagePicker/LanguagePickerViewer';
+import { CartDisplay } from '@/components/Cart/CartDisplay';
 
 export default async function Layout({
     children,

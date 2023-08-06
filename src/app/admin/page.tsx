@@ -1,6 +1,6 @@
 'use client';
 
-import { LogoutButton } from '@/app/admin/_components/LogoutButton';
+import { LogoutButton } from '@/components/buttons/LogoutButton';
 import { getCategoryElementId } from '@/utils/client/getCategoryElementId';
 import { SimpleCategory } from '@/models/Category';
 import { CategoryEditor } from '@/components/Category/CategoryEditor';
@@ -10,8 +10,8 @@ import useSwr from 'swr';
 import { NewCategory } from '@/components/Category/NewCategory';
 import { getPosition } from '@/utils/client/Position';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
-import { LanguagePickerEditor } from '@/app/admin/_components/LanguagePickerEditor';
-import { Navbar } from '@/app/_components/Navbar';
+import { LanguagePickerEditor } from '@/components/LanguagePicker/LanguagePickerEditor';
+import { Navbar } from '@/components/Navbar/Navbar';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 

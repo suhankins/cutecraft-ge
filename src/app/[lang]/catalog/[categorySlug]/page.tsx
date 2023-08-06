@@ -1,4 +1,4 @@
-import { ItemGrid } from '@/app/_components/item/ItemGrid';
+import { ItemGrid } from '@/components/Item/ItemGrid';
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import { getDictionary } from '@/lib/getDictionary';
 import { Locale, i18n, getLocalizedString } from '@/lib/i18n-config';

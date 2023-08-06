@@ -1,8 +1,8 @@
 import { SimpleCategory } from '@/models/Category';
-import { ItemEditor } from '../../app/admin/_components/ItemEditor';
+import { ItemEditor } from '../Item/ItemEditor';
 import { EditableText } from '@/components/EditableText';
 import { Category } from './Category';
-import { NewItem } from '../../app/admin/_components/NewItem';
+import { NewItem } from '../Item/NewItem';
 import { DeleteButton } from '../buttons/DeleteButton';
 import { EllipsisMenu } from '../EllipsisMenu';
 import { MoveButton } from '../buttons/MoveButton';

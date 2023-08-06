@@ -1,4 +1,4 @@
-import { CartItem } from '@/app/_components/Cart/CartProvider';
+import { CartItem } from '@/components/Cart/CartProvider';
 import { getLocalizedString } from '@/lib/i18n-config';
 import { callApi } from '@/lib/telegramApi';
 import { waysToContact } from '@/lib/waysToContact';
