@@ -6,6 +6,7 @@ import { Navbar } from '@/components/Navbar/Navbar';
 import Link from 'next/link';
 import { LanguagePickerViewer } from '@/components/LanguagePicker/LanguagePickerViewer';
 import { CartDisplay } from '@/components/Cart/CartDisplay';
+import { Bars3Icon } from '@heroicons/react/24/outline';
 
 export default async function Layout({
     children,
@@ -19,10 +20,38 @@ export default async function Layout({
     return (
         <CartProvider>
             <Navbar>
+                <div className="dropdown sm:hidden">
+                    <label tabIndex={0} className="btn-ghost btn m-1">
+                        <Bars3Icon className="h-6 w-6" />
+                    </label>
+                    <ul
+                        tabIndex={0}
+                        className="dropdown-content menu rounded-box z-[1] w-52 bg-base-100 p-2 shadow"
+                    >
+                        <li>
+                            <Link href="/">{dictionary.links.homeLink}</Link>
+                        </li>
+                        <li>
+                            <Link href="/catalog">
+                                {dictionary.links.catalogLink}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/about">
+                                {dictionary.links.aboutLink}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/contact">
+                                {dictionary.links.contactLink}
+                            </Link>
+                        </li>
+                    </ul>
+                </div>
                 <Link href="/" className="btn-ghost btn text-xl normal-case">
                     {dictionary.companyName}
                 </Link>
-                <ul className="menu menu-horizontal flex-grow items-center justify-center">
+                <ul className="menu menu-horizontal hidden flex-grow items-center justify-center sm:inline-flex">
                     <li>
                         <Link href="/">{dictionary.links.homeLink}</Link>
                     </li>
