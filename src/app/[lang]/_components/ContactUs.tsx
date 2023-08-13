@@ -4,11 +4,12 @@ import { FacebookButton } from '@/components/buttons/SocialMediaButtons/Facebook
 import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton';
 
 export function ContactUs({
-    dictionary,
+    dictionary: { header, body, markerText },
 }: {
     dictionary: {
         header: string;
         body: string;
+        markerText: string;
     };
 }) {
     return (
@@ -16,17 +17,15 @@ export function ContactUs({
             <MainBodyWidthContainer>
                 <div className="grid w-full grid-cols-2 gap-2">
                     <div>
-                        <h1 className="text-4xl font-bold">
-                            {dictionary.header}
-                        </h1>
-                        <p>{dictionary.body}</p>
+                        <h1 className="text-4xl font-bold">{header}</h1>
+                        <p>{body}</p>
                         <div className="mt-2 flex gap-2">
                             <InstagramButton />
                             <FacebookButton />
                         </div>
                     </div>
                     <div className="h-96">
-                        <CutecraftMap />
+                        <CutecraftMap markerText={markerText} />
                     </div>
                 </div>
             </MainBodyWidthContainer>

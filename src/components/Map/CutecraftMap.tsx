@@ -4,7 +4,7 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { CutecraftMarker } from './CutecraftMarker';
 
-export default function CutecraftMap() {
+export default function CutecraftMap({ markerText }: { markerText: string }) {
     const defaultProps = {
         center: {
             lat: 41.818437,
@@ -48,7 +48,7 @@ export default function CutecraftMap() {
             <CutecraftMarker
                 lat={defaultProps.center.lat}
                 lng={defaultProps.center.lng}
-                text={'We are here!!!'}
+                text={markerText}
             />
         </GoogleMapReact>
     );
