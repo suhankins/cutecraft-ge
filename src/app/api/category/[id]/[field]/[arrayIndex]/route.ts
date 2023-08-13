@@ -27,19 +27,6 @@ export async function PUT(
     const [body, category] = result;
 
     switch (key) {
-        case 'sizes':
-            if (category.sizes === undefined || category.sizes.length === 0)
-                return new NextResponse('No sizes in category', {
-                    status: 400,
-                });
-            if (typeof body.value !== 'string')
-                return new NextResponse('Invalid value', { status: 400 });
-            if (!(arrayIndex in category.sizes))
-                return new NextResponse('Invalid array index', {
-                    status: 400,
-                });
-            category.sizes[arrayIndex] = body.value;
-            break;
         default:
             return new NextResponse('Invalid field', { status: 400 });
     }
@@ -64,24 +51,12 @@ export async function DELETE(
     if (category instanceof NextResponse) return category;
 
     switch (key) {
-        case 'sizes':
-            if (category.sizes === undefined || category.sizes.length === 0)
-                return new NextResponse('No sizes in category', {
-                    status: 400,
-                });
-            if (!(arrayIndex in category.sizes))
-                return new NextResponse('Invalid array index', {
-                    status: 400,
-                });
-            category.sizes.splice(arrayIndex, 1);
-            category.items?.forEach((item) => item.price.splice(arrayIndex, 1));
-            break;
         default:
             return new NextResponse('Invalid field', { status: 400 });
     }
 
     try {
-        await category.save();
+        //await category.save();
     } catch (e) {
         return handleDbError(e);
     }

@@ -75,10 +75,6 @@ export async function POST(
     if (body.value === undefined)
         return new NextResponse('No value provided', { status: 400 });
 
-    if (category.sizes === undefined) category.sizes = [];
-    category.sizes.push(body.value);
-    category.items?.forEach((item) => item.price.push(null));
-
     try {
         await category.save();
     } catch (e) {

@@ -1,8 +1,6 @@
 import { MapPinIcon } from '@heroicons/react/24/outline';
 
 export function CutecraftMarker({
-    lat,
-    lng,
     text,
 }: {
     lat: number;

@@ -66,7 +66,7 @@ export async function DELETE(
     }
 
     try {
-        await category.save();
+        //await category.save();
     } catch (e) {
         return handleDbError(e);
     }

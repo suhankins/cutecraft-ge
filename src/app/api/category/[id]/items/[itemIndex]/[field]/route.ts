@@ -76,7 +76,7 @@ export async function PATCH(
                 if (body[lang]) item.description.set(lang, body[lang]);
             }
         } else {
-            item[key] = body.value ?? item[key];
+            //item[key] = body.value ?? item[key];
         }
 
         category.save();
@@ -113,7 +113,7 @@ export async function PUT(
         return new NextResponse('Invalid item index', { status: 400 });
 
     try {
-        item[key] = body.value ?? item[key];
+        //item[key] = body.value ?? item[key];
         await category.save();
     } catch (e) {
         return handleDbError(e);
