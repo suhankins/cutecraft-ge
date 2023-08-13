@@ -20,5 +20,19 @@
         "cartLink": "Корзина",
         "privacyPolicyLink": "Политика конфиденциальности",
         "termsOfServiceLink": "Условия обслуживания"
+    },
+    "openGraph": {
+        "home": {
+            "description": "Cute Craft is a small business that makes wooden decor. We make everything from scratch, with love and care. We can also make custom designs, just contact us!"
+        },
+        "catalog": {
+            "title": "Каталог"
+        },
+        "about": {
+            "title": "О нас"
+        },
+        "contact": {
+            "title": "Контакты"
+        }
     }
 }

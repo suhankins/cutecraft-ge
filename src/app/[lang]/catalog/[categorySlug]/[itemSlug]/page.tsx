@@ -6,6 +6,11 @@ import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '../../_components/Breadcrumbs';
 import { getCategory } from '../page';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
+import type { Metadata } from 'next';
+
+interface Params {
+    params: { lang: Locale; categorySlug: string; itemSlug: string };
+}
 
 async function getCategoryAndItem(categorySlug: string, itemSlug: string) {
     const category = await getCategory(categorySlug);
@@ -15,13 +20,23 @@ async function getCategoryAndItem(categorySlug: string, itemSlug: string) {
     return [category, item];
 }
 
-// TODO: Add revalidate
+export async function generateMetadata({
+    params: { lang, categorySlug, itemSlug },
+}: Params): Promise<Metadata> {
+    const [category, item] = await getCategoryAndItem(categorySlug, itemSlug);
+
+    if (!category || !item || !('price' in item)) {
+        notFound();
+    }
+
+    return {
+        title: getLocalizedString(item.name, lang),
+    };
+}
 
 export default async function Catalog({
     params: { lang, categorySlug, itemSlug },
-}: {
-    params: { lang: Locale; categorySlug: string; itemSlug: string };
-}) {
+}: Params) {
     const dictionary = await getDictionary(lang);
     const [category, item] = await getCategoryAndItem(categorySlug, itemSlug);
 

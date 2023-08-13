@@ -8,13 +8,25 @@ import { LanguagePickerViewer } from '@/components/LanguagePicker/LanguagePicker
 import { CartDisplay } from '@/components/Cart/CartDisplay';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 
-export default async function Layout({
-    children,
-    params: { lang },
-}: {
+interface Params {
     children: React.ReactNode;
     params: { lang: Locale };
-}) {
+}
+
+export const metadata = {
+    title: {
+        absolute: 'Cute Craft',
+        template: '%s | Cute Craft',
+    },
+    colorScheme: 'light',
+    metadataBase: new URL('https://cute-craft.com/'),
+    openGraph: {
+        siteName: 'Cute Craft',
+        title: 'Cute Craft',
+    },
+};
+
+export default async function Layout({ children, params: { lang } }: Params) {
     const dictionary = await getDictionary(lang);
 
     return (
