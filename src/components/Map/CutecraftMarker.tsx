@@ -1,4 +1,4 @@
-import { MapPinIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon } from '@heroicons/react/24/solid';
 
 export function CutecraftMarker({
     text,
@@ -8,11 +8,11 @@ export function CutecraftMarker({
     text: string;
 }) {
     return (
-        <div className="relative">
-            <MapPinIcon className="h-6 w-6" />
-            <span className="absolute left-8 -top-1 whitespace-nowrap text-2xl font-bold">
-                {text}
-            </span>
+        <div
+            className="tooltip-open tooltip tooltip-right absolute -translate-x-1/2 -translate-y-full text-primary"
+            data-tip="We are here!"
+        >
+            <MapPinIcon className=" h-8 w-8" />
         </div>
     );
 }
