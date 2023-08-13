@@ -1,6 +1,9 @@
+'use client';
+
 import { Locale, i18n } from '@/lib/i18n-config';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function LanguagePickerViewer({
     selectedLang,
@@ -8,6 +11,9 @@ export function LanguagePickerViewer({
     selectedLang: Locale;
 }) {
     const languages = i18n.locales;
+    const pathname = usePathname();
+    const pathnameWithoutLocale = pathname.split('/').slice(2).join('/');
+
     return (
         <div className="dropdown ml-auto">
             <label tabIndex={0} className="btn-ghost btn m-1 flex gap-2">
@@ -25,7 +31,7 @@ export function LanguagePickerViewer({
                                 <Link
                                     scroll={false}
                                     replace
-                                    href={`/${locale}`}
+                                    href={`/${locale}/${pathnameWithoutLocale}`}
                                 >
                                     {locale}
                                 </Link>
