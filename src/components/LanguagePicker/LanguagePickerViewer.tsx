@@ -7,15 +7,17 @@ import { usePathname } from 'next/navigation';
 
 export function LanguagePickerViewer({
     selectedLang,
+    top,
 }: {
     selectedLang: Locale;
+    top: boolean;
 }) {
     const languages = i18n.locales;
     const pathname = usePathname();
     const pathnameWithoutLocale = pathname.split('/').slice(2).join('/');
 
     return (
-        <div className="dropdown ml-auto">
+        <div className={`dropdown ml-auto ${top ? 'dropdown-top' : ''}`}>
             <label tabIndex={0} className="btn-ghost btn m-1 flex gap-2">
                 <span>{selectedLang}</span>
                 <ChevronDownIcon className="h-4 w-4" />

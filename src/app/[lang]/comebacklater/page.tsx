@@ -1,3 +1,4 @@
+import { LanguagePickerViewer } from '@/components/LanguagePicker/LanguagePickerViewer';
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import CutecraftMap from '@/components/Map/CutecraftMap';
 import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton';
@@ -14,10 +15,13 @@ export default async function Page({
     const dictionary = await getDictionary(lang);
 
     return (
-        <div className="flex w-full items-center justify-center sm:h-screen">
+        <div className="relative flex min-h-screen w-full justify-center sm:items-center">
+            <div className="absolute right-2 bottom-2 z-50 sm:top-2">
+                <LanguagePickerViewer top selectedLang={lang} />
+            </div>
             <MainBodyWidthContainer>
                 <main className="my-2 flex flex-col gap-4 rounded-lg border-t-4 border-t-primary sm:grid sm:grid-cols-2 sm:p-4 sm:shadow-xl">
-                    <div className="my-4">
+                    <section className="my-4">
                         <h1 className="text-center text-6xl font-bold">
                             Cute Craft
                         </h1>
@@ -38,7 +42,7 @@ export default async function Page({
                                 </a>
                             </p>
                         </section>
-                    </div>
+                    </section>
                     <section className="h-96 w-full">
                         <CutecraftMap
                             lang={lang}
