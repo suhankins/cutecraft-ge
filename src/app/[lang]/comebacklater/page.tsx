@@ -16,8 +16,17 @@ export default async function Page({
 
     return (
         <div className="relative flex min-h-screen w-full justify-center sm:items-center">
-            <div className="absolute right-2 bottom-2 z-50 sm:top-2">
-                <LanguagePickerViewer top selectedLang={lang} />
+            <div className="absolute right-2 bottom-2 z-50 sm:hidden">
+                <LanguagePickerViewer
+                    className="dropdown-top rounded-2xl bg-primary text-primary-content shadow-lg"
+                    selectedLang={lang}
+                />
+            </div>
+            <div className="absolute right-2 top-2 z-50 hidden sm:inline-block">
+                <LanguagePickerViewer
+                    className="rounded-2xl bg-primary text-primary-content shadow-lg"
+                    selectedLang={lang}
+                />
             </div>
             <MainBodyWidthContainer>
                 <main className="my-2 flex flex-col gap-4 rounded-lg border-t-4 border-t-primary sm:grid sm:grid-cols-2 sm:p-4 sm:shadow-xl">
@@ -31,7 +40,7 @@ export default async function Page({
                         <section className="flex flex-col gap-2">
                             <InstagramButton />
                             <FacebookButton />
-                            <p className="flex gap-2 text-lg">
+                            <p className="flex items-center gap-2 text-lg">
                                 <MapPinIcon className="h-8 w-8" />
                                 <a
                                     href="https://goo.gl/maps/WHyzFHXsr8LEgtb49"
