@@ -41,7 +41,7 @@ export default async function Home({
                     {dictionary.seeMore}
                 </Link>
             </MainBodyWidthContainer>
-            <ContactUs dictionary={dictionary.contactUs} />
+            <ContactUs lang={lang} dictionary={dictionary.contactUs} />
         </>
     );
 }

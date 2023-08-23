@@ -3,8 +3,15 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { CutecraftMarker } from './CutecraftMarker';
+import { Locale } from '@/lib/i18n-config';
 
-export default function CutecraftMap({ markerText }: { markerText: string }) {
+export default function CutecraftMap({
+    markerText,
+    lang,
+}: {
+    markerText: string;
+    lang: Locale;
+}) {
     const defaultProps = {
         center: {
             lat: 41.818437,
@@ -40,6 +47,7 @@ export default function CutecraftMap({ markerText }: { markerText: string }) {
                 mapTypeId: 'roadmap',
             }}
             bootstrapURLKeys={{
+                language: lang,
                 key: process.env.GOOGLE_MAPS_API_KEY ?? '',
             }}
             defaultCenter={defaultProps.center}

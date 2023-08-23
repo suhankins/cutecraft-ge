@@ -2,10 +2,13 @@ import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import CutecraftMap from '@/components/Map/CutecraftMap';
 import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton';
 import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton';
+import type { Locale } from '@/lib/i18n-config';
 
 export function ContactUs({
+    lang,
     dictionary: { header, body, markerText },
 }: {
+    lang: Locale;
     dictionary: {
         header: string;
         body: string;
@@ -25,7 +28,7 @@ export function ContactUs({
                         </div>
                     </div>
                     <div className="h-96">
-                        <CutecraftMap markerText={markerText} />
+                        <CutecraftMap lang={lang} markerText={markerText} />
                     </div>
                 </div>
             </MainBodyWidthContainer>
