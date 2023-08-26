@@ -1,6 +1,6 @@
 export const i18n = {
     defaultLocale: 'en',
-    locales: ['en', 'ru', 'ge'],
+    locales: ['en', 'ru', 'ka'],
 } as const;
 
 export function getLocalizedString(
