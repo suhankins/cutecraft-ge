@@ -28,7 +28,11 @@ export function ContactUs({
                         </div>
                     </div>
                     <div className="h-96">
-                        <CutecraftMap lang={lang} markerText={markerText} />
+                        <CutecraftMap
+                            apiKey={process.env.GOOGLE_MAPS_API_KEY ?? ''}
+                            lang={lang}
+                            markerText={markerText}
+                        />
                     </div>
                 </div>
             </MainBodyWidthContainer>
