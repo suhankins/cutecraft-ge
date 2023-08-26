@@ -61,6 +61,7 @@ export default async function Page({
                     </section>
                     <section className="h-96 w-full">
                         <CutecraftMap
+                            apiKey={process.env.GOOGLE_MAPS_API_KEY ?? ''}
                             lang={lang}
                             markerText={dictionary.contactUs.markerText}
                         />

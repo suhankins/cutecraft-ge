@@ -5,12 +5,24 @@ import GoogleMapReact from 'google-map-react';
 import { CutecraftMarker } from './CutecraftMarker';
 import { Locale } from '@/lib/i18n-config';
 
+interface CutecraftMapProps {
+    markerText: string;
+    lang: Locale;
+    /**
+     * Google Maps API Key. We can't access env variables in the client,
+     * so server component must pass it down to us.
+     */
+    apiKey: string;
+}
+
 export default function CutecraftMap({
     markerText,
     lang,
+    apiKey,
 }: {
     markerText: string;
     lang: Locale;
+    apiKey: string;
 }) {
     const defaultProps = {
         center: {
@@ -47,8 +59,9 @@ export default function CutecraftMap({
                 mapTypeId: 'roadmap',
             }}
             bootstrapURLKeys={{
+                version: '3.31',
                 language: lang,
-                key: process.env.GOOGLE_MAPS_API_KEY ?? '',
+                key: apiKey,
             }}
             defaultCenter={defaultProps.center}
             defaultZoom={defaultProps.zoom}
