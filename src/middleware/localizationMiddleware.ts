@@ -1,20 +1,62 @@
 import { i18n, Locale } from '@/lib/i18n-config';
 import { NextRequest, NextResponse } from 'next/server';
+import { match } from '@formatjs/intl-localematcher';
+import Negotiator from 'negotiator';
 
 /**
- * Tries to get the locale from the cookie. If it doesn't exist, it returns the default locale.
+ * Tries to get the locale from the cookie. If it doesn't exist, it returns null.
+ * @param request
+ * @returns {string | null}
+ */
+function getLocaleFromCookie(request: NextRequest) {
+    const prefered = request.cookies.get('language');
+
+    if (
+        prefered !== undefined &&
+        prefered !== null &&
+        i18n.locales.includes(prefered.value as Locale)
+    ) {
+        return prefered.value;
+    }
+
+    return null;
+}
+
+/**
+ * Try to get the locale from the Accept-Language header. If locale in the header is not supported, it returns default locale.
+ */
+function getLocaleFromHeader(request: NextRequest) {
+    const negotiatorHeaders: Record<string, string> = {};
+    request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+
+    // i18n.locales is readonly, so we need to copy it
+    const locales = [...i18n.locales];
+
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages(
+        locales
+    );
+
+    const locale = match(languages, locales, i18n.defaultLocale);
+
+    return locale;
+}
+
+/**
+ * Tries to get the locale from the cookie.
+ * If it doesn't exist, it tries to get it from the Accept-Language header.
+ * Otherwise returns default locale.
  */
 function getLocale(request: NextRequest) {
-    const prefered = request.cookies.get('language');
-    // Check if the cookie is set and if it is a valid locale
-    if (
-        prefered === undefined ||
-        prefered === null ||
-        !i18n.locales.includes(prefered.value as Locale)
-    ) {
-        return i18n.defaultLocale;
-    }
-    return prefered.value;
+    return getLocaleFromCookie(request) ?? getLocaleFromHeader(request);
+}
+
+/**
+ * Sets language cookie to the response.
+ * Don't forget that you need to return the response.
+ */
+function setCookie(response: NextResponse, locale: string) {
+    response.cookies.set('language', locale);
+    return response;
 }
 
 /**
@@ -47,7 +89,7 @@ export function localizationMiddleware(
 
     const chosenLocale = pathname.split('/')[1];
     // Setting a cookie if the locale in the url is different from the locale in the cookie
-    if (chosenLocale !== getLocale(request))
-        response.cookies.set('language', chosenLocale);
+    if (chosenLocale !== getLocaleFromCookie(request))
+        setCookie(response, chosenLocale);
     return response;
 }
