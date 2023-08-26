@@ -4,8 +4,15 @@ import CutecraftMap from '@/components/Map/CutecraftMap';
 import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton';
 import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton';
 import { getDictionary } from '@/lib/getDictionary';
-import type { Locale } from '@/lib/i18n-config';
+import { Locale, i18n } from '@/lib/i18n-config';
 import { MapPinIcon } from '@heroicons/react/24/solid';
+
+export const revalidate = false;
+export async function generateStaticParams() {
+    return i18n.locales.map((locale) => ({
+        lang: locale,
+    }));
+}
 
 export default async function Page({
     params: { lang },
