@@ -13,10 +13,12 @@ export function UploadButton({
     className,
     itemIndex,
     categoryId,
+    imageIndex,
 }: {
     className?: string;
     itemIndex?: number;
     categoryId: string;
+    imageIndex?: number;
 }) {
     const fileUploaderId = useId();
     const [loadingText, setLoadingText] = useState<null | string>(null);
@@ -31,7 +33,8 @@ export function UploadButton({
             const { url, fields } = await getSignedUrlRequest(
                 categoryId,
                 fileExtension,
-                itemIndex
+                itemIndex,
+                imageIndex
             );
 
             const key = fields.key;
@@ -41,7 +44,7 @@ export function UploadButton({
             await uploadToGoogleStorage(url, fields, file);
 
             setLoadingText('Confirming...');
-            await confirmUploadRequest(categoryId, key, itemIndex);
+            await confirmUploadRequest(categoryId, key, itemIndex, imageIndex);
 
             setLoadingText('Fetching new data...');
             await mutate('/api/category');

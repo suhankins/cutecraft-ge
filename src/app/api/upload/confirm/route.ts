@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
     const HandledUploadQuery = await handleUploadQuery(request);
     if (HandledUploadQuery instanceof NextResponse) return HandledUploadQuery;
-    const { itemIndex, filename, model } = HandledUploadQuery;
+    const { itemIndex, filename, model, imageIndex } = HandledUploadQuery;
     if (filename === undefined)
         return new NextResponse('No filename provided', { status: 400 });
 
@@ -28,8 +28,8 @@ export async function POST(request: NextRequest) {
     }*/
 
     if (itemIndex === undefined) model.image = file.publicUrl();
-    // TODO: Implement uploading array of images
-    else model.items[itemIndex].images[0] = file.publicUrl();
+    else model.items[itemIndex].images[imageIndex ?? 0] = file.publicUrl();
+
     model.save();
 
     return new NextResponse('File confirmed', { status: 200 });

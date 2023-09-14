@@ -1,14 +1,17 @@
 export async function getSignedUrlRequest(
     categoryId: string,
     fileExtension: string,
-    itemIndex?: number
+    itemIndex?: number,
+    imageIndex?: number
 ): Promise<{
     url: string;
     fields: any;
 }> {
     const response = await fetch(
         `/api/upload?id=${categoryId}&filetype=${fileExtension}` +
-            (itemIndex ? `&itemIndex=${itemIndex}` : '')
+            (itemIndex !== undefined
+                ? `&itemIndex=${itemIndex}&imageIndex=${imageIndex}`
+                : '')
     );
     if (response.ok) console.log('Got signed URL successfully!');
     else throw new Error('Failed to get signed URL.');
@@ -45,11 +48,14 @@ export async function uploadToGoogleStorage(
 export async function confirmUploadRequest(
     categoryId: string,
     filename: string,
-    itemIndex?: number
+    itemIndex?: number,
+    imageIndex?: number
 ) {
     const result = await fetch(
         `/api/upload/confirm?id=${categoryId}&filename=${filename}` +
-            (itemIndex ? `&itemIndex=${itemIndex}` : ''),
+            (itemIndex !== undefined
+                ? `&itemIndex=${itemIndex}&imageIndex=${imageIndex}`
+                : ''),
         { method: 'POST' }
     );
     if (result.ok) console.log('Confirmed successfully!');

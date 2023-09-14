@@ -29,9 +29,11 @@ export function ItemEditor({
     return (
         <Item
             image={
-                <span>
-                    TODO: Handle image<b>s</b>
-                </span>
+                <ImageEditor
+                    images={item.images}
+                    itemIndex={itemIndex}
+                    categoryId={categoryId}
+                />
             }
             title={
                 <EditableText
@@ -70,14 +72,6 @@ export function ItemEditor({
             }
         >
             <EllipsisMenu className="absolute top-0 right-0 z-30">
-                {!item.images && (
-                    <li>
-                        <UploadButton
-                            itemIndex={itemIndex}
-                            categoryId={categoryId}
-                        />
-                    </li>
-                )}
                 <li>
                     <DeleteButton
                         aria-label="Delete item"

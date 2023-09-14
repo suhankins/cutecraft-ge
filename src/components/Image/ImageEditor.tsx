@@ -4,33 +4,65 @@ import { UploadButton } from '../buttons/UploadButton/UploadButton';
 import { ImageView } from './ImageView';
 
 export interface EditableImageProps {
-    image?: string;
+    images: string[];
     itemIndex: number;
     categoryId: string;
 }
 
-export function ImageEditor({
+function ImageWithControls({
     image,
     itemIndex,
     categoryId,
-}: EditableImageProps) {
+    imageIndex,
+    deleteDisabled,
+}: {
+    image: string;
+    itemIndex: number;
+    categoryId: string;
+    imageIndex: number;
+    deleteDisabled?: boolean;
+}) {
     return (
         <>
-            {image && (
-                <ImageView>
-                    <div className="invisible absolute left-1 top-1 z-30 flex gap-1 group-hover:visible">
-                        <UploadButton
-                            itemIndex={itemIndex}
-                            categoryId={categoryId}
-                        />
-                        <DeleteButton
-                            aria-label="Delete image"
-                            fetchUrl={`/api/category/${categoryId}/items/${itemIndex}/image`}
-                        />
-                    </div>
-                    <ImageViewer src={image} />
-                </ImageView>
-            )}
+            <div className="invisible absolute left-1 top-1 z-30 flex gap-1 group-hover:visible">
+                <UploadButton
+                    imageIndex={imageIndex}
+                    itemIndex={itemIndex}
+                    categoryId={categoryId}
+                />
+                {!deleteDisabled && (
+                    <DeleteButton
+                        aria-label="Delete image"
+                        fetchUrl={`/api/category/${categoryId}/items/${itemIndex}/images/${imageIndex}`}
+                    />
+                )}
+            </div>
+            <ImageViewer src={image} />
         </>
     );
+}
+
+export function ImageEditor({
+    images,
+    itemIndex,
+    categoryId,
+}: EditableImageProps) {
+    const imagesToRender = [
+        ...images.map((image, imageIndex) => (
+            <ImageWithControls
+                image={image}
+                itemIndex={itemIndex}
+                categoryId={categoryId}
+                imageIndex={imageIndex}
+            />
+        )),
+        <ImageWithControls
+            image={'/images/plus.svg'}
+            itemIndex={itemIndex}
+            categoryId={categoryId}
+            imageIndex={images.length}
+            deleteDisabled
+        />,
+    ];
+    return <ImageView images={imagesToRender} />;
 }

@@ -9,14 +9,16 @@ export function ImageViewer({
     alt?: string;
 }) {
     return (
-        <ImageView>
-            <Image
-                width={312} // Resolution of the image at 4K display
-                height={312}
-                alt={altText ?? ''}
-                className="aspect-square h-full max-h-64 w-full rounded-t-xl bg-base-300 object-cover"
-                src={picture}
-            />
-        </ImageView>
+        <ImageView
+            images={[
+                <Image
+                    width={312}
+                    height={312}
+                    alt={altText ?? ''}
+                    className="aspect-square h-full max-h-64 w-full rounded-t-xl bg-base-300 object-cover"
+                    src={picture}
+                />,
+            ]}
+        />
     );
 }

@@ -9,6 +9,7 @@ export interface HandledUploadQuery {
     filename?: string;
     id: mongoose.Types.ObjectId;
     itemIndex?: number;
+    imageIndex?: number;
     model: mongoose.Document & CategoryClass;
 }
 
@@ -59,11 +60,27 @@ export async function handleUploadQuery(
             });
     }
 
+    let imageIndex: string | undefined | number =
+        query.get('imageIndex') ?? undefined;
+    if (imageIndex !== undefined) {
+        imageIndex = parseInt(imageIndex);
+        if (
+            isNaN(imageIndex) ||
+            model.items === undefined ||
+            itemIndex === undefined ||
+            imageIndex < 0
+        )
+            return new NextResponse('Invalid imageIndex provided', {
+                status: 400,
+            });
+    }
+
     return {
-        filetype: filetype,
-        filename: filename,
-        id: id,
-        itemIndex: itemIndex,
-        model: model,
+        filetype,
+        filename,
+        id,
+        itemIndex,
+        imageIndex,
+        model,
     };
 }
