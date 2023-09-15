@@ -26,6 +26,19 @@ export async function generateMetadata({
     };
 }
 
+export const revalidate = false;
+export async function generateStaticParams() {
+    const locales = i18n.locales;
+    const categories = await CategoryModel.find();
+
+    return locales.map((locale) => {
+        return categories.map((category) => ({
+            lang: locale,
+            categorySlug: category.slug,
+        }));
+    });
+}
+
 export async function getCategory(slug: string) {
     return await CategoryModel.findOne({ slug: slug });
 }

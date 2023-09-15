@@ -1,4 +1,4 @@
-import type { Locale } from '@/lib/i18n-config';
+import { Locale, i18n } from '@/lib/i18n-config';
 
 export const metadata = {
     title: {
@@ -16,6 +16,13 @@ export const metadata = {
 interface Params {
     children: React.ReactNode;
     params: { lang: Locale };
+}
+
+export const revalidate = false;
+export async function generateStaticParams() {
+    return i18n.locales.map((locale) => ({
+        lang: locale,
+    }));
 }
 
 export default function Layout({ children, params: { lang } }: Params) {

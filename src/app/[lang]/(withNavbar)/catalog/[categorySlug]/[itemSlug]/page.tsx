@@ -1,12 +1,13 @@
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import { getDictionary } from '@/lib/getDictionary';
-import { Locale, getLocalizedString } from '@/lib/i18n-config';
+import { Locale, getLocalizedString, i18n } from '@/lib/i18n-config';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '../../_components/Breadcrumbs';
 import { getCategory } from '../page';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import type { Metadata } from 'next';
+import { CategoryModel } from '@/models/Category';
 
 interface Params {
     params: { lang: Locale; categorySlug: string; itemSlug: string };
@@ -32,6 +33,22 @@ export async function generateMetadata({
     return {
         title: getLocalizedString(item.name, lang),
     };
+}
+
+export const revalidate = false;
+export async function generateStaticParams() {
+    const locales = i18n.locales;
+    const categories = await CategoryModel.find();
+
+    return locales.map((locale) => {
+        return categories.map((category) => {
+            return category.items?.map((item) => ({
+                lang: locale,
+                categorySlug: category.slug,
+                itemSlug: item.slug,
+            }));
+        });
+    });
 }
 
 export default async function Catalog({

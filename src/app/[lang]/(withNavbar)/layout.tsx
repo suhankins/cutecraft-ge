@@ -1,6 +1,6 @@
 import { CartProvider } from '@/components/Cart/CartProvider';
 import { Footer } from './_components/Footer';
-import type { Locale } from '@/lib/i18n-config';
+import { Locale, i18n } from '@/lib/i18n-config';
 import { getDictionary } from '@/lib/getDictionary';
 import { Navbar } from '@/components/Navbar/Navbar';
 import Link from 'next/link';
@@ -11,6 +11,13 @@ import { Bars3Icon } from '@heroicons/react/24/outline';
 interface Params {
     children: React.ReactNode;
     params: { lang: Locale };
+}
+
+export const revalidate = false;
+export async function generateStaticParams() {
+    return i18n.locales.map((locale) => ({
+        lang: locale,
+    }));
 }
 
 export default async function layout({ children, params: { lang } }: Params) {
