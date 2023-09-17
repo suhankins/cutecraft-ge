@@ -32,32 +32,6 @@ export async function PATCH(
     });
 }
 
-export async function PUT(
-    request: NextRequest,
-    { params: { id, field } }: pathParams
-) {
-    if (!CategoryClass.fields.includes(field))
-        return new NextResponse('Invalid field', { status: 400 });
-    const key = field as keyof CategoryClass;
-    const result = await getBodyAndCategory(request, id);
-    if (result instanceof NextResponse) return result;
-    const [body, category] = result;
-
-    if (body.value === undefined)
-        return new NextResponse('No value provided', { status: 400 });
-
-    try {
-        if (typeof category[key] === 'number') body.value = +body.value;
-        category[key] = body.value ?? category[key];
-        await category.save();
-    } catch (e) {
-        return handleDbError(e);
-    }
-    return new NextResponse(`Field ${key} successfully updated`, {
-        status: 200,
-    });
-}
-
 /**
  * Meant for adding new items to arrays (e.g. sizes)
  */

@@ -21,7 +21,7 @@ export interface EditableTextProps extends HTMLTextFieldAttributes {
     disabled?: boolean;
     defaultValue?: string;
     /**
-     * The HTTP method to use when updating the value. PUT by default.
+     * The HTTP method to use when updating the value. PATCH by default.
      */
     method?: string;
     /**
@@ -57,7 +57,7 @@ export function EditableText({
     className,
     defaultValue,
     fetchUrl,
-    method = 'PUT',
+    method = 'PATCH',
     valueName = 'value',
     type = 'text',
     setLoading: setOutsideLoading,

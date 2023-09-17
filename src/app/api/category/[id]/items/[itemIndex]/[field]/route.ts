@@ -35,47 +35,13 @@ export async function PATCH(
                 if (body[lang]) item.description.set(lang, body[lang]);
             }
         } else if (key === 'price') {
+            console.log(body.value, parseFloat(body.value));
             item[key] = parseFloat(body.value) || item[key];
         } else {
             return new NextResponse('Invalid field', { status: 400 });
         }
 
         category.save();
-    } catch (e) {
-        return handleDbError(e);
-    }
-    return new NextResponse(`Field ${key} successfully updated`, {
-        status: 200,
-    });
-}
-
-/**
- * Meant for updating fields of items (e.g. name, description)
- */
-export async function PUT(
-    request: NextRequest,
-    { params: { id, itemIndex, field } }: pathParams
-) {
-    if (!ItemClass.fields.includes(field))
-        return new NextResponse('Invalid field', { status: 400 });
-    const key = field as keyof ItemClass;
-    const result = await getBodyAndCategory(request, id);
-    if (result instanceof NextResponse) return result;
-    const [body, category] = result;
-
-    if (body.value === undefined)
-        return new NextResponse('No value provided', { status: 400 });
-
-    if (category.items === undefined || category.items.length === 0)
-        return new NextResponse('No items in category', { status: 400 });
-
-    const item = category.items[itemIndex];
-    if (item === undefined)
-        return new NextResponse('Invalid item index', { status: 400 });
-
-    try {
-        //item[key] = body.value ?? item[key];
-        await category.save();
     } catch (e) {
         return handleDbError(e);
     }
