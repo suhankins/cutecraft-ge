@@ -8,6 +8,7 @@ import { getCategory } from '../page';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import type { Metadata } from 'next';
 import { CategoryModel } from '@/models/Category';
+import Image from 'next/image';
 
 interface Params {
     params: { lang: Locale; categorySlug: string; itemSlug: string };
@@ -74,7 +75,7 @@ export default async function Catalog({
             />
             <main className="grid grid-cols-1 gap-8 sm:grid-cols-2">
                 <section>
-                    <img
+                    <Image
                         className="w-full rounded object-contain"
                         src={item.images[0] || '/static/placeholder.png'}
                         alt={getLocalizedString(item.name, lang)}
