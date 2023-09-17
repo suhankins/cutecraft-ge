@@ -25,7 +25,7 @@ export function ImageView({ images }: { images: React.ReactNode[] }) {
                             aria-label={`Select image ${index + 1}`}
                             className="radio-accent radio"
                             checked={index === currentImage}
-                            onClick={() => setCurrentImage(index)}
+                            onChange={() => setCurrentImage(index)}
                         />
                     ))}
                 </div>
