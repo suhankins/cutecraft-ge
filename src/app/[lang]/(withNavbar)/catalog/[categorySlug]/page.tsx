@@ -57,7 +57,9 @@ export default async function Catalog({
         <MainBodyWidthContainer className="my-4">
             <Breadcrumbs
                 items={[
-                    <Link href="/catalog">{dictionary.links.catalogLink}</Link>,
+                    <Link href={`/${lang}/catalog`}>
+                        {dictionary.links.catalogLink}
+                    </Link>,
                     getLocalizedString(category.name, lang),
                 ]}
             />

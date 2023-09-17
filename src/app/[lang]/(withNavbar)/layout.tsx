@@ -35,42 +35,51 @@ export default async function layout({ children, params: { lang } }: Params) {
                         className="dropdown-content menu rounded-box z-[1] w-52 bg-base-100 p-2 shadow"
                     >
                         <li>
-                            <Link href="/">{dictionary.links.homeLink}</Link>
+                            <Link href={`/${lang}`}>
+                                {dictionary.links.homeLink}
+                            </Link>
                         </li>
                         <li>
-                            <Link href="/catalog">
+                            <Link href={`/${lang}/catalog`}>
                                 {dictionary.links.catalogLink}
                             </Link>
                         </li>
                         <li>
-                            <Link href="/about">
+                            <Link href={`/${lang}/about`}>
                                 {dictionary.links.aboutLink}
                             </Link>
                         </li>
                         <li>
-                            <Link href="/contact">
+                            <Link href={`/${lang}/contact`}>
                                 {dictionary.links.contactLink}
                             </Link>
                         </li>
                     </ul>
                 </div>
-                <Link href="/" className="btn-ghost btn text-xl normal-case">
+                <Link
+                    href={`/${lang}`}
+                    className="btn-ghost btn text-xl normal-case"
+                >
                     {dictionary.companyName}
                 </Link>
                 <ul className="menu menu-horizontal hidden flex-grow items-center justify-center sm:inline-flex">
                     <li>
-                        <Link href="/">{dictionary.links.homeLink}</Link>
+                        <Link href={`/${lang}`}>
+                            {dictionary.links.homeLink}
+                        </Link>
                     </li>
                     <li>
-                        <Link href="/catalog">
+                        <Link href={`/${lang}/catalog`}>
                             {dictionary.links.catalogLink}
                         </Link>
                     </li>
                     <li>
-                        <Link href="/about">{dictionary.links.aboutLink}</Link>
+                        <Link href={`/${lang}/about`}>
+                            {dictionary.links.aboutLink}
+                        </Link>
                     </li>
                     <li>
-                        <Link href="/contact">
+                        <Link href={`/${lang}/contact`}>
                             {dictionary.links.contactLink}
                         </Link>
                     </li>
@@ -79,7 +88,7 @@ export default async function layout({ children, params: { lang } }: Params) {
                 <CartDisplay />
             </Navbar>
             <main className="h-full w-full flex-grow">{children}</main>
-            <Footer dictionary={dictionary.links} />
+            <Footer lang={lang} dictionary={dictionary.links} />
         </CartProvider>
     );
 }

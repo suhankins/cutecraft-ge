@@ -33,11 +33,11 @@ export default async function Home({
 
     return (
         <>
-            <Hero dictionary={dictionary.hero} />
+            <Hero lang={lang} dictionary={dictionary.hero} />
             <MainBodyWidthContainer>
                 <CategoryGrid categories={categories} lang={lang} />
                 <Link
-                    href="/catalog"
+                    href={`/${lang}/catalog`}
                     className="btn-primary btn-wide btn mx-auto"
                 >
                     {dictionary.seeMore}

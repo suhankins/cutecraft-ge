@@ -14,7 +14,7 @@ export function ItemViewer({
 }) {
     return (
         <Link
-            href={`/catalog/${categorySlug}/${item.slug}`}
+            href={`/${lang}/catalog/${categorySlug}/${item.slug}`}
             className="card card-compact w-full max-w-2xl bg-base-200"
         >
             <figure>

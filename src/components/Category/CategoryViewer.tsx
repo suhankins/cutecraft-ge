@@ -11,7 +11,7 @@ export interface CategoryProps {
 export function CategoryViewer({ category, lang }: CategoryProps) {
     return (
         <Link
-            href={`/catalog/${category.slug}`}
+            href={`/${lang}/catalog/${category.slug}`}
             className="card card-compact w-64 max-w-2xl bg-base-200"
         >
             {category.image && (
