@@ -13,10 +13,7 @@ export async function PATCH(
     const category = await findCategory(id);
     if (category instanceof NextResponse) return category;
     if (category.priority === undefined)
-        return new NextResponse(
-            "Category index is undefined and I'm not sure what to do about it. Call the programmer I guess?",
-            { status: 500 }
-        );
+        category.priority = (await CategoryModel.countDocuments()) - 1;
     if (direction === 'down' && category.priority === 0)
         return new NextResponse('Category is already at the bottom', {
             status: 400,
@@ -31,10 +28,6 @@ export async function PATCH(
     const change = direction === 'down' ? -1 : 1;
 
     try {
-        await CategoryModel.findOneAndUpdate(
-            { priority: category.priority + change },
-            { index: category.priority }
-        ).exec();
         category.priority += change;
         await category.save();
     } catch (e) {
