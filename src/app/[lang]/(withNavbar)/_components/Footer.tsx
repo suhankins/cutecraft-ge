@@ -1,4 +1,5 @@
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
+import { socialMedia } from '@/lib/socialMedia';
 import Link from 'next/link';
 
 interface link {
@@ -56,7 +57,7 @@ export function Footer({
 }: FooterProps) {
     return (
         <footer className="footer footer-center bg-neutral p-4 text-neutral-content">
-            <MainBodyWidthContainer>
+            <MainBodyWidthContainer className="w-full">
                 <div className="grid w-full grid-cols-3">
                     <Section
                         links={[
@@ -71,11 +72,11 @@ export function Footer({
                         links={[
                             {
                                 name: 'Facebook',
-                                href: 'https://www.facebook.com/cutecraftph', // TODO: Real URLS
+                                href: socialMedia.facebook,
                             },
                             {
                                 name: 'Instagram',
-                                href: 'https://www.instagram.com/cutecraftph', // TODO: Real URLS
+                                href: socialMedia.instagram,
                             },
                         ]}
                     />
