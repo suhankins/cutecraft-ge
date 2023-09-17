@@ -12,7 +12,7 @@ export async function DELETE(
 
     try {
         const index = category.priority;
-        await category.delete();
+        await category.deleteOne();
 
         // Moving everything down by 1
         await CategoryModel.updateMany(
