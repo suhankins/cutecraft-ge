@@ -10,7 +10,11 @@ export const revalidate = 0;
 export async function GET() {
     const categories = await CategoryModel.find().populate('items');
     const response = new NextResponse(
-        JSON.stringify(categories.map((category) => category.toJSON()))
+        JSON.stringify(
+            categories
+                .map((category) => category.toJSON())
+                .sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0))
+        )
     );
     response.headers.set('Content-Type', 'application/json');
     return response;
