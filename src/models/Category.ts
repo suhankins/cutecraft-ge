@@ -101,4 +101,5 @@ export class CategoryClass implements defaultClasses.Base {
     }
 }
 
-export const CategoryModel = getModelForClass(CategoryClass);
+export const CategoryModel =
+    mongoose.models.CategoryClass || getModelForClass(CategoryClass);
