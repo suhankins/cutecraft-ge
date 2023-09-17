@@ -1,0 +1,18 @@
+.instagramButton {
+    color: white;
+    background-image: linear-gradient(
+        72.44deg,
+        #ff7a00 11.92%,
+        #ff0169 51.56%,
+        #d300c5 85.69%
+    );
+
+    &:hover {
+        background-image: linear-gradient(
+            72.44deg,
+            #ef6a00 11.92%,
+            #ef0159 51.56%,
+            #c300b5 85.69%
+        );
+    }
+}

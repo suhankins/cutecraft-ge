@@ -1,8 +1,8 @@
 import { LanguagePickerViewer } from '@/components/LanguagePicker/LanguagePickerViewer';
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import CutecraftMap from '@/components/Map/CutecraftMap';
-import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton';
-import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton';
+import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton/FacebookButton';
+import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton/InstagramButton';
 import { getDictionary } from '@/lib/getDictionary';
 import { Locale, i18n } from '@/lib/i18n-config';
 import { MapPinIcon } from '@heroicons/react/24/solid';

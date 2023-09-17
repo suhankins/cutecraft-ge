@@ -44,33 +44,6 @@ body {
     }
 }
 
-.btn-instagram {
-    color: white;
-    background-image: linear-gradient(
-        72.44deg,
-        #ff7a00 11.92%,
-        #ff0169 51.56%,
-        #d300c5 85.69%
-    );
-
-    &:hover {
-        background-image: linear-gradient(
-            72.44deg,
-            #ef6a00 11.92%,
-            #ef0159 51.56%,
-            #c300b5 85.69%
-        );
-    }
-}
-
-.btn-facebook {
-    color: white;
-    background-color: #1877f2;
-    &:hover {
-        background-color: #166fe5;
-    }
-}
-
 .min-h-s-screen {
     min-height: calc(100vh - 4rem);
     min-height: 100svh;
