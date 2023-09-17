@@ -1,6 +1,7 @@
 import { ItemClass } from '@/models/Item';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function ItemViewer({
     item,
@@ -17,10 +18,12 @@ export function ItemViewer({
             className="card card-compact w-full max-w-2xl bg-base-200"
         >
             <figure>
-                <img
+                <Image
                     className="h-full w-full object-cover"
                     src={item.images[0] ?? '/static/placeholder.png'}
                     alt={getLocalizedString(item.name, lang)}
+                    width={236}
+                    height={236}
                 />
             </figure>
             <div className="card-body">
