@@ -1,5 +1,6 @@
 'use client';
 
+import { MagnifyingGlassPlusIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -13,7 +14,15 @@ export function ItemPageImageViewer({
     const [selectedImage, setSelectedImage] = useState(0);
 
     return (
-        <div className="flex w-full flex-col gap-2">
+        <div className="relative flex w-full flex-col gap-2">
+            {images[selectedImage] && (
+                <a
+                    className="btn-square btn absolute top-2 left-2"
+                    href={images[selectedImage]}
+                >
+                    <MagnifyingGlassPlusIcon className="h-6 w-6" />
+                </a>
+            )}
             <Image
                 className="w-full rounded object-contain"
                 src={images[selectedImage] || '/static/placeholder.png'}
