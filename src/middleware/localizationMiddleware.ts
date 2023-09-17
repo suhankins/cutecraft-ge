@@ -70,13 +70,18 @@ export function localizationMiddleware(
         pathname.startsWith('/order')
     )
         return response;
+
+    console.log('pathname', pathname);
     const pathnameIsMissingLocale = i18n.locales.every(
         (locale) =>
             !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
     );
 
+    console.log('pathnameIsMissingLocale', pathnameIsMissingLocale);
     if (pathnameIsMissingLocale) {
         const locale = getLocale(request);
+
+        console.log('locale', locale);
 
         return NextResponse.redirect(
             new URL(`/${locale}/${pathname}`, request.url)
@@ -84,6 +89,7 @@ export function localizationMiddleware(
     }
 
     const chosenLocale = pathname.split('/')[1];
+    console.log('chosenLocale', chosenLocale);
     // Setting a cookie if the locale in the url is different from the locale in the cookie
     if (chosenLocale !== getLocaleFromCookie(request))
         setCookie(response, chosenLocale);
