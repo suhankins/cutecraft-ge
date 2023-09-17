@@ -8,9 +8,11 @@ import { ContactUs } from './_components/ContactUs';
 import Link from 'next/link';
 
 async function getCategories() {
-    const categories = (await CategoryModel.find().limit(6)).map(
-        (category) => category.toObject() as SimpleCategory
-    );
+    const categories = (
+        await CategoryModel.find()
+            .sort([['priority', 'desc']])
+            .limit(6)
+    ).map((category) => category.toObject() as SimpleCategory);
     return categories;
 }
 

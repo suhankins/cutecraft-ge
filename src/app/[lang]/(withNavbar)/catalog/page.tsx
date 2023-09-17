@@ -21,9 +21,9 @@ export async function generateMetadata({
 }
 
 async function getCategories() {
-    const categories = (await CategoryModel.find()).map(
-        (category) => category.toObject() as SimpleCategory
-    );
+    const categories = (
+        await CategoryModel.find().sort([['priority', 'desc']])
+    ).map((category) => category.toObject() as SimpleCategory);
     return categories;
 }
 
