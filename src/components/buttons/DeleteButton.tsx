@@ -42,6 +42,7 @@ export function DeleteButton({
             className={`btn-error btn-square btn relative ${
                 loading && 'loading'
             } ${className}`}
+            type="button"
             onClick={handleDelete}
             disabled={loading}
             {...props}

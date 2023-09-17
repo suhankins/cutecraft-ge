@@ -42,6 +42,7 @@ export function MoveButton({
         <button
             onClick={handleClick}
             disabled={loading}
+            type="button"
             className={`btn-primary btn-square btn relative ${className} ${
                 loading && 'loading'
             }`}

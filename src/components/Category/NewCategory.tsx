@@ -17,6 +17,7 @@ export function NewCategory() {
     };
     return (
         <button
+            type="button"
             className={`btn-success btn w-full ${loading && 'loading'}`}
             disabled={loading}
             onClick={handleNewItemClick}
