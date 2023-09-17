@@ -7,7 +7,6 @@ import { DeleteButton } from '../buttons/DeleteButton';
 import { EllipsisMenu } from '../EllipsisMenu';
 import { MoveButton } from '../buttons/MoveButton';
 import { Position, getPosition } from '@/utils/client/Position';
-import { SizeEditor } from './SizeEditor';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import { UploadButton } from '../buttons/UploadButton/UploadButton';
 
