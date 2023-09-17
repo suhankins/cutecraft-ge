@@ -11,11 +11,7 @@ import Negotiator from 'negotiator';
 function getLocaleFromCookie(request: NextRequest) {
     const prefered = request.cookies.get('language');
 
-    if (
-        prefered !== undefined &&
-        prefered !== null &&
-        i18n.locales.includes(prefered.value as Locale)
-    ) {
+    if (prefered && i18n.locales.includes(prefered.value as Locale)) {
         return prefered.value;
     }
 
