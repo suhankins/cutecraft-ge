@@ -12,6 +12,7 @@ import { getPosition } from '@/utils/client/Position';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import { LanguagePickerEditor } from '@/components/LanguagePicker/LanguagePickerEditor';
 import { Navbar } from '@/components/Navbar/Navbar';
+import Link from 'next/link';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -28,6 +29,9 @@ export default function AdminPage() {
     return (
         <>
             <Navbar>
+                <Link className="btn-ghost btn" href="/">
+                    Back to website
+                </Link>
                 <LanguagePickerEditor
                     className="ml-auto"
                     selectedLang={lang}
