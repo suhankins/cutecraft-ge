@@ -27,7 +27,9 @@ export function ItemPageImageViewer({
                         <button
                             type="button"
                             className={`${
-                                selectedImage === index ? 'btn-primary' : ''
+                                selectedImage === index
+                                    ? 'btn-primary border-4 border-primary'
+                                    : ''
                             } btn h-16 w-16 p-0`}
                             onClick={() => setSelectedImage(index)}
                             key={index}
