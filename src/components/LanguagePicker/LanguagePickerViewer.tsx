@@ -32,6 +32,7 @@ export function LanguagePickerViewer({
                             <li key={locale}>
                                 <Link
                                     scroll={false}
+                                    prefetch={false}
                                     replace
                                     href={`/${locale}/${pathnameWithoutLocale}`}
                                 >
