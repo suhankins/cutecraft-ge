@@ -61,12 +61,21 @@ export async function DELETE(
     const item = category.items[itemIndex];
 
     switch (key) {
+        case 'images': {
+            if (item.images === undefined || item.images.length === 0)
+                return new NextResponse('No images in item', { status: 400 });
+            if (!(arrayIndex in item.images))
+                return new NextResponse('Invalid image index', { status: 400 });
+            item.images.splice(arrayIndex, 1);
+            // TODO: Delete image from storage
+            break;
+        }
         default:
             return new NextResponse('Invalid field', { status: 400 });
     }
 
     try {
-        //await category.save();
+        await category.save();
     } catch (e) {
         return handleDbError(e);
     }
