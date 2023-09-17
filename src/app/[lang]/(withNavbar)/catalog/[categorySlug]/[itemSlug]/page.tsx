@@ -7,7 +7,7 @@ import { Breadcrumbs } from '../../_components/Breadcrumbs';
 import { getCategory } from '../page';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import type { Metadata } from 'next';
-import { CategoryModel } from '@/models/Category';
+import { CategoryClass, CategoryModel } from '@/models/Category';
 import { ItemPageImageViewer } from './_components/ItemPageImageViewer';
 
 interface Params {
@@ -39,7 +39,7 @@ export async function generateMetadata({
 export const revalidate = false;
 export async function generateStaticParams() {
     const locales = i18n.locales;
-    const categories = await CategoryModel.find();
+    const categories = (await CategoryModel.find()) as CategoryClass[];
 
     return locales.map((locale) => {
         return categories.map((category) => {
