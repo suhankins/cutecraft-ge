@@ -14,14 +14,13 @@ export function ItemViewer({
     return (
         <Link
             href={`/catalog/${categorySlug}/${item.slug}`}
-            className="card-compact card w-full max-w-2xl bg-base-200"
+            className="card card-compact w-full max-w-2xl bg-base-200"
         >
             <figure>
                 <img
                     className="h-full w-full object-cover"
                     src={item.images[0] ?? '/static/placeholder.png'}
                     alt={getLocalizedString(item.name, lang)}
-                    aria-visible={!!item.images[0]}
                 />
             </figure>
             <div className="card-body">
