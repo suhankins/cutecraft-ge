@@ -50,6 +50,7 @@ export function ImageEditor({
     const imagesToRender = [
         ...images.map((image, imageIndex) => (
             <ImageWithControls
+                key={imageIndex}
                 image={image}
                 itemIndex={itemIndex}
                 categoryId={categoryId}

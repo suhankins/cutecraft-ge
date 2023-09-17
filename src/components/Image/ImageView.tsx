@@ -21,6 +21,7 @@ export function ImageView({ images }: { images: React.ReactNode[] }) {
                 <div className="absolute bottom-0 flex items-center justify-center gap-2 rounded-t-lg bg-black/10 p-2">
                     {images.map((_, index) => (
                         <input
+                            key={index}
                             type="radio"
                             aria-label={`Select image ${index + 1}`}
                             className="radio-accent radio"
