@@ -6,7 +6,7 @@ module.exports = {
             xs: '375px',
         },
     },
-    plugins: [require('daisyui')],
+    plugins: [require('@tailwindcss/typography'), require('daisyui')],
     daisyui: {
         themes: ['bumblebee'],
     },

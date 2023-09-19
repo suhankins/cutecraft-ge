@@ -9,6 +9,7 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import type { Metadata } from 'next';
 import { CategoryClass, CategoryModel } from '@/models/Category';
 import { ItemPageImageViewer } from './_components/ItemPageImageViewer';
+import { MarkdownWrapper } from './_components/MarkdownWrapper';
 
 interface Params {
     params: { lang: Locale; categorySlug: string; itemSlug: string };
@@ -86,7 +87,11 @@ export default async function Catalog({
                     <h1 className="text-4xl font-bold">
                         {getLocalizedString(item.name, lang)}
                     </h1>
-                    <p>{getLocalizedString(item.description, lang)}</p>
+                    <div className="prose">
+                        <MarkdownWrapper gfm>
+                            {getLocalizedString(item.description, lang)}
+                        </MarkdownWrapper>
+                    </div>
                     <div className="flex items-center gap-4">
                         <span className="text-3xl font-bold">
                             {item.price}&#8382;
