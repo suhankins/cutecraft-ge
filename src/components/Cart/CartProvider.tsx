@@ -91,7 +91,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         console.log('Items updated!', cartItems);
         if (cartLoaded)
             sessionStorage.setItem('cart', JSON.stringify(cartItems));
-    }, [cartItems]);
+    }, [cartItems, cartLoaded, cartItems.length]);
 
     useEffect(() => {
         if (cartItems.length > 0) return;
@@ -110,7 +110,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             }
         }
         setCartLoaded(true);
-    }, []);
+    }, [cartItems.length]);
 
     function addToCart(item: CartItem) {
         dispatch({ type: 'ADD_ITEM', payload: item });

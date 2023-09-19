@@ -2,6 +2,7 @@ import {
     Dispatch,
     HTMLInputTypeAttribute,
     SetStateAction,
+    useCallback,
     useEffect,
     useMemo,
     useRef,
@@ -67,12 +68,12 @@ export function EditableText({
     const fieldRef = useRef<HTMLTextField>(null);
     const [loading, setLoading] = useState(false);
 
-    useEffect(() => setOutsideLoading?.(loading), [loading]);
+    useEffect(() => setOutsideLoading?.(loading), [loading, setOutsideLoading]);
 
-    function reset() {
+    const reset = useCallback(() => {
         if (!fieldRef.current) return;
         fieldRef.current.value = defaultValue ?? '';
-    }
+    }, [defaultValue]);
 
     const updateCategory = useMemo(
         () => async () => {
@@ -102,7 +103,7 @@ export function EditableText({
                 setLoading(false);
             }
         },
-        [fetchUrl, valueName, defaultValue]
+        [fetchUrl, valueName, defaultValue, method, nullable, reset]
     );
 
     const staticProps = useMemo(() => {
@@ -112,7 +113,7 @@ export function EditableText({
             type: type,
             ...props,
         };
-    }, []);
+    }, [defaultValue, props, type]);
 
     const dynamicProps = useMemo(() => {
         return {
@@ -132,7 +133,7 @@ export function EditableText({
                 }
             },
         };
-    }, [updateCategory]);
+    }, [updateCategory, allowNewLine]);
 
     useEffect(() => {
         if (!fieldRef.current || defaultValue === undefined) return;

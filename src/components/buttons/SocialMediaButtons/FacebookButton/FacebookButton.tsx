@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { socialMedia } from '@/lib/socialMedia';
 import styles from './FacebookButton.module.scss';
 

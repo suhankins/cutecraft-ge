@@ -1,4 +1,3 @@
-import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import { getDictionary } from '@/lib/getDictionary';
 import { Locale, getLocalizedString, i18n } from '@/lib/i18n-config';
 import Link from 'next/link';
@@ -67,10 +66,13 @@ export default async function Catalog({
         <>
             <Breadcrumbs
                 items={[
-                    <Link href={`/${lang}/catalog`}>
+                    <Link href={`/${lang}/catalog`} key={`/${lang}/catalog`}>
                         {dictionary.links.catalogLink}
                     </Link>,
-                    <Link href={`/${lang}/catalog/${category.slug}`}>
+                    <Link
+                        href={`/${lang}/catalog/${category.slug}`}
+                        key={`/${lang}/catalog/${category.slug}`}
+                    >
                         {getLocalizedString(category.name, lang)}
                     </Link>,
                     getLocalizedString(item.name, lang),

@@ -14,6 +14,7 @@ export function ImageViewer({
                 <Image
                     width={312}
                     height={312}
+                    key={picture}
                     alt={altText ?? ''}
                     className="aspect-square h-full max-h-64 w-full rounded-t-xl bg-base-300 object-cover"
                     src={picture}

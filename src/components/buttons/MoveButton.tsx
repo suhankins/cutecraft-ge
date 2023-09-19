@@ -23,7 +23,7 @@ export function MoveButton({
             itemIndex === undefined
                 ? `/api/category/${categoryId}/move?direction=${direction}`
                 : `/api/category/${categoryId}/items/${itemIndex}/move?direction=${direction}`,
-        []
+        [categoryId, direction, itemIndex]
     );
     const handleClick = async () => {
         setLoading(true);

@@ -46,7 +46,9 @@ export default function AdminPage() {
                 {isLoading && <CategorySkeleton />}
                 {error && (
                     <div className="alert alert-error shadow-lg">
-                        <span>Error! Couldn't fetch list of categories.</span>
+                        <span>
+                            Error! Couldn&apos;t fetch list of categories.
+                        </span>
                         <span>Reload the page or call the programmer</span>
                     </div>
                 )}

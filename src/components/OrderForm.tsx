@@ -55,7 +55,7 @@ export function OrderForm({
         setError(
             getLocalizedString(wayToContact.validation(contactInfo), lang)
         );
-    }, [contactInfo, selectedWayToContact]);
+    }, [contactInfo, selectedWayToContact, lang, wayToContact]);
 
     const totalPrice = useMemo(
         () =>

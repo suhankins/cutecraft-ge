@@ -32,10 +32,10 @@ export function DeleteButton({
             else await mutate('/api/category');
             setLoading(false);
         },
-        []
+        [fetchUrl]
     );
 
-    useEffect(() => setOutsideLoading?.(loading), [loading]);
+    useEffect(() => setOutsideLoading?.(loading), [loading, setOutsideLoading]);
 
     return (
         <button

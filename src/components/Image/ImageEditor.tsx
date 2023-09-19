@@ -58,6 +58,7 @@ export function ImageEditor({
             />
         )),
         <ImageWithControls
+            key={images.length}
             image={'/static/plus.png'}
             itemIndex={itemIndex}
             categoryId={categoryId}
