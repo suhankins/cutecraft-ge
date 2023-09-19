@@ -76,7 +76,6 @@ export function localizationMiddleware(
             !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
     );
 
-    console.log('pathnameIsMissingLocale', pathnameIsMissingLocale);
     if (pathnameIsMissingLocale) {
         const locale = getLocale(request);
 
