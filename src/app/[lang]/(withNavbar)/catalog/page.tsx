@@ -39,9 +39,9 @@ export default async function Catalog({ params: { lang } }: Params) {
     const categories = await getCategories();
 
     return (
-        <MainBodyWidthContainer className="my-4">
+        <>
             <Breadcrumbs items={[dictionary.links.catalogLink]} />
             <CategoryGrid categories={categories} lang={lang} />
-        </MainBodyWidthContainer>
+        </>
     );
 }

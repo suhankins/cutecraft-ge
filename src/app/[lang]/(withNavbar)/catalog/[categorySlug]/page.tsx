@@ -54,7 +54,7 @@ export default async function Catalog({
     }
 
     return (
-        <MainBodyWidthContainer className="my-4">
+        <>
             <Breadcrumbs
                 items={[
                     <Link href={`/${lang}/catalog`}>
@@ -68,6 +68,6 @@ export default async function Catalog({
                 items={category.items ?? []}
                 lang={lang}
             />
-        </MainBodyWidthContainer>
+        </>
     );
 }
