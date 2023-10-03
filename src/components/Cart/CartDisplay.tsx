@@ -28,7 +28,7 @@ export function CartDisplay() {
             aria-label="Shopping cart"
             ref={buttonRef}
             onAnimationEnd={handleAnimationEnd}
-            href={'/checkout'} // TODO: Language
+            href={'/checkout'}
         >
             <div className="indicator absolute">
                 {cartItemCount !== 0 && (
