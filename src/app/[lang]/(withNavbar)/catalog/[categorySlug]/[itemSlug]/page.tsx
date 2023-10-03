@@ -1,25 +1,40 @@
 import { getDictionary } from '@/lib/getDictionary';
-import { Locale, getLocalizedString, i18n } from '@/lib/i18n-config';
+import {
+    Locale,
+    getLocalizedString,
+    i18n,
+    mapToObject,
+} from '@/lib/i18n-config';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '../../_components/Breadcrumbs';
 import { getCategory } from '../page';
-import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import type { Metadata } from 'next';
 import { CategoryClass, CategoryModel } from '@/models/Category';
 import { ItemPageImageViewer } from './_components/ItemPageImageViewer';
 import { MarkdownWrapper } from './_components/MarkdownWrapper';
+import { AddToCartButton } from '@/components/buttons/AddToCartButton';
+import { ItemClass } from '@/models/Item';
 
 interface Params {
     params: { lang: Locale; categorySlug: string; itemSlug: string };
 }
 
-async function getCategoryAndItem(categorySlug: string, itemSlug: string) {
+async function getCategoryAndItem(
+    categorySlug: string,
+    itemSlug: string
+): Promise<[CategoryClass | null, ItemClass | null, number | undefined]> {
     const category = await getCategory(categorySlug);
-    if (!category) return [null, null];
+    if (!category) return [null, null, undefined];
 
-    const item = category.items?.find((item) => item.slug === itemSlug);
-    return [category, item];
+    const itemIndex = category.items?.findIndex(
+        (item) => item.slug === itemSlug
+    );
+    const item =
+        itemIndex !== undefined && itemIndex !== -1
+            ? category.items?.at(itemIndex) ?? null
+            : null;
+    return [category, item, itemIndex];
 }
 
 export async function generateMetadata({
@@ -33,6 +48,9 @@ export async function generateMetadata({
 
     return {
         title: getLocalizedString(item.name, lang),
+        openGraph: {
+            title: getLocalizedString(item.name, lang),
+        },
     };
 }
 
@@ -56,9 +74,12 @@ export default async function Catalog({
     params: { lang, categorySlug, itemSlug },
 }: Params) {
     const dictionary = await getDictionary(lang);
-    const [category, item] = await getCategoryAndItem(categorySlug, itemSlug);
+    const [category, item, itemIndex] = await getCategoryAndItem(
+        categorySlug,
+        itemSlug
+    );
 
-    if (!category || !item || !('price' in item)) {
+    if (!category || !item || itemIndex === undefined || !('price' in item)) {
         notFound();
     }
 
@@ -98,10 +119,15 @@ export default async function Catalog({
                         <span className="text-3xl font-bold">
                             {item.price}&#8382;
                         </span>
-                        <button className="btn-primary btn-square btn">
-                            {/* TODO: Add item to cart */}
-                            <ShoppingCartIcon className="h-8 w-6" />
-                        </button>
+                        <AddToCartButton
+                            cartItem={{
+                                name: mapToObject(item.name),
+                                price: item.price,
+                                categoryId: category.id,
+                                itemIndex,
+                                quantity: 1,
+                            }}
+                        />
                     </div>
                 </section>
             </main>

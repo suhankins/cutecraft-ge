@@ -1,16 +1,20 @@
 'use client';
 
 import { LocalizedStringObject } from '@/lib/i18n-config';
-import { createContext, useEffect, useReducer, useState } from 'react';
+import {
+    createContext,
+    useCallback,
+    useEffect,
+    useReducer,
+    useState,
+} from 'react';
 
 export interface CartItem {
     name: LocalizedStringObject;
     price: number;
-    sizeString?: string;
-    selectedSize: number;
     categoryId: string;
     itemIndex: number;
-    quantity?: number;
+    quantity: number;
 }
 function cloneItem(item: CartItem) {
     return { ...item };
@@ -22,9 +26,7 @@ export type CartAction = {
 };
 
 const itemEquals = (a: CartItem, b: CartItem): boolean =>
-    a.categoryId === b.categoryId &&
-    a.itemIndex === b.itemIndex &&
-    a.selectedSize === b.selectedSize;
+    a.categoryId === b.categoryId && a.itemIndex === b.itemIndex;
 
 function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
     const payload = action.payload;
@@ -38,12 +40,14 @@ function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
                 return [...state, cloneItem(payload)];
             }
             console.log('Item found in cart, increasing quantity');
-            if (!foundItem.quantity) {
-                console.log('Item had no quantity, setting it to 1');
-                foundItem.quantity = 1;
-            }
-            foundItem.quantity++;
-            return [...state];
+            const newItem = {
+                ...foundItem,
+                quantity: foundItem.quantity + 1,
+            };
+            return [
+                ...state.filter((item) => !itemEquals(item, payload)),
+                newItem,
+            ];
         }
         case 'REMOVE_ITEM': {
             if (Array.isArray(payload)) return state;
@@ -112,17 +116,23 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         setCartLoaded(true);
     }, [cartItems.length]);
 
-    function addToCart(item: CartItem) {
-        dispatch({ type: 'ADD_ITEM', payload: item });
-    }
+    const addToCart = useCallback(
+        (item: CartItem) => {
+            dispatch({ type: 'ADD_ITEM', payload: item });
+        },
+        [dispatch]
+    );
 
-    function removeFromCart(item: CartItem) {
-        dispatch({ type: 'REMOVE_ITEM', payload: item });
-    }
+    const removeFromCart = useCallback(
+        (item: CartItem) => {
+            dispatch({ type: 'REMOVE_ITEM', payload: item });
+        },
+        [dispatch]
+    );
 
-    function clearCart() {
+    const clearCart = useCallback(() => {
         dispatch({ type: 'SET_CART', payload: [] });
-    }
+    }, [dispatch]);
 
     return (
         <CartContentsContext.Provider value={cartItems}>
