@@ -30,7 +30,6 @@ export function ItemViewer({
                 <h2 className="link-hover card-title text-2xl">
                     {getLocalizedString(item.name, lang)}
                 </h2>
-                <p>{getLocalizedString(item.description, lang)}</p>
                 <div className="justify-end">
                     <p className="text-right text-2xl font-bold">
                         {item.price} &#8382;{/* Georgian lari symbol */}
