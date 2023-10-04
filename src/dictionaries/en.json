@@ -38,5 +38,16 @@
     "comeBackLater": {
         "body": "Our website is under construction, but you can still contact us via our social media or, if you are in Kobuleti, you can visit our shop!",
         "address": "Ninoshvili 6, Kobuleti"
+    },
+    "cartViewer": {
+        "total": "Total"
+    },
+    "orderForm": {
+        "errors": {
+            "recaptcha": "Please complete the reCAPTCHA verification",
+            "somethingWentWrong": "Something went wrong, please try again later"
+        },
+        "order": "Order",
+        "howToContactYou": "How would you like us to contant you?"
     }
 }

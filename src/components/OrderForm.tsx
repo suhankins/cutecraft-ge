@@ -14,7 +14,6 @@ import {
 import { CartActionContext, CartContentsContext } from './Cart/CartProvider';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useRouter } from 'next/navigation';
-import { isWorkingHours } from '@/utils/isWorkingHours';
 
 export function OrderForm({
     lang,
@@ -27,9 +26,7 @@ export function OrderForm({
             somethingWentWrong: string;
         };
         order: string;
-        orderMinimum: string;
         howToContactYou: string;
-        weAreClosed: string;
     };
 }) {
     const router = useRouter();
@@ -56,15 +53,6 @@ export function OrderForm({
             getLocalizedString(wayToContact.validation(contactInfo), lang)
         );
     }, [contactInfo, selectedWayToContact, lang, wayToContact]);
-
-    const totalPrice = useMemo(
-        () =>
-            cart.reduce(
-                (total, item) => total + item.price * (item.quantity ?? 1),
-                0
-            ),
-        [cart]
-    );
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (
         event: FormEvent<HTMLFormElement>
@@ -94,22 +82,6 @@ export function OrderForm({
         router.push('/checkout/success');
     };
 
-    if (!isWorkingHours())
-        return (
-            <div className="alert alert-error">
-                <div>
-                    <span>{dictionary.weAreClosed}</span>
-                </div>
-            </div>
-        );
-    if (totalPrice < 20)
-        return (
-            <div className="alert alert-error">
-                <div>
-                    <span>{dictionary.orderMinimum}</span>
-                </div>
-            </div>
-        );
     return (
         <form
             className="flex w-full flex-col items-center gap-2"
@@ -167,13 +139,15 @@ export function OrderForm({
                 onChange={() => setError(null)}
             />
             <button
-                className={`btn-success btn-block btn ${
-                    loading ? 'loading' : ''
-                }`}
+                className="btn-success btn-block btn"
                 type="submit"
                 disabled={!!error || loading}
             >
-                {dictionary.order}
+                {loading ? (
+                    <span className="loading loading-spinner"></span>
+                ) : (
+                    dictionary.order
+                )}
             </button>
         </form>
     );

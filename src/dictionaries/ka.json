@@ -1,7 +1,7 @@
 {
     "hero": {
         "top": "Cute Craft",
-        "bottom": "Tasty treats and coffee delivery.",
+        "bottom": "Wooden decor made with love",
         "catalogButton": "Catalog"
     },
     "companyName": "Cute Craft",
@@ -14,7 +14,7 @@
     "links": {
         "homeLink": "Home",
         "companyName": "Cute Craft",
-        "aboutLink": "About",
+        "aboutLink": "About us",
         "contactLink": "Contact",
         "catalogLink": "Catalog",
         "cartLink": "Cart",
@@ -36,7 +36,18 @@
         }
     },
     "comeBackLater": {
-        "body": "Our website is still under construction, but you can still contact us via our social media or, if you visit Kobuleti, you can visit our shop!",
-        "address": "д.6 улица Ниношвили, Кобулети"
+        "body": "Our website is under construction, but you can still contact us via our social media or, if you are in Kobuleti, you can visit our shop!",
+        "address": "Ninoshvili 6, Kobuleti"
+    },
+    "cartViewer": {
+        "total": "Total"
+    },
+    "orderForm": {
+        "errors": {
+            "recaptcha": "Please complete the reCAPTCHA verification",
+            "somethingWentWrong": "Something went wrong, please try again later"
+        },
+        "order": "Order",
+        "howToContactYou": "How would you like us to contant you?"
     }
 }

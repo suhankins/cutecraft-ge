@@ -26,7 +26,6 @@ export function CartViewer({
                             <p className="text-lg font-bold">
                                 {item.name[lang]}
                             </p>
-                            <p className="text-sm">{item.sizeString}</p>
                         </td>
                         <td className="px-2">
                             <button
