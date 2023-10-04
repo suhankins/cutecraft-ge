@@ -4,24 +4,20 @@ import { ImageEditor } from '@/components/Image/ImageEditor';
 import { ItemClass } from '@/models/Item';
 import { PriceSelectorEditor } from '@/components/PriceSelector/PriceSelectorEditor';
 import { DeleteButton } from '@/components/buttons/DeleteButton';
-import { UploadButton } from '@/components/buttons/UploadButton/UploadButton';
 import { EllipsisMenu } from '../EllipsisMenu';
 import { Position } from '@/utils/client/Position';
 import { MoveButton } from '../buttons/MoveButton';
-import { SimpleCategory } from '@/models/Category';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 
 export function ItemEditor({
     item,
     categoryId,
-    category,
     itemIndex,
     position,
     lang,
 }: {
     item: ItemClass;
     categoryId: string;
-    category: SimpleCategory;
     itemIndex: number;
     position: Position;
     lang: Locale;

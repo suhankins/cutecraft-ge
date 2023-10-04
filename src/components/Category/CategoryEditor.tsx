@@ -80,7 +80,6 @@ export function CategoryEditor({
                 category.items.map((item, index, array) => (
                     <ItemEditor
                         lang={lang}
-                        category={category}
                         position={getPosition(index, array.length)}
                         itemIndex={index}
                         categoryId={category._id}
