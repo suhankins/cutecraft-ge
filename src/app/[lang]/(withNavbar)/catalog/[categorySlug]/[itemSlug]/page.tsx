@@ -99,7 +99,7 @@ export default async function Catalog({
                     getLocalizedString(item.name, lang),
                 ]}
             />
-            <main className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
                 <section>
                     <ItemPageImageViewer
                         images={item.images}
@@ -130,7 +130,7 @@ export default async function Catalog({
                         />
                     </div>
                 </section>
-            </main>
+            </div>
         </>
     );
 }

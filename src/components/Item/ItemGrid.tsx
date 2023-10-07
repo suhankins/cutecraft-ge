@@ -12,7 +12,7 @@ export function ItemGrid({
     lang: Locale;
 }) {
     return (
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <section className="grid w-full grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {items.map((item, index) => (
                 <ItemViewer
                     key={index}
@@ -21,6 +21,6 @@ export function ItemGrid({
                     lang={lang}
                 />
             ))}
-        </div>
+        </section>
     );
 }

@@ -5,18 +5,12 @@ import { Locale } from '@/lib/i18n-config';
 export function CategoryGrid({
     categories,
     lang,
-    className,
 }: {
     categories: SimpleCategory[];
     lang: Locale;
-    className?: string;
 }) {
     return (
-        <section
-            className={`flex w-full flex-wrap justify-evenly gap-2 ${
-                className ?? ''
-            }`}
-        >
+        <section className="grid w-full grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {categories
                 ?.sort((a, b) => (b.index ?? 0) - (a.index ?? 0))
                 .map((category, index) => (
