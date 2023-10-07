@@ -1,7 +1,10 @@
 'use client';
 
 import { useContext } from 'react';
-import { CartActionContext, CartContentsContext } from './CartProvider';
+import {
+    CartActionContext,
+    CartContentsContext,
+} from '@/components/Cart/CartProvider';
 import { Locale } from '@/lib/i18n-config';
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 

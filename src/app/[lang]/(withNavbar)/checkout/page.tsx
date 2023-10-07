@@ -1,7 +1,7 @@
 import { getDictionary } from '@/lib/getDictionary';
 import { Locale, i18n } from '@/lib/i18n-config';
-import { CartViewer } from '@/components/Cart/CartViewer';
-import { OrderForm } from '@/components/OrderForm';
+import { CartViewer } from './_components/CartViewer';
+import { OrderForm } from './_components/OrderForm';
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 
 export const revalidate = false;
