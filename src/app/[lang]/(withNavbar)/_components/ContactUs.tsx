@@ -18,11 +18,11 @@ export function ContactUs({
     return (
         <section className="mt-2 flex w-full items-center bg-base-200 py-4">
             <MainBodyWidthContainer>
-                <div className="grid w-full grid-cols-2 gap-2">
+                <div className="grid w-full grid-cols-1 gap-2 md:grid-cols-2">
                     <div>
                         <h1 className="text-4xl font-bold">{header}</h1>
                         <p>{body}</p>
-                        <div className="mt-2 flex gap-2">
+                        <div className="mt-2 flex gap-2 md:flex-col">
                             <InstagramButton />
                             <FacebookButton />
                         </div>
