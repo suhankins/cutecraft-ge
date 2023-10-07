@@ -1,12 +1,12 @@
-import { EditableText } from '@/components/EditableText';
+import { EditableText } from '../EditableText';
 import { Item } from './Item';
-import { ImageEditor } from '@/components/Image/ImageEditor';
+import { ImageEditor } from '../Image/ImageEditor';
 import { ItemClass } from '@/models/Item';
-import { PriceSelectorEditor } from '@/components/PriceSelector/PriceSelectorEditor';
-import { DeleteButton } from '@/components/buttons/DeleteButton';
+import { PriceSelectorEditor } from '../PriceSelectorEditor';
+import { DeleteButton } from '../DeleteButton';
 import { EllipsisMenu } from '../EllipsisMenu';
 import { Position } from '@/utils/client/Position';
-import { MoveButton } from '../buttons/MoveButton';
+import { MoveButton } from '../MoveButton';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 
 export function ItemEditor({

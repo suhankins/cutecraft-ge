@@ -4,7 +4,7 @@ import {
     confirmUploadRequest,
     getSignedUrlRequest,
     uploadToGoogleStorage,
-} from '@/components/buttons/UploadButton/uploadImage';
+} from './uploadImage';
 import { ChangeEvent, useId, useMemo, useState } from 'react';
 import { PhotoIcon } from '@heroicons/react/24/outline';
 import { mutate } from 'swr';

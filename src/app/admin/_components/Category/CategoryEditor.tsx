@@ -1,14 +1,14 @@
 import { SimpleCategory } from '@/models/Category';
 import { ItemEditor } from '../Item/ItemEditor';
-import { EditableText } from '@/components/EditableText';
+import { EditableText } from '../EditableText';
 import { Category } from './Category';
 import { NewItem } from '../Item/NewItem';
-import { DeleteButton } from '../buttons/DeleteButton';
+import { DeleteButton } from '../DeleteButton';
 import { EllipsisMenu } from '../EllipsisMenu';
-import { MoveButton } from '../buttons/MoveButton';
+import { MoveButton } from '../MoveButton';
 import { Position, getPosition } from '@/utils/client/Position';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
-import { UploadButton } from '../buttons/UploadButton/UploadButton';
+import { UploadButton } from '../UploadButton/UploadButton';
 
 export function CategoryEditor({
     lang,

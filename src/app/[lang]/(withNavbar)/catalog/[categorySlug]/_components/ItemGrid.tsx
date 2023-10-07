@@ -1,6 +1,7 @@
 import { Locale } from '@/lib/i18n-config';
-import { ItemViewer } from './ItemViewer';
+import { ItemViewer } from '@/components/Item/ItemViewer';
 import { ItemClass } from '@/models/Item';
+import { ThingGrid } from '@/components/ThingGrid';
 
 export function ItemGrid({
     items,
@@ -12,7 +13,7 @@ export function ItemGrid({
     lang: Locale;
 }) {
     return (
-        <section className="grid w-full grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+        <ThingGrid>
             {items.map((item, index) => (
                 <ItemViewer
                     key={index}
@@ -21,6 +22,6 @@ export function ItemGrid({
                     lang={lang}
                 />
             ))}
-        </section>
+        </ThingGrid>
     );
 }

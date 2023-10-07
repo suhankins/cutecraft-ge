@@ -1,16 +1,16 @@
 'use client';
 
-import { LogoutButton } from '@/components/buttons/LogoutButton';
+import { LogoutButton } from './_components/LogoutButton';
 import { getCategoryElementId } from '@/utils/client/getCategoryElementId';
 import { SimpleCategory } from '@/models/Category';
-import { CategoryEditor } from '@/components/Category/CategoryEditor';
-import { CategorySkeleton } from '@/components/Category/CategorySkeleton';
+import { CategoryEditor } from './_components/Category/CategoryEditor';
+import { CategorySkeleton } from './_components/Category/CategorySkeleton';
 import { useId, useState } from 'react';
 import useSwr from 'swr';
-import { NewCategory } from '@/components/Category/NewCategory';
+import { NewCategory } from './_components/NewCategory';
 import { getPosition } from '@/utils/client/Position';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
-import { LanguagePickerEditor } from '@/components/LanguagePicker/LanguagePickerEditor';
+import { LanguagePickerEditor } from './_components/LanguagePickerEditor';
 import { Navbar } from '@/components/Navbar/Navbar';
 import Link from 'next/link';
 

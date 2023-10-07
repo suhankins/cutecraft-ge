@@ -1,7 +1,7 @@
-import { DeleteButton } from '../buttons/DeleteButton';
-import { ImageViewer } from './ImageViewer';
-import { UploadButton } from '../buttons/UploadButton/UploadButton';
+import { DeleteButton } from '../DeleteButton';
+import { UploadButton } from '../UploadButton/UploadButton';
 import { ImageView } from './ImageView';
+import Image from 'next/image';
 
 export interface EditableImageProps {
     images: string[];
@@ -37,7 +37,13 @@ function ImageWithControls({
                     />
                 )}
             </div>
-            <ImageViewer src={image} />
+            <Image
+                width={312}
+                height={312}
+                alt=""
+                className="aspect-square h-full max-h-64 w-full rounded-t-xl bg-base-300 object-cover"
+                src={image}
+            />
         </>
     );
 }

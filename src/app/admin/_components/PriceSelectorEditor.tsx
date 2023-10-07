@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { EditableText } from '../EditableText';
+import { EditableText } from './EditableText';
 
 export interface PriceSelectorEdtiorProps {
     categoryId: string;

@@ -2,6 +2,7 @@ import { SimpleCategory } from '@/models/Category';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ThingCard } from '../ThingCard';
 
 export interface CategoryProps {
     lang: Locale;
@@ -10,10 +11,7 @@ export interface CategoryProps {
 
 export function CategoryViewer({ category, lang }: CategoryProps) {
     return (
-        <Link
-            href={`/${lang}/catalog/${category.slug}`}
-            className="card card-compact w-60 max-w-2xl bg-base-200"
-        >
+        <ThingCard href={`/catalog/${category.slug}`}>
             {category.image && (
                 <figure>
                     <Image
@@ -30,6 +28,6 @@ export function CategoryViewer({ category, lang }: CategoryProps) {
                     {getLocalizedString(category.name, lang)}
                 </h2>
             </div>
-        </Link>
+        </ThingCard>
     );
 }
