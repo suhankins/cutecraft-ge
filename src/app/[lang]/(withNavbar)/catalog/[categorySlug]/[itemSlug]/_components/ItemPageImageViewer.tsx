@@ -79,6 +79,15 @@ export function ItemPageImageViewer({
             </figure>
             {images.length > 1 && (
                 <div className="flex w-full items-center justify-center gap-2">
+                    <button
+                        onClick={() => {
+                            if (selectedImage <= 0) return;
+                            setSelectedImage(selectedImage - 1);
+                        }}
+                        className="btn-ghost btn h-full px-0"
+                    >
+                        <ChevronLeftIcon className="h-8 w-8" />
+                    </button>
                     {images.map((image, index) => (
                         <button
                             type="button"
@@ -99,6 +108,15 @@ export function ItemPageImageViewer({
                             />
                         </button>
                     ))}
+                    <button
+                        onClick={() => {
+                            if (selectedImage >= images.length - 1) return;
+                            setSelectedImage(selectedImage + 1);
+                        }}
+                        className="btn-ghost btn h-full px-0"
+                    >
+                        <ChevronRightIcon className="h-8 w-8" />
+                    </button>
                 </div>
             )}
         </div>
