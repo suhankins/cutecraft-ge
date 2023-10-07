@@ -1,6 +1,5 @@
 import { SimpleCategory } from '@/models/Category';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
-import Link from 'next/link';
 import Image from 'next/image';
 import { ThingCard } from '../ThingCard';
 

@@ -1,7 +1,7 @@
 import { ItemClass } from '@/models/Item';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
-import Link from 'next/link';
 import Image from 'next/image';
+import { ThingCard } from '../ThingCard';
 
 export function ItemViewer({
     item,
@@ -13,10 +13,7 @@ export function ItemViewer({
     lang: Locale;
 }) {
     return (
-        <Link
-            href={`/${lang}/catalog/${categorySlug}/${item.slug}`}
-            className="card card-compact w-full max-w-2xl bg-base-200"
-        >
+        <ThingCard href={`/catalog/${categorySlug}/${item.slug}`}>
             <figure>
                 <Image
                     className="h-full w-full object-cover"
@@ -36,6 +33,6 @@ export function ItemViewer({
                     </p>
                 </div>
             </div>
-        </Link>
+        </ThingCard>
     );
 }
