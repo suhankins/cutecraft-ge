@@ -38,7 +38,7 @@
         "@types/react-google-recaptcha": "^2.1.5",
         "@vitest/coverage-c8": "^0.31.1",
         "autoprefixer": "^10.4.14",
-        "daisyui": "^3.2.1",
+        "daisyui": "^3.9.2",
         "eslint": "8.49.0",
         "eslint-config-next": "13.4.19",
         "husky": "^8.0.3",
