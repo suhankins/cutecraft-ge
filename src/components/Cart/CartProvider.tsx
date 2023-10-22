@@ -59,7 +59,7 @@ function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
                     ...getCartWithoutItem(state, foundItem),
                     {
                         ...foundItem,
-                        quantity: foundItem.quantity + 1,
+                        quantity: foundItem.quantity - 1,
                     },
                 ];
 
