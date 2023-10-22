@@ -16,9 +16,6 @@ export interface CartItem {
     itemIndex: number;
     quantity: number;
 }
-function cloneItem(item: CartItem) {
-    return { ...item };
-}
 
 export type CartAction = {
     type: 'ADD_ITEM' | 'REMOVE_ITEM' | 'SET_CART';
@@ -28,51 +25,50 @@ export type CartAction = {
 const itemEquals = (a: CartItem, b: CartItem): boolean =>
     a.categoryId === b.categoryId && a.itemIndex === b.itemIndex;
 
+const findItem = (cart: CartItem[], item: CartItem) =>
+    cart.find((currentItem) => itemEquals(currentItem, item));
+
+const getCartWithoutItem = (cart: CartItem[], item: CartItem) =>
+    cart.filter((currentItem) => !itemEquals(currentItem, item));
+
 function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
     const payload = action.payload;
     switch (action.type) {
         case 'ADD_ITEM': {
             if (Array.isArray(payload)) return state;
-            console.log('Adding item to cart');
-            const foundItem = state.find((item) => itemEquals(item, payload));
-            if (!foundItem) {
-                console.log('Item not found in cart, adding new item');
-                return [...state, cloneItem(payload)];
-            }
-            console.log('Item found in cart, increasing quantity');
-            const newItem = {
-                ...foundItem,
-                quantity: foundItem.quantity + 1,
-            };
+            const foundItem = findItem(state, payload);
+            // Item not found in cart, adding new item
+            if (!foundItem) return [...state, { ...payload }];
+            // Item found in cart, increasing quantity
             return [
-                ...state.filter((item) => !itemEquals(item, payload)),
-                newItem,
+                ...getCartWithoutItem(state, foundItem),
+                {
+                    ...foundItem,
+                    quantity: foundItem.quantity + 1,
+                },
             ];
         }
         case 'REMOVE_ITEM': {
             if (Array.isArray(payload)) return state;
-            console.log('Removing item from cart');
-            const foundItem = state.find((item) => itemEquals(item, payload));
-            if (!foundItem) {
-                console.log('Item not found in cart, doing nothing');
-                return state;
-            }
-            if (foundItem.quantity && foundItem.quantity > 1) {
-                console.log(
-                    'Item found in cart and has quantity > 1, decreasing quantity'
-                );
-                foundItem.quantity--;
-                return [...state];
-            }
-            console.log(
-                'Item found in cart and quantity is too low, removing item'
-            );
-            return state.filter((item) => !itemEquals(item, payload));
+            const foundItem = findItem(state, payload);
+            // Item not found in cart, doing nothing
+            if (!foundItem) return state;
+            // Item found in cart and has quantity > 1, decreasing quantity
+            if (foundItem.quantity > 1)
+                return [
+                    ...getCartWithoutItem(state, foundItem),
+                    {
+                        ...foundItem,
+                        quantity: foundItem.quantity + 1,
+                    },
+                ];
+
+            // Item found in cart and quantity is too low, removing item'
+            return getCartWithoutItem(state, foundItem);
         }
         case 'SET_CART': {
-            console.log('Setting cart', payload);
-            if (Array.isArray(payload)) return payload;
-            return [payload];
+            if (Array.isArray(payload)) return [...payload];
+            return [{ ...payload }];
         }
         default:
             return state;
