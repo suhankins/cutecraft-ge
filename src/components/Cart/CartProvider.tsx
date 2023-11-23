@@ -33,9 +33,16 @@ const getCartWithoutItem = (cart: CartItem[], item: CartItem) =>
 
 function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
     const payload = action.payload;
+    if (Array.isArray(payload))
+        switch (action.type) {
+            case 'SET_CART': {
+                return [...payload];
+            }
+            default:
+                return state;
+        }
     switch (action.type) {
         case 'ADD_ITEM': {
-            if (Array.isArray(payload)) return state;
             const foundItem = findItem(state, payload);
             // Item not found in cart, adding new item
             if (!foundItem) return [...state, { ...payload }];
@@ -49,7 +56,6 @@ function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
             ];
         }
         case 'REMOVE_ITEM': {
-            if (Array.isArray(payload)) return state;
             const foundItem = findItem(state, payload);
             // Item not found in cart, doing nothing
             if (!foundItem) return state;
@@ -67,7 +73,6 @@ function cartReducer(state: CartItem[], action: CartAction): CartItem[] {
             return getCartWithoutItem(state, foundItem);
         }
         case 'SET_CART': {
-            if (Array.isArray(payload)) return [...payload];
             return [{ ...payload }];
         }
         default:
