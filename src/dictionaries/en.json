@@ -45,7 +45,26 @@
     "orderForm": {
         "errors": {
             "recaptcha": "Please complete the reCAPTCHA verification",
-            "somethingWentWrong": "Something went wrong, please try again later"
+            "somethingWentWrong": "Something went wrong, please try again later",
+            "tooShort": "This field is required",
+            "invalidEmail": "Invalid email"
+        },
+        "labels": {
+            "firstname": "First name",
+            "lastname": "Last name",
+            "phone": "Phone",
+            "email": "Email",
+            "city": "City/Town"
+        },
+        "placeholders": {
+            "firstname": "e.g. John",
+            "lastname": "e.g. Doe",
+            "phone": "",
+            "email": "johndoe@example.com",
+            "city": "Tbilisi"
+        },
+        "pretexts": {
+            "phone": "+995"
         },
         "order": "Order",
         "howToContactYou": "How would you like us to contant you?"

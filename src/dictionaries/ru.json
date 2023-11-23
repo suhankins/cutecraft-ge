@@ -45,7 +45,26 @@
     "orderForm": {
         "errors": {
             "recaptcha": "Пожалуйста, пройдите проверку reCAPTCHA.",
-            "somethingWentWrong": "Что-то пошло не так. Пожалуйста, попробуйте позже."
+            "somethingWentWrong": "Что-то пошло не так. Пожалуйста, попробуйте позже.",
+            "tooShort": "Заполните это поле",
+            "invalidEmail": "Неправильный имейл"
+        },
+        "labels": {
+            "firstname": "Имя",
+            "lastname": "Фамилия",
+            "phone": "Телефон",
+            "email": "Имейл",
+            "city": "Город"
+        },
+        "placeholders": {
+            "firstname": "Иван",
+            "lastname": "Иванов",
+            "phone": "",
+            "email": "ivanivanov@example.com",
+            "city": "Тбилиси"
+        },
+        "pretexts": {
+            "phone": "+995"
         },
         "order": "Заказать",
         "howToContactYou": "Как Вам удобнее, чтобы мы с вами связались?"
