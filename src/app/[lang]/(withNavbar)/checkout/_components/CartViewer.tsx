@@ -31,7 +31,7 @@ export function CartViewer({
                                     {item.name[lang]}
                                 </p>
                             </td>
-                            <td className="px-2">
+                            <td className="px-2 pb-2">
                                 <button
                                     className="btn-primary btn-circle btn"
                                     onClick={() => removeFromCart(item)}
