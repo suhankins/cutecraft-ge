@@ -11,12 +11,12 @@ const Section = ({
     links,
     children,
 }: {
-    links: link[];
+    links?: link[];
     children?: React.ReactNode;
 }) => {
     return (
         <section className="flex h-full flex-col items-start justify-start">
-            {links.map((link, index) => {
+            {links?.map((link, index) => {
                 return (
                     <Link
                         key={index}
@@ -47,15 +47,7 @@ export interface FooterProps {
 
 export function Footer({
     lang,
-    dictionary: {
-        companyName,
-        aboutLink,
-        contactLink,
-        catalogLink,
-        cartLink,
-        privacyPolicyLink,
-        termsOfServiceLink,
-    },
+    dictionary: { companyName, aboutLink, contactLink, catalogLink, cartLink },
 }: FooterProps) {
     return (
         <footer className="footer footer-center bg-neutral p-4 text-neutral-content">
@@ -82,20 +74,6 @@ export function Footer({
                             },
                         ]}
                     />
-                    <Section
-                        links={[
-                            {
-                                name: privacyPolicyLink,
-                                href: `/${lang}/privacy-policy`,
-                            },
-                            {
-                                name: termsOfServiceLink,
-                                href: `/${lang}/terms-of-service`,
-                            },
-                        ]}
-                    >
-                        <p>&copy; 2023</p>
-                    </Section>
                 </div>
             </MainBodyWidthContainer>
         </footer>
