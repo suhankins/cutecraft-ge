@@ -6,7 +6,7 @@ export default function CatalogLayout({
     children: React.ReactNode;
 }) {
     return (
-        <MainBodyWidthContainer className="my-4 w-full">
+        <MainBodyWidthContainer className="my-4">
             {children}
         </MainBodyWidthContainer>
     );

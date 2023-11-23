@@ -7,7 +7,7 @@ export function MainBodyWidthContainer({
 }) {
     return (
         <div
-            className={`mx-auto flex max-w-screen-lg flex-col gap-3 px-4 ${className}`}
+            className={`mx-auto flex w-full max-w-screen-lg flex-col gap-3 px-4 ${className}`}
         >
             {children}
         </div>

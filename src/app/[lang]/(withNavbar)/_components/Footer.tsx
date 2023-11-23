@@ -51,7 +51,7 @@ export function Footer({
 }: FooterProps) {
     return (
         <footer className="footer footer-center bg-neutral p-4 text-neutral-content">
-            <MainBodyWidthContainer className="w-full">
+            <MainBodyWidthContainer>
                 <div className="flex w-full">
                     <Section
                         links={[
