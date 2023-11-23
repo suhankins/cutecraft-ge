@@ -15,7 +15,7 @@ const Section = ({
     children?: React.ReactNode;
 }) => {
     return (
-        <section className="flex h-full flex-col items-start justify-start">
+        <section className="flex h-full w-full flex-col items-start justify-start">
             {links?.map((link, index) => {
                 return (
                     <Link
@@ -52,7 +52,7 @@ export function Footer({
     return (
         <footer className="footer footer-center bg-neutral p-4 text-neutral-content">
             <MainBodyWidthContainer className="w-full">
-                <div className="grid w-full grid-cols-3">
+                <div className="flex w-full">
                     <Section
                         links={[
                             { name: companyName, href: `/${lang}` },
