@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { LanguagePickerViewer } from '@/components/LanguagePicker/LanguagePickerViewer';
 import { CartDisplay } from '@/components/Cart/CartDisplay';
 import { Bars3Icon } from '@heroicons/react/24/outline';
+import { WhatsAppButton } from '@/components/buttons/SocialMediaButtons/WhatsAppButton/WhatsAppButton';
 
 interface Params {
     children: React.ReactNode;
@@ -25,6 +26,7 @@ export default async function layout({ children, params: { lang } }: Params) {
 
     return (
         <CartProvider>
+            <WhatsAppButton>{dictionary.whatsAppButton}</WhatsAppButton>
             <Navbar>
                 <div className="dropdown sm:hidden">
                     <label tabIndex={0} className="btn-ghost btn m-1">
