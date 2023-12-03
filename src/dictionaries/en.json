@@ -71,5 +71,10 @@
         "order": "Order",
         "howToContactYou": "How would you like us to contant you?"
     },
+    "orderSuccess": {
+        "thankYou": "Thank you for your order",
+        "orderIdIs": "Your order ID is",
+        "weWillContactYou": "We will contact you soon to discuss the details."
+    },
     "whatsAppButton": "Reach out to us"
 }
