@@ -46,7 +46,7 @@
         "errors": {
             "recaptcha": "Пожалуйста, пройдите проверку reCAPTCHA.",
             "somethingWentWrong": "Что-то пошло не так. Пожалуйста, попробуйте позже.",
-            "tooShort": "Заполните это поле",
+            "required": "Заполните это поле",
             "invalidEmail": "Неправильный имейл"
         },
         "labels": {
@@ -54,14 +54,16 @@
             "lastname": "Фамилия",
             "phone": "Телефон",
             "email": "Имейл",
-            "city": "Город"
+            "city": "Город",
+            "country": "Страна"
         },
         "placeholders": {
             "firstname": "Иван",
             "lastname": "Иванов",
             "phone": "",
             "email": "ivanivanov@example.com",
-            "city": "Тбилиси"
+            "city": "Тбилиси",
+            "country": "Грузия"
         },
         "pretexts": {
             "phone": "+995"

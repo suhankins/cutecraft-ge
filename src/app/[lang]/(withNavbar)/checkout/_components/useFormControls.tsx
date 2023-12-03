@@ -38,7 +38,7 @@ const formControls: RawFormControl[] = [
         required: true,
         validateFactory: (dictionary) => (value) => {
             value = value.trim();
-            if (value.length === 0) return dictionary.tooShort;
+            if (value.length === 0) return dictionary.required;
         },
     },
     {
@@ -46,7 +46,7 @@ const formControls: RawFormControl[] = [
         required: true,
         validateFactory: (dictionary) => (value) => {
             value = value.trim();
-            if (value.length === 0) return dictionary.tooShort;
+            if (value.length === 0) return dictionary.required;
         },
     },
     {
@@ -64,9 +64,17 @@ const formControls: RawFormControl[] = [
         required: true,
         validateFactory: (dictionary) => (value) => {
             value = value.trim();
-            if (value.length === 0) return dictionary.tooShort;
+            if (value.length === 0) return dictionary.required;
             if (!value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]+$/gi))
                 return dictionary.invalidEmail;
+        },
+    },
+    {
+        id: 'country',
+        required: true,
+        validateFactory: (dictionary) => (value) => {
+            value = value.trim();
+            if (value.length === 0) return dictionary.required;
         },
     },
     {
@@ -74,7 +82,7 @@ const formControls: RawFormControl[] = [
         required: true,
         validateFactory: (dictionary) => (value) => {
             value = value.trim();
-            if (value.length === 0) return dictionary.tooShort;
+            if (value.length === 0) return dictionary.required;
         },
     },
 ];

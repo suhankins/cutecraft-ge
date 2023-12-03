@@ -46,7 +46,7 @@
         "errors": {
             "recaptcha": "Please complete the reCAPTCHA verification",
             "somethingWentWrong": "Something went wrong, please try again later",
-            "tooShort": "This field is required",
+            "required": "This field is required",
             "invalidEmail": "Invalid email"
         },
         "labels": {
@@ -54,14 +54,16 @@
             "lastname": "Last name",
             "phone": "Phone",
             "email": "Email",
-            "city": "City/Town"
+            "city": "City/Town",
+            "country": "Country"
         },
         "placeholders": {
             "firstname": "e.g. John",
             "lastname": "e.g. Doe",
             "phone": "",
             "email": "johndoe@example.com",
-            "city": "Tbilisi"
+            "city": "Tbilisi",
+            "country": "Georgia"
         },
         "pretexts": {
             "phone": "+995"
