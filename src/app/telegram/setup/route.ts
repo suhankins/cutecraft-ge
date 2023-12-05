@@ -1,6 +1,6 @@
 import { telegramUrl } from '@/lib/telegramApi';
 
-export const revalidate = 0;
+export const dynamic = 'force-static';
 
 /**
  * Sets the webhook for the bot.
