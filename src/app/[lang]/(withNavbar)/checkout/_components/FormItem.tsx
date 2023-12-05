@@ -1,7 +1,7 @@
 'use client';
 
+import type { FormControl } from '@/lib/FormControls';
 import { ChangeEvent, useCallback, useState } from 'react';
-import { FormControl } from './useFormControls';
 
 export function FormItem({ formControl }: { formControl: FormControl }) {
     const [error, setError] = useState<string | void>();
