@@ -1,6 +1,6 @@
 'use client';
 
-import { LocalizedStringObject } from '@/lib/i18n-config';
+import type { CartItem } from '@/lib/Cart';
 import {
     createContext,
     useCallback,
@@ -8,14 +8,6 @@ import {
     useReducer,
     useState,
 } from 'react';
-
-export interface CartItem {
-    name: LocalizedStringObject;
-    price: number;
-    categoryId: string;
-    itemIndex: number;
-    quantity: number;
-}
 
 export type CartAction = {
     type: 'ADD_ITEM' | 'REMOVE_ITEM' | 'SET_CART';

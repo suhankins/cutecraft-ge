@@ -1,6 +1,7 @@
 import {
     DocumentType,
     PropType,
+    ReturnModelType,
     defaultClasses,
     getModelForClass,
     modelOptions,
@@ -101,5 +102,8 @@ export class CategoryClass implements defaultClasses.Base {
     }
 }
 
-export const CategoryModel =
-    mongoose.models.CategoryClass || getModelForClass(CategoryClass);
+export const CategoryModel: ReturnModelType<typeof CategoryClass, {}> =
+    (mongoose.models.CategoryClass as ReturnModelType<
+        typeof CategoryClass,
+        {}
+    >) || getModelForClass(CategoryClass);

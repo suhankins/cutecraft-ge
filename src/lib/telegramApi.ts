@@ -1,6 +1,8 @@
 export const telegramUrl =
     'https://api.telegram.org/bot' + process.env.TELEGRAM_TOKEN + '/';
 
+export const defaultLocale = 'ru' as const;
+
 export async function callApi(method: string, content: any) {
     console.log(`Calling ${method} on telegram API`);
     const result = await fetch(telegramUrl + method, {
