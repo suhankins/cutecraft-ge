@@ -63,10 +63,6 @@ export async function handleNotListener(
         !message.text ||
         message.text.trim() !== process.env.TELEGRAM_PASSWORD
     ) {
-        console.log(
-            'process.env.TELEGRAM_PASSWORD',
-            process.env.TELEGRAM_PASSWORD
-        );
         console.log('Wrong password');
         try {
             await callApi('sendMessage', {
