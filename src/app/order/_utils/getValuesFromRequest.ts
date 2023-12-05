@@ -26,21 +26,28 @@ export async function getValuesFromRequest(request: NextRequest) {
 
     const dictionary = await getDictionary(defaultLocale);
 
-    const contactInfo = getFormControls(dictionary.orderForm).map((value) => ({
-        label: value.label,
-        content: formData.get(value.id),
+    const contactInfo = getFormControls(dictionary.orderForm).map((form) => ({
+        label: form.label,
+        content: formData.get(form.id),
+        validate: form.validate,
     }));
 
     if (
         contactInfo.some(
-            ({ content }) => content === null || typeof content !== 'string'
+            ({ validate, content }) =>
+                content === null ||
+                typeof content !== 'string' ||
+                validate(content)
         )
     )
-        throw new ResponseError('Contact form fields are missings', 400);
+        throw new ResponseError('Invalid contacts', 400);
 
     return {
         cart,
-        contactInfo,
+        contactInfo: contactInfo.map(({ label, content }) => ({
+            label,
+            content,
+        })),
         recaptcha,
     };
 }
