@@ -47,7 +47,8 @@
             "recaptcha": "Пожалуйста, пройдите проверку reCAPTCHA.",
             "somethingWentWrong": "Что-то пошло не так. Пожалуйста, попробуйте позже.",
             "required": "Заполните это поле",
-            "invalidEmail": "Неправильный имейл"
+            "invalidEmail": "Неправильный имейл",
+            "invalidPhone": "Неправильный номер телефона"
         },
         "labels": {
             "firstname": "Имя",

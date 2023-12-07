@@ -39,6 +39,8 @@ export const formControls: RawFormControl[] = [
         validateFactory: (dictionary) => (value) => {
             value = value.trim();
             if (value.length === 0) return;
+            if (value.match(/[^0-9\s()-]/gi) !== null)
+                return dictionary.invalidPhone;
         },
     },
     {
