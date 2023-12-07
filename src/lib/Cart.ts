@@ -1,6 +1,4 @@
 import type { LocalizedStringObject } from '@/lib/i18n-config';
-import { CategoryModel } from '@/models/Category';
-import { mongoose } from '@typegoose/typegoose';
 
 export interface CartItem {
     name: LocalizedStringObject;
