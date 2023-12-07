@@ -33,6 +33,7 @@ export function FormItem({ formControl }: { formControl: FormControl }) {
                     </div>
                 )}
                 <input
+                    required={formControl.required}
                     onChange={handleChange}
                     id={formControl.id}
                     type={formControl.type || 'text'}
