@@ -1,16 +1,23 @@
-'use client';
-
 import type { FormControl } from '@/lib/FormControls';
-import { ChangeEvent, useCallback, useState } from 'react';
+import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { useCallback, useState } from 'react';
 
-export function FormItem({ formControl }: { formControl: FormControl }) {
+export function FormItem({
+    formControl,
+    setOutsideError,
+}: {
+    formControl: FormControl;
+    setOutsideError: Dispatch<SetStateAction<string | null>>;
+}) {
     const [error, setError] = useState<string | void>();
 
     const handleChange = useCallback(
         (e: ChangeEvent<HTMLInputElement>) => {
-            setError(formControl.validate(e.target.value));
+            const validationResult = formControl.validate(e.target.value);
+            setError(validationResult);
+            setOutsideError(!!validationResult ? '' : null);
         },
-        [formControl]
+        [formControl, setOutsideError]
     );
 
     return (
@@ -33,6 +40,7 @@ export function FormItem({ formControl }: { formControl: FormControl }) {
                     </div>
                 )}
                 <input
+                    name={formControl.id}
                     required={formControl.required}
                     onChange={handleChange}
                     id={formControl.id}
