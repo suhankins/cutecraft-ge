@@ -85,7 +85,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const [cartLoaded, setCartLoaded] = useState(false);
 
     useEffect(() => {
-        console.log('Items updated!', cartItems);
         if (cartLoaded)
             sessionStorage.setItem('cart', JSON.stringify(cartItems));
     }, [cartItems, cartLoaded, cartItems.length]);
@@ -97,14 +96,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             try {
                 const parsedCart = JSON.parse(cart) as CartItem[];
                 if (Array.isArray(parsedCart) && parsedCart.length > 0) {
-                    console.log('Cart found in session storage, setting cart');
                     dispatch({ type: 'SET_CART', payload: parsedCart });
                 }
-            } catch (e) {
-                console.log(
-                    "Couldn't parse data from session storage, skipping"
-                );
-            }
+            } catch (e) {}
         }
         setCartLoaded(true);
     }, [cartItems.length]);
