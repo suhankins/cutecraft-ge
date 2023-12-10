@@ -1,4 +1,5 @@
-import { getModelForClass, prop } from '@typegoose/typegoose';
+import { getModelForClass, prop, mongoose } from '@typegoose/typegoose';
+import type { ReturnModelType } from '@typegoose/typegoose';
 if (process.env.NODE_ENV !== 'test') import('@/lib/mongodb'); // Importing library to connect to MongoDB
 
 export class ListenerClass {
@@ -6,4 +7,8 @@ export class ListenerClass {
     public telegramId!: string;
 }
 
-export const ListenerModel = getModelForClass(ListenerClass);
+export const ListenerModel =
+    (mongoose.models.ListenerClass as ReturnModelType<
+        typeof ListenerClass,
+        {}
+    >) || getModelForClass(ListenerClass);

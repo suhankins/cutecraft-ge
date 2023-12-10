@@ -63,6 +63,7 @@ export function localizationMiddleware(
     response: NextResponse
 ) {
     const pathname = request.nextUrl.pathname;
+    const searchParams = request.nextUrl.search;
     // If the url starts with /api/ we don't need to do anything
     if (
         pathname.startsWith('/api/') ||
@@ -80,7 +81,7 @@ export function localizationMiddleware(
         const locale = getLocale(request);
 
         return NextResponse.redirect(
-            new URL(`/${locale}/${pathname}`, request.url)
+            new URL(`/${locale}/${pathname}`, request.url) + searchParams
         );
     }
 

@@ -4,7 +4,8 @@ import { ResponseError } from './ResponseError';
 
 export async function notifyListeners(
     contactString: string,
-    cartString: string
+    cartString: string,
+    orderId: number
 ) {
     const listeners = await ListenerModel.find();
     console.log('Sending message to listeners');
@@ -14,7 +15,7 @@ export async function notifyListeners(
 
         const result = await callApi('sendMessage', {
             chat_id: listener.telegramId,
-            text: `New order!\n\n${contactString}\n\n${cartString}`,
+            text: `New order #${orderId}\n\n${contactString}\n\n${cartString}`,
         }).catch((err) => {
             console.error('Error while sending message to listener', err);
             // TODO: Delete already sent messages?

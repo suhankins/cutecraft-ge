@@ -1,5 +1,6 @@
 import { CartContentsContext } from '@/components/Cart/CartProvider';
 import { simplifyCartItem } from '@/lib/Cart';
+import { useRouter } from 'next/navigation';
 import {
     Dispatch,
     SetStateAction,
@@ -17,6 +18,7 @@ export function useSendForm(
         somethingWentWrong: string;
     }
 ): [FormEventHandler<HTMLFormElement>, boolean] {
+    const router = useRouter();
     const [loading, setLoading] = useState(false);
     const cart = useContext(CartContentsContext);
     const simpleCart = useMemo(
@@ -24,7 +26,7 @@ export function useSendForm(
         [cart]
     );
 
-    const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
         if (!formData.get('g-recaptcha-response')) {
@@ -32,7 +34,25 @@ export function useSendForm(
             return;
         }
         formData.append('cart', JSON.stringify(simpleCart));
-        console.log(formData);
+        setLoading(true);
+        try {
+            const result = await fetch('/order', {
+                method: 'post',
+                body: formData,
+                redirect: 'follow',
+            });
+            if (result.ok) {
+                const orderId = await result.text();
+                router.push(`/checkout/success?orderId=${orderId}`);
+            } else {
+                // TODO: Figure out localization
+                const text = await result.text();
+                setError(text);
+            }
+        } catch (e) {
+            setError(errors.somethingWentWrong);
+        }
+        setLoading(false);
     };
 
     return [onSubmit, loading];
