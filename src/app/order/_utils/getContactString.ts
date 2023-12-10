@@ -6,5 +6,5 @@ export function getContactString(
 ) {
     return contactInfo
         .map((info) => `${info.label}: ${info.content}`)
-        .join('\n\n');
+        .join('\n');
 }
