@@ -33,21 +33,16 @@ const Section = ({
 };
 
 export interface FooterProps {
-    lang: string;
     dictionary: {
         companyName: string;
-        aboutLink: string;
         contactLink: string;
         catalogLink: string;
         cartLink: string;
-        privacyPolicyLink: string;
-        termsOfServiceLink: string;
     };
 }
 
 export function Footer({
-    lang,
-    dictionary: { companyName, aboutLink, contactLink, catalogLink, cartLink },
+    dictionary: { companyName, contactLink, catalogLink, cartLink },
 }: FooterProps) {
     return (
         <footer className="footer footer-center bg-neutral p-4 text-neutral-content">
@@ -55,11 +50,10 @@ export function Footer({
                 <div className="flex w-full">
                     <Section
                         links={[
-                            { name: companyName, href: `/${lang}` },
-                            { name: aboutLink, href: `/${lang}/about` },
-                            { name: contactLink, href: `/${lang}/contact` },
-                            { name: catalogLink, href: `/${lang}/catalog` },
-                            { name: cartLink, href: `/${lang}/cart` },
+                            { name: companyName, href: `/` },
+                            { name: contactLink, href: `/contact` },
+                            { name: catalogLink, href: `/catalog` },
+                            { name: cartLink, href: `/cart` },
                         ]}
                     />
                     <Section
@@ -71,6 +65,14 @@ export function Footer({
                             {
                                 name: 'Instagram',
                                 href: socialMedia.instagram,
+                            },
+                            {
+                                name: 'WhatsApp',
+                                href: socialMedia.whatsapp,
+                            },
+                            {
+                                name: 'Telegram',
+                                href: socialMedia.telegram,
                             },
                         ]}
                     />

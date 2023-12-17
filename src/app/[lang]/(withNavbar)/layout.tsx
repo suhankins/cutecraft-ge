@@ -47,11 +47,6 @@ export default async function layout({ children, params: { lang } }: Params) {
                             </Link>
                         </li>
                         <li>
-                            <Link href={`/${lang}/about`}>
-                                {dictionary.links.aboutLink}
-                            </Link>
-                        </li>
-                        <li>
                             <Link href={`/${lang}/contact`}>
                                 {dictionary.links.contactLink}
                             </Link>
@@ -76,11 +71,6 @@ export default async function layout({ children, params: { lang } }: Params) {
                         </Link>
                     </li>
                     <li>
-                        <Link href={`/${lang}/about`}>
-                            {dictionary.links.aboutLink}
-                        </Link>
-                    </li>
-                    <li>
                         <Link href={`/${lang}/contact`}>
                             {dictionary.links.contactLink}
                         </Link>
@@ -90,7 +80,7 @@ export default async function layout({ children, params: { lang } }: Params) {
                 <CartDisplay />
             </Navbar>
             <main className="h-full w-full flex-grow">{children}</main>
-            <Footer lang={lang} dictionary={dictionary.links} />
+            <Footer dictionary={dictionary.links} />
         </CartProvider>
     );
 }
