@@ -4,6 +4,7 @@ import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton/FacebookButton';
 import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton/InstagramButton';
 import { OrderId } from './_components/OrderId';
+import { TelegramButton } from '@/components/buttons/SocialMediaButtons/TelegramButton/TelegramButton';
 
 export const revalidate = false;
 export async function generateStaticParams() {
@@ -34,6 +35,7 @@ export default async function Page({
             <div className="mx-auto flex w-96 flex-col gap-2">
                 <InstagramButton />
                 <FacebookButton />
+                <TelegramButton />
             </div>
         </MainBodyWidthContainer>
     );

@@ -3,6 +3,7 @@ import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import CutecraftMap from '@/components/Map/CutecraftMap';
 import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton/FacebookButton';
 import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton/InstagramButton';
+import { TelegramButton } from '@/components/buttons/SocialMediaButtons/TelegramButton/TelegramButton';
 import { getDictionary } from '@/lib/getDictionary';
 import { Locale, i18n } from '@/lib/i18n-config';
 import { MapPinIcon } from '@heroicons/react/24/solid';
@@ -47,6 +48,7 @@ export default async function Page({
                         <section className="flex flex-col gap-2">
                             <InstagramButton />
                             <FacebookButton />
+                            <TelegramButton />
                             <p className="flex items-center gap-2 text-lg">
                                 <MapPinIcon className="h-8 w-8" />
                                 <a

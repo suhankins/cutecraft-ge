@@ -1,0 +1,8 @@
+.telegramButton {
+    color: white;
+    background-image: linear-gradient(#2aabee, #229ed9);
+
+    &:hover {
+        background-image: linear-gradient(#3abbfe, #32aee9);
+    }
+}

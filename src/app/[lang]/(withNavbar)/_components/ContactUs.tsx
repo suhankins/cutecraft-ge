@@ -2,6 +2,7 @@ import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import CutecraftMap from '@/components/Map/CutecraftMap';
 import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton/FacebookButton';
 import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton/InstagramButton';
+import { TelegramButton } from '@/components/buttons/SocialMediaButtons/TelegramButton/TelegramButton';
 import type { Locale } from '@/lib/i18n-config';
 
 export function ContactUs({
@@ -25,6 +26,7 @@ export function ContactUs({
                         <div className="mt-2 flex gap-2 md:flex-col">
                             <InstagramButton />
                             <FacebookButton />
+                            <TelegramButton />
                         </div>
                     </div>
                     <div className="h-96">
