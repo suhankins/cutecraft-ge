@@ -10,7 +10,7 @@ body {
 }
 
 .skeleton {
-    @apply animate-pulse bg-primary;
+    @apply animate-pulse rounded bg-primary opacity-50;
 }
 
 @mixin vertical-list {
