@@ -48,7 +48,19 @@
             "somethingWentWrong": "Something went wrong, please try again later",
             "required": "This field is required",
             "invalidEmail": "Invalid email",
-            "invalidPhone": "Invalid phone number"
+            "invalidPhone": "Invalid phone number",
+            "invalidCartItem": "Invalid cart item",
+            "invalidQuantity": "Invalid quantity",
+            "invalidItemIndex": "Invalid item index",
+            "invalidCategoryId": "Invalid category ID",
+            "categoryDoesntExist": "Category doesn't exist",
+            "categoryIsEmpty": "Category is empty",
+            "itemDoesntExist": "Item doesn't exist",
+            "cartIsMissing": "Cart is missing",
+            "invalidCart": "Invalid cart",
+            "invalidContacts": "Invalid contact information",
+            "telegramError": "There was an error with Telegram API! Please contact us manually",
+            "repatchaValidationError": "Couldn't validate ReCAPTCHA! Please contact us manually"
         },
         "labels": {
             "firstname": "First name",

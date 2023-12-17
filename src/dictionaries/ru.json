@@ -48,7 +48,19 @@
             "somethingWentWrong": "Что-то пошло не так. Пожалуйста, попробуйте позже.",
             "required": "Заполните это поле",
             "invalidEmail": "Неправильный имейл",
-            "invalidPhone": "Неправильный номер телефона"
+            "invalidPhone": "Неправильный номер телефона",
+            "invalidCartItem": "Ошибка в предмете в корзине",
+            "invalidQuantity": "Ошибка в количестве предметов",
+            "invalidItemIndex": "Неправильный номер предмета",
+            "invalidCategoryId": "Неправильный ID категории",
+            "categoryDoesntExist": "Категории не существует",
+            "categoryIsEmpty": "В категории ничего нет",
+            "itemDoesntExist": "Предмета не существует",
+            "cartIsMissing": "В запросе нет корзины",
+            "invalidCart": "Ошибка в корзине",
+            "invalidContacts": "Ошибка в контактных данных",
+            "telegramError": "Произошла ошибка во время связи с Telegram! Пожалуйста, свяжитесь с нами самостоятельно",
+            "repatchaValidationError": "Ошибка во время проверки ReCAPTCHA! Пожалуйста, свяжитесь с нами самостоятельно"
         },
         "labels": {
             "firstname": "Имя",

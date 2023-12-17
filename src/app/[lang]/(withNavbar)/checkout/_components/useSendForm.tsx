@@ -14,8 +14,7 @@ import { useState } from 'react';
 export function useSendForm(
     setError: Dispatch<SetStateAction<string | null>>,
     errors: {
-        recaptcha: string;
-        somethingWentWrong: string;
+        [id: string]: string;
     }
 ): [FormEventHandler<HTMLFormElement>, boolean] {
     const router = useRouter();
@@ -45,9 +44,9 @@ export function useSendForm(
                 const orderId = await result.text();
                 router.push(`/checkout/success?orderId=${orderId}`);
             } else {
-                // TODO: Figure out localization
                 const text = await result.text();
-                setError(text);
+                if (text in errors) setError(errors[text]);
+                else setError(text);
             }
         } catch (e) {
             setError(errors.somethingWentWrong);

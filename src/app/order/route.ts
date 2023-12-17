@@ -29,6 +29,6 @@ export async function POST(request: NextRequest) {
             return new Response(error.message, { status: error.code });
         }
         console.error(error);
-        return new Response('Unknown error has accured!', { status: 500 });
+        return new Response('somethingWentWrong', { status: 500 });
     }
 }

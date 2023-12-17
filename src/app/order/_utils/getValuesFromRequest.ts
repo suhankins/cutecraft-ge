@@ -9,20 +9,20 @@ export async function getValuesFromRequest(request: NextRequest) {
 
     const recaptcha = formData.get('g-recaptcha-response');
     if (recaptcha === null || typeof recaptcha !== 'string')
-        throw new ResponseError('ReCaptcha response is missing', 400);
+        throw new ResponseError('recaptcha', 400);
 
     const rawCart: FormDataEntryValue | null = formData.get('cart');
     if (rawCart === null || typeof rawCart !== 'string')
-        throw new ResponseError('Cart is missing', 400);
+        throw new ResponseError('cartIsMissing', 400);
 
     let cart;
     try {
         cart = JSON.parse(rawCart);
     } catch (e) {
-        throw new ResponseError('Cart is invalid', 400);
+        throw new ResponseError('invalidCart', 400);
     }
 
-    if (!Array.isArray(cart)) throw new ResponseError('Cart is invalid', 400);
+    if (!Array.isArray(cart)) throw new ResponseError('invalidCart', 400);
 
     const dictionary = await getDictionary(defaultLocale);
 
@@ -40,7 +40,7 @@ export async function getValuesFromRequest(request: NextRequest) {
                 validate(content)
         )
     )
-        throw new ResponseError('Invalid contacts', 400);
+        throw new ResponseError('invalidContacts', 400);
 
     return {
         cart,
