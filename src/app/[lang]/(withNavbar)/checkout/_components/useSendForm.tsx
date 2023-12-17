@@ -1,4 +1,7 @@
-import { CartContentsContext } from '@/components/Cart/CartProvider';
+import {
+    CartActionContext,
+    CartContentsContext,
+} from '@/components/Cart/CartProvider';
 import { simplifyCartItem } from '@/lib/Cart';
 import { useRouter } from 'next/navigation';
 import {
@@ -19,6 +22,7 @@ export function useSendForm(
 ): [FormEventHandler<HTMLFormElement>, boolean] {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const { clearCart } = useContext(CartActionContext);
     const cart = useContext(CartContentsContext);
     const simpleCart = useMemo(
         () => cart.map((item) => simplifyCartItem(item)),
@@ -42,6 +46,7 @@ export function useSendForm(
             });
             if (result.ok) {
                 const orderId = await result.text();
+                clearCart();
                 router.push(`/checkout/success?orderId=${orderId}`);
             } else {
                 const text = await result.text();
