@@ -3,7 +3,8 @@
 import { Locale, i18n } from '@/lib/i18n-config';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useMemo } from 'react';
 
 export function LanguagePickerViewer({
     selectedLang,
@@ -14,6 +15,7 @@ export function LanguagePickerViewer({
 }) {
     const languages = i18n.locales;
     const pathname = usePathname();
+    const searchParams = useSearchParams();
     const pathnameWithoutLocale = pathname.split('/').slice(2).join('/');
 
     return (
@@ -34,7 +36,11 @@ export function LanguagePickerViewer({
                                     scroll={false}
                                     prefetch={false}
                                     replace
-                                    href={`/${locale}/${pathnameWithoutLocale}`}
+                                    href={`/${locale}/${pathnameWithoutLocale}${
+                                        searchParams.size > 0
+                                            ? `?${searchParams.toString()}`
+                                            : ''
+                                    }`}
                                 >
                                     {locale}
                                 </Link>
