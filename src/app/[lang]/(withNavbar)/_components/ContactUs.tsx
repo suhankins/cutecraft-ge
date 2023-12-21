@@ -1,5 +1,5 @@
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
-import CutecraftMap from '@/components/Map/CutecraftMap';
+import DynamicMap from '@/components/Map/DynamicMap';
 import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton/FacebookButton';
 import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton/InstagramButton';
 import { TelegramButton } from '@/components/buttons/SocialMediaButtons/TelegramButton/TelegramButton';
@@ -30,7 +30,7 @@ export function ContactUs({
                         </div>
                     </div>
                     <div className="h-96">
-                        <CutecraftMap
+                        <DynamicMap
                             apiKey={process.env.GOOGLE_MAPS_API_KEY ?? ''}
                             lang={lang}
                             markerText={markerText}

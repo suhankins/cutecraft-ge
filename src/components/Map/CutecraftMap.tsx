@@ -19,11 +19,7 @@ export default function CutecraftMap({
     markerText,
     lang,
     apiKey,
-}: {
-    markerText: string;
-    lang: Locale;
-    apiKey: string;
-}) {
+}: CutecraftMapProps) {
     const defaultProps = {
         center: {
             lat: 41.818437,

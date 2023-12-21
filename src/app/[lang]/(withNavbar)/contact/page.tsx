@@ -1,10 +1,10 @@
 import { getDictionary } from '@/lib/getDictionary';
 import { Locale, i18n } from '@/lib/i18n-config';
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
-import CutecraftMap from '@/components/Map/CutecraftMap';
 import { InstagramButton } from '@/components/buttons/SocialMediaButtons/InstagramButton/InstagramButton';
 import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton/FacebookButton';
 import { TelegramButton } from '@/components/buttons/SocialMediaButtons/TelegramButton/TelegramButton';
+import DynamicMap from '@/components/Map/DynamicMap';
 
 export const revalidate = false;
 export async function generateStaticParams() {
@@ -35,7 +35,7 @@ export default async function Home({
                     </div>
                 </div>
                 <div className="h-96">
-                    <CutecraftMap
+                    <DynamicMap
                         apiKey={process.env.GOOGLE_MAPS_API_KEY ?? ''}
                         lang={lang}
                         markerText={dictionary.contactUs.markerText}
