@@ -10,8 +10,9 @@ const TextArea = (
     ref: ForwardedRef<HTMLTextAreaElement>
 ) => {
     const resizeTextarea = (textarea: HTMLTextAreaElement) => {
+        const height = textarea.scrollHeight > 32 ? textarea.scrollHeight : 32;
         textarea.style.height = '0';
-        textarea.style.height = `${textarea.scrollHeight}px`;
+        textarea.style.height = `${height}px`;
     };
 
     useEffect(() => {
