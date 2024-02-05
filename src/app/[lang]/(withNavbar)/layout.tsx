@@ -8,6 +8,7 @@ import { LanguagePickerViewer } from '@/components/LanguagePicker/LanguagePicker
 import { CartDisplay } from '@/components/Cart/CartDisplay';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import { WhatsAppButton } from '@/components/buttons/SocialMediaButtons/WhatsAppButton/WhatsAppButton';
+import { AdminButton } from './_components/AdminButton';
 
 interface Params {
     children: React.ReactNode;
@@ -78,6 +79,8 @@ export default async function layout({ children, params: { lang } }: Params) {
                 </ul>
                 <LanguagePickerViewer selectedLang={lang} />
                 <CartDisplay />
+                {/* @ts-expect-error Server Component */}
+                <AdminButton />
             </Navbar>
             <main className="h-full w-full flex-grow">{children}</main>
             <Footer dictionary={dictionary.links} />
