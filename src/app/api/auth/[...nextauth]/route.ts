@@ -1,5 +1,5 @@
 import { UserModel } from '@/models/User';
-import { compare } from 'bcrypt';
+import { compare, hash } from 'bcrypt';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
@@ -26,7 +26,14 @@ const authOptions: NextAuthOptions = {
                     return null;
                 }
 
-                const user = await UserModel.findOne({ name: name });
+                const userCount = await UserModel.count();
+                const user =
+                    userCount === 0
+                        ? await UserModel.create({
+                              name,
+                              passwordHash: await hash(password, 10),
+                          })
+                        : await UserModel.findOne({ name: name });
 
                 if (user !== null && user !== undefined) {
                     if (await compare(password, user.passwordHash)) {

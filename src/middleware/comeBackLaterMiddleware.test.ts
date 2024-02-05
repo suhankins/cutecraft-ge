@@ -43,8 +43,8 @@ describe('comeBackLaterMiddleware', () => {
 
             test.each(testCases)(
                 'should redirect from %s: %s',
-                (pathname, redirectExpected) => {
-                    const result = comeBackLaterMiddleware({
+                async (pathname, redirectExpected) => {
+                    const result = await comeBackLaterMiddleware({
                         url,
                         nextUrl: { pathname },
                     } as any);
@@ -77,8 +77,8 @@ describe('comeBackLaterMiddleware', () => {
 
             test.each(testCases)(
                 'should redirect from %s: %s',
-                (pathname, redirectExpected) => {
-                    const result = comeBackLaterMiddleware({
+                async (pathname, redirectExpected) => {
+                    const result = await comeBackLaterMiddleware({
                         url,
                         nextUrl: { pathname },
                     } as any);

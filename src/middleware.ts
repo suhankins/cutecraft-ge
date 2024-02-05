@@ -7,7 +7,7 @@ import { comeBackLaterMiddleware } from './middleware/comeBackLaterMiddleware';
 
 export default withAuth(
     async function middleware(request: NextRequest) {
-        const comeBackLaterResult = comeBackLaterMiddleware(request);
+        const comeBackLaterResult = await comeBackLaterMiddleware(request);
         if (comeBackLaterResult) return comeBackLaterResult;
         return localizationMiddleware(request, NextResponse.next());
     },

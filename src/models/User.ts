@@ -1,4 +1,5 @@
 import {
+    ReturnModelType,
     defaultClasses,
     getModelForClass,
     modelOptions,
@@ -24,4 +25,6 @@ export class UserClass implements defaultClasses.Base {
     public passwordHash!: string;
 }
 
-export const UserModel = getModelForClass(UserClass);
+export const UserModel: ReturnModelType<typeof UserClass, {}> =
+    (mongoose.models.UserClass as ReturnModelType<typeof UserClass, {}>) ||
+    getModelForClass(UserClass);
