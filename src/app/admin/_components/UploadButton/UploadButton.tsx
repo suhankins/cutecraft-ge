@@ -61,9 +61,9 @@ export function UploadButton({
     return (
         <>
             <label
-                className={`btn-primary btn ${
-                    loadingText === null && 'btn-square'
-                } ${disabled && 'btn-disabled'} ${className}`}
+                className={`btn-primary btn content-center ${
+                    loadingText === null ? 'btn-square' : ''
+                } ${disabled ? 'btn-disabled' : ''} ${className ?? ''}`}
                 role="button"
                 aria-label="Upload image"
                 htmlFor={fileUploaderId}
@@ -73,7 +73,7 @@ export function UploadButton({
                 {loadingText ? (
                     <span>{loadingText}</span>
                 ) : (
-                    <PhotoIcon className="absolute h-6 w-6" />
+                    <PhotoIcon className="h-6 w-6" />
                 )}
             </label>
             <input

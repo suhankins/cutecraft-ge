@@ -43,14 +43,14 @@ export function MoveButton({
             onClick={handleClick}
             disabled={loading}
             type="button"
-            className={`btn-primary btn-square btn relative ${className} ${
+            className={`btn-primary btn-square btn content-center ${className} ${
                 loading && 'loading'
             }`}
         >
             {direction === 'up' ? (
-                <ArrowSmallUpIcon className="absolute h-6 w-6" />
+                <ArrowSmallUpIcon className="h-6 w-6" />
             ) : (
-                <ArrowSmallDownIcon className="absolute h-6 w-6" />
+                <ArrowSmallDownIcon className="h-6 w-6" />
             )}
         </button>
     );
