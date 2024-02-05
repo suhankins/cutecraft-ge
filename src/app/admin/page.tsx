@@ -13,6 +13,7 @@ import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import { LanguagePickerEditor } from './_components/LanguagePickerEditor';
 import { Navbar } from '@/components/Navbar/Navbar';
 import Link from 'next/link';
+import { ChangePassword } from './_components/ChangePassword';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -71,7 +72,7 @@ export default function AdminPage() {
                 <h1 className="text-2xl font-bold" id={accountHeaderId}>
                     Account
                 </h1>
-                {/* TODO: Account customization */}
+                <ChangePassword />
             </main>
         </>
     );
