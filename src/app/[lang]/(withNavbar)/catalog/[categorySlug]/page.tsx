@@ -1,6 +1,6 @@
 import { ItemGrid } from './_components/ItemGrid';
 import { getDictionary } from '@/lib/getDictionary';
-import { Locale, i18n, getLocalizedString } from '@/lib/i18n-config';
+import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import { CategoryClass, CategoryModel } from '@/models/Category';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
