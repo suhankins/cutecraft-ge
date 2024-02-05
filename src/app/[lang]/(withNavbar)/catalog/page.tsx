@@ -26,13 +26,6 @@ async function getCategories() {
     return categories;
 }
 
-export const revalidate = false;
-export async function generateStaticParams() {
-    return i18n.locales.map((locale) => ({
-        lang: locale,
-    }));
-}
-
 export default async function Catalog({ params: { lang } }: Params) {
     const dictionary = await getDictionary(lang);
     const categories = await getCategories();

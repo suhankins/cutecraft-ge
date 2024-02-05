@@ -55,20 +55,6 @@ export async function generateMetadata({
 }
 
 export const revalidate = false;
-export async function generateStaticParams() {
-    const locales = i18n.locales;
-    const categories = (await CategoryModel.find()) as CategoryClass[];
-
-    return locales.map((locale) => {
-        return categories.map((category) => {
-            return category.items?.map((item) => ({
-                lang: locale,
-                categorySlug: category.slug,
-                itemSlug: item.slug,
-            }));
-        });
-    });
-}
 
 export default async function Catalog({
     params: { lang, categorySlug, itemSlug },
