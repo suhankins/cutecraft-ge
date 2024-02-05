@@ -5,7 +5,7 @@ import {
     CartActionContext,
     CartContentsContext,
 } from '@/components/Cart/CartProvider';
-import { Locale } from '@/lib/i18n-config';
+import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 export function CartViewer({
@@ -28,7 +28,7 @@ export function CartViewer({
                         <tr key={index} className="border-b-2">
                             <td className="w-full py-3">
                                 <p className="text-lg font-bold">
-                                    {item.name[lang]}
+                                    {getLocalizedString(item.name, lang)}
                                 </p>
                             </td>
                             <td className="px-2 pb-2">
