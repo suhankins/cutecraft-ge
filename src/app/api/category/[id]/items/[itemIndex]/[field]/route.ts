@@ -10,7 +10,7 @@ export async function PATCH(
     request: NextRequest,
     { params: { id, itemIndex, field } }: pathParams
 ) {
-    if (field in ItemClass)
+    if (field in ItemClass.fields)
         return new NextResponse('Invalid field', { status: 400 });
     const key = field as keyof ItemClass;
     const result = await getBodyAndCategory(request, id);
