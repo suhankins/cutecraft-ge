@@ -5,7 +5,7 @@ import { useSWRConfig } from 'swr';
 
 export function NewItem({
     categoryId,
-    className,
+    className = '',
 }: {
     categoryId: string;
     className?: string;

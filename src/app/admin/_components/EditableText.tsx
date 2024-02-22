@@ -55,7 +55,7 @@ export function EditableText({
     textarea,
     allowNewLine,
     nullable,
-    className,
+    className = '',
     defaultValue,
     fetchUrl,
     method = 'PATCH',
@@ -117,7 +117,7 @@ export function EditableText({
 
     const dynamicProps = useMemo(() => {
         return {
-            className: `${className ?? ''} ${loading && 'skeleton'}`,
+            className: `${className} ${loading && 'skeleton'}`,
             disabled: loading || disabled,
             'aria-busy': loading,
         };

@@ -10,7 +10,7 @@ import { PhotoIcon } from '@heroicons/react/24/outline';
 import { mutate } from 'swr';
 
 export function UploadButton({
-    className,
+    className = '',
     itemIndex,
     categoryId,
     imageIndex,
@@ -63,7 +63,7 @@ export function UploadButton({
             <label
                 className={`btn-primary btn content-center ${
                     loadingText === null ? 'btn-square' : ''
-                } ${disabled ? 'btn-disabled' : ''} ${className ?? ''}`}
+                } ${disabled ? 'btn-disabled' : ''} ${className}`}
                 role="button"
                 aria-label="Upload image"
                 htmlFor={fileUploaderId}

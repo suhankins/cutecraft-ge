@@ -6,7 +6,7 @@ import { useMemo, useState } from 'react';
 import { mutate } from 'swr';
 
 export function MoveButton({
-    className,
+    className = '',
     itemIndex,
     categoryId,
     direction,

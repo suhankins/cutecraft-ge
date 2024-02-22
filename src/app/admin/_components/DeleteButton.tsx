@@ -13,7 +13,7 @@ import { mutate } from 'swr';
 
 export function DeleteButton({
     fetchUrl,
-    className,
+    className = '',
     setLoading: setOutsideLoading,
     ...props
 }: {
@@ -41,7 +41,7 @@ export function DeleteButton({
         <button
             className={`btn-error btn-square btn flex content-center p-0 ${
                 loading ? 'loading' : ''
-            } ${className || ''}`}
+            } ${className}`}
             type="button"
             onClick={handleDelete}
             disabled={loading}

@@ -1,6 +1,6 @@
 export function MainBodyWidthContainer({
     children,
-    className,
+    className = '',
 }: {
     children: React.ReactNode;
     className?: string;
