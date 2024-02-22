@@ -1,14 +1,14 @@
 {
     "hero": {
         "top": "Cute Craft",
-        "bottom": "Деревянные изделия сделанные с любовью",
+        "bottom": "Деревянные изделия, сделанные с любовью",
         "catalogButton": "Каталог"
     },
     "companyName": "Cute Craft",
     "seeMore": "Посмотреть еще",
     "contactUs": {
         "header": "Свяжитесь с нами",
-        "body": "Если вы хотите что-нибудь со своим дизайном или просто хотите видеть свой логотип на одном из наших товаров, пожалуйста, свяжитесь с нами!",
+        "body": "Если вы хотите что-нибудь со своим дизайном, или просто хотите видеть свой логотип на одном из наших товаров, пожалуйста, свяжитесь с нами!",
         "markerText": "Мы здесь!"
     },
     "links": {
@@ -23,7 +23,7 @@
     },
     "openGraph": {
         "home": {
-            "description": "Cute Craft is a small business that makes wooden decor. We make everything from scratch, with love and care. We can also make custom designs, just contact us!"
+            "description": "Cute Craft - маленькая мастреская в Кобулети, где все делается с любовью."
         },
         "catalog": {
             "title": "Каталог"
