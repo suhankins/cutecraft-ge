@@ -23,7 +23,7 @@ export function CategoryViewer({ category, lang }: CategoryProps) {
                 </figure>
             )}
             <div className="card-body">
-                <h2 className="link-hover card-title text-2xl">
+                <h2 className="link-hover card-title break-words text-2xl">
                     {getLocalizedString(category.name, lang)}
                 </h2>
             </div>
