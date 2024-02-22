@@ -24,7 +24,7 @@ export function ItemViewer({
                 />
             </figure>
             <div className="card-body">
-                <h2 className="link-hover card-title break-words text-2xl">
+                <h2 className="link-hover card-title block break-words text-2xl">
                     {getLocalizedString(item.name, lang)}
                 </h2>
                 <div className="justify-end">
