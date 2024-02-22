@@ -17,9 +17,7 @@
         "aboutLink": "About us",
         "contactLink": "Contact",
         "catalogLink": "Catalog",
-        "cartLink": "Cart",
-        "privacyPolicyLink": "Privacy Policy",
-        "termsOfServiceLink": "Terms of Service"
+        "cartLink": "Cart"
     },
     "openGraph": {
         "home": {

@@ -1,93 +1,91 @@
 {
     "hero": {
         "top": "Cute Craft",
-        "bottom": "Wooden decor made with love",
-        "catalogButton": "Catalog"
+        "bottom": "სიყვარულით დამზადებული ხის ნაწარმი",
+        "catalogButton": "კატალოგი"
     },
     "companyName": "Cute Craft",
-    "seeMore": "See more",
+    "seeMore": "იხილეთ მეტი",
     "contactUs": {
-        "header": "Contact us",
-        "body": "If you want something made with your custom design, or just want your logo on one of our products, contact us!",
-        "markerText": "We are here!"
+        "header": "Დაგვიკავშირდით",
+        "body": "თუ გსურთ რაიმე თქვენი საკუთარი დიზაინით, ან უბრალოდ გსურთ ნახოთ თქვენი ლოგო ჩვენს ერთ-ერთ პროდუქტზე, გთხოვთ დაგვიკავშირდეთ!",
+        "markerText": "Ჩვენ აქ ვართ!"
     },
     "links": {
-        "homeLink": "Home",
+        "homeLink": "სახლში",
         "companyName": "Cute Craft",
-        "aboutLink": "About us",
-        "contactLink": "Contact",
-        "catalogLink": "Catalog",
-        "cartLink": "Cart",
-        "privacyPolicyLink": "Privacy Policy",
-        "termsOfServiceLink": "Terms of Service"
+        "aboutLink": "Ჩვენს შესახებ",
+        "contactLink": "კონტაქტები",
+        "catalogLink": "კატალოგი",
+        "cartLink": "კალათა"
     },
     "openGraph": {
         "home": {
-            "description": "Cute Craft is a small business that makes wooden decor. We make everything from scratch, with love and care. We can also make custom designs, just contact us!"
+            "description": "Cute Craft არის პატარა სახელოსნო ქობულეთში, სადაც ყველაფერი სიყვარულით კეთდება."
         },
         "catalog": {
-            "title": "Catalog"
+            "title": "კატალოგი"
         },
         "about": {
-            "title": "About us"
+            "title": "Ჩვენს შესახებ"
         },
         "contact": {
-            "title": "Contact us"
+            "title": "კონტაქტები"
         }
     },
     "comeBackLater": {
-        "body": "Our website is under construction, but you can still contact us via our social media or, if you are in Kobuleti, you can visit our shop!",
-        "address": "Ninoshvili 6, Kobuleti"
+        "body": "ჩვენი ვებგვერდი ჯერ კიდევ მშენებლობის პროცესშია, მაგრამ შეგიძლიათ დაგვიკავშირდეთ ჩვენი სოციალური ქსელების საშუალებით ან თუ ქობულეთში იმყოფებით, შეგიძლიათ ეწვიოთ ჩვენს მაღაზიას!",
+        "address": "ქობულეთი, ნინოშვილის 6"
     },
     "cartViewer": {
-        "total": "Total"
+        "total": "ჯამი"
     },
     "orderForm": {
         "errors": {
-            "recaptcha": "Please complete the reCAPTCHA verification",
-            "somethingWentWrong": "Something went wrong, please try again later",
-            "required": "This field is required",
-            "invalidEmail": "Invalid email",
-            "invalidPhone": "Invalid phone number",
-            "invalidCartItem": "Invalid cart item",
-            "invalidQuantity": "Invalid quantity",
-            "invalidItemIndex": "Invalid item index",
-            "invalidCategoryId": "Invalid category ID",
-            "categoryDoesntExist": "Category doesn't exist",
-            "categoryIsEmpty": "Category is empty",
-            "itemDoesntExist": "Item doesn't exist",
-            "cartIsMissing": "Cart is missing",
-            "invalidCart": "Invalid cart",
-            "invalidContacts": "Invalid contact information",
-            "telegramError": "There was an error with Telegram API! Please contact us manually",
-            "repatchaValidationError": "Couldn't validate ReCAPTCHA! Please contact us manually"
+            "recaptcha": "გთხოვთ, დაასრულოთ reCAPTCHA დადასტურება",
+            "somethingWentWrong": "შეფერხება მოხდა. გთხოვთ, სცადოთ მოგვიანებით",
+            "required": "შეავსეთ ეს ველი",
+            "invalidEmail": "Არასწორი ელ. ფოსტა",
+            "invalidPhone": "Არასწორი მობილურის ნომერი",
+            "invalidCartItem": "კალათის არასწორი ელემენტი",
+            "invalidQuantity": "არასწორი რაოდენობა",
+            "invalidItemIndex": "ერთეულის ინდექსი არასწორია",
+            "invalidCategoryId": "კატეგორიის ID არასწორია",
+            "categoryDoesntExist": "კატეგორია არ არსებობს",
+            "categoryIsEmpty": "კატეგორია ცარიელია",
+            "itemDoesntExist": "ელემენტი არ არსებობს",
+            "cartIsMissing": "არასწორი კალათა",
+            "invalidCart": "არასწორი კალათა",
+            "invalidContacts": "არასწორი საკონტაქტო ინფორმაცია",
+            "telegramError": "Telegram-თან კომუნიკაციის დროს მოხდა შეცდომა! გთხოვთ თავად დაგვიკავშირდეთ",
+            "repatchaValidationError": "შეცდომა ReCAPTCHA ვერიფიკაციის დროს! გთხოვთ თავად დაგვიკავშირდეთ"
         },
         "labels": {
-            "firstname": "First name",
-            "lastname": "Last name",
-            "phone": "Phone",
-            "email": "Email",
-            "city": "City/Town",
-            "country": "Country"
+            "firstname": "Სახელი",
+            "lastname": "Გვარი",
+            "phone": "Ტელეფონის ნომერი",
+            "email": "ელფოსტა",
+            "city": "ქალაქი",
+            "country": "ქვეყანა"
         },
         "placeholders": {
-            "firstname": "e.g. John",
-            "lastname": "e.g. Doe",
+            "firstname": "",
+            "lastname": "",
             "phone": "",
-            "email": "johndoe@example.com",
-            "city": "Tbilisi",
-            "country": "Georgia"
+            "email": "davit@example.com",
+            "city": "თბილისი",
+            "country": "საქართველოს"
         },
         "pretexts": {
             "phone": "+995"
         },
-        "order": "Order",
-        "howToContactYou": "How would you like us to contant you?"
+        "order": "შეკვეთა",
+        "howToContactYou": "როგორ გირჩევნიათ ჩვენთან დაკავშირება?"
     },
     "orderSuccess": {
-        "thankYou": "Thank you for your order",
-        "orderIdIs": "Your order ID is",
-        "weWillContactYou": "We will contact you soon to discuss the details."
+        "thankYou": "მადლობა შეკვეთისთვის",
+        "orderIdIs": "თქვენი შეკვეთის ნომერი:",
+        "weWillContactYou": "ჩვენ მალე დაგიკავშირდებით თქვენი შეკვეთის დეტალების განსახილველად."
     },
-    "whatsAppButton": "Reach out to us"
+    "whatsAppButton": "Whatsapp"
 }

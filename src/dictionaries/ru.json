@@ -17,9 +17,7 @@
         "aboutLink": "О нас",
         "contactLink": "Контакты",
         "catalogLink": "Каталог",
-        "cartLink": "Корзина",
-        "privacyPolicyLink": "Политика конфиденциальности",
-        "termsOfServiceLink": "Условия обслуживания"
+        "cartLink": "Корзина"
     },
     "openGraph": {
         "home": {
