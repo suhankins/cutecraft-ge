@@ -28,7 +28,7 @@ export default async function Home({
                         {dictionary.contactUs.header}
                     </h1>
                     <p>{dictionary.contactUs.body}</p>
-                    <div className="mt-2 flex gap-2 md:flex-col">
+                    <div className="mt-2 flex w-full flex-wrap gap-2 md:flex-col">
                         <InstagramButton />
                         <FacebookButton />
                         <TelegramButton />

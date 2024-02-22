@@ -23,7 +23,7 @@ export function ContactUs({
                     <div>
                         <h1 className="text-4xl font-bold">{header}</h1>
                         <p>{body}</p>
-                        <div className="mt-2 flex gap-2 md:flex-col">
+                        <div className="mt-2 flex w-full flex-wrap gap-2 md:flex-col">
                             <InstagramButton />
                             <FacebookButton />
                             <TelegramButton />
