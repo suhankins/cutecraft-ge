@@ -11,7 +11,7 @@ export function EllipsisMenu({
     props?: HTMLAttributes<HTMLDivElement>;
 }) {
     return (
-        <div className={`dropdown-end dropdown z-50 ${className}`} {...props}>
+        <div className={`dropdown-end dropdown z-30 ${className}`} {...props}>
             <label tabIndex={0} className="btn-ghost btn w-min">
                 <EllipsisVerticalIcon className="absolute h-6 w-6" />
             </label>
