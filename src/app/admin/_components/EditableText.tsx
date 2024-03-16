@@ -106,34 +106,24 @@ export function EditableText({
         [fetchUrl, valueName, defaultValue, method, nullable, reset]
     );
 
-    const staticProps = useMemo(() => {
-        return {
-            defaultValue: defaultValue,
-            ref: fieldRef,
-            type: type,
-            ...props,
-        };
-    }, [defaultValue, props, type]);
-
-    const dynamicProps = useMemo(() => {
-        return {
-            className: `${className} ${loading && 'skeleton'}`,
-            disabled: loading || disabled,
-            'aria-busy': loading,
-        };
-    }, [loading, className, disabled]);
-
-    const handlers = useMemo(() => {
-        return {
-            onBlur: () => updateCategory(),
-            onKeyUp: (e: React.KeyboardEvent) => {
-                if (e.key === 'Enter' && !allowNewLine) {
-                    e.preventDefault();
-                    updateCategory();
-                }
-            },
-        };
-    }, [updateCategory, allowNewLine]);
+    const classNameProp = useMemo(
+        () => `${className} ${loading && 'skeleton'}`,
+        [className, loading]
+    );
+    const disabledProp = useMemo(
+        () => loading || disabled,
+        [loading, disabled]
+    );
+    const onBlur = useCallback(() => updateCategory(), [updateCategory]);
+    const onKeyUp = useCallback(
+        (e: React.KeyboardEvent) => {
+            if (e.key === 'Enter' && !allowNewLine) {
+                e.preventDefault();
+                updateCategory();
+            }
+        },
+        [updateCategory, allowNewLine]
+    );
 
     useEffect(() => {
         if (!fieldRef.current || defaultValue === undefined) return;
@@ -144,13 +134,27 @@ export function EditableText({
         <>
             {textarea ? (
                 <AutoResizableTextarea
-                    {...staticProps}
-                    {...dynamicProps}
-                    {...handlers}
+                    defaultValue={defaultValue}
+                    ref={fieldRef}
                     allowNewLine={allowNewLine}
+                    className={classNameProp}
+                    aria-busy={loading}
+                    onBlur={onBlur}
+                    onKeyUp={onKeyUp}
+                    {...props}
                 />
             ) : (
-                <input {...staticProps} {...dynamicProps} {...handlers} />
+                <input
+                    defaultValue={defaultValue}
+                    ref={fieldRef}
+                    type={type}
+                    className={classNameProp}
+                    disabled={disabledProp}
+                    aria-busy={loading}
+                    onBlur={onBlur}
+                    onKeyUp={onKeyUp}
+                    {...props}
+                />
             )}
         </>
     );

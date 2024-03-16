@@ -1,36 +1,50 @@
-import { ForwardedRef, HTMLAttributes, forwardRef, useEffect } from 'react';
+import {
+    FormEvent,
+    ForwardedRef,
+    HTMLAttributes,
+    forwardRef,
+    useCallback,
+    useEffect,
+} from 'react';
 
-export interface AutoResizableTextareaParams {
+export type AutoResizableTextareaParams = {
     allowNewLine?: boolean;
-    props?: HTMLAttributes<HTMLTextAreaElement>;
-}
+} & HTMLAttributes<HTMLTextAreaElement>;
 
 const TextArea = (
-    { allowNewLine, ...props }: AutoResizableTextareaParams,
+    { allowNewLine, defaultValue, ...props }: AutoResizableTextareaParams,
     ref: ForwardedRef<HTMLTextAreaElement>
 ) => {
-    const resizeTextarea = (textarea: HTMLTextAreaElement) => {
-        const height = textarea.scrollHeight > 32 ? textarea.scrollHeight : 32;
+    const resizeTextarea = useCallback((textarea: HTMLTextAreaElement) => {
         textarea.style.height = '0';
+        const height = textarea.scrollHeight > 32 ? textarea.scrollHeight : 32;
         textarea.style.height = `${height}px`;
-    };
+    }, []);
+
+    const onInput = useCallback(
+        (event: FormEvent) => {
+            const target = event.target as HTMLTextAreaElement;
+            if (!allowNewLine) {
+                target.value = target.value.replaceAll(/[\r\n\v]+/g, ''); // removing all new line symbols
+            }
+            resizeTextarea(target);
+        },
+        [allowNewLine, resizeTextarea]
+    );
 
     useEffect(() => {
         if (!ref) return;
         if (typeof ref === 'function') return;
         resizeTextarea(ref.current as HTMLTextAreaElement);
-    }, [ref]);
+    }, [ref, defaultValue, resizeTextarea]);
 
     return (
         <textarea
-            {...props}
+            defaultValue={defaultValue}
             ref={ref}
-            onInput={(event) => {
-                const target = event.target as HTMLTextAreaElement;
-                if (!allowNewLine)
-                    target.value = target.value.replace(/[\r\n\v]+/g, ''); // removing all new line symbols
-                resizeTextarea(target);
-            }}
+            onInput={onInput}
+            onChange={onInput}
+            {...props}
         />
     );
 };
