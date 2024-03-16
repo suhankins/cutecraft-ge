@@ -15,11 +15,22 @@ const TextArea = (
     { allowNewLine, defaultValue, ...props }: AutoResizableTextareaParams,
     ref: ForwardedRef<HTMLTextAreaElement>
 ) => {
-    const resizeTextarea = useCallback((textarea: HTMLTextAreaElement) => {
+    const resizeTextarea = useCallback((textarea: HTMLElement) => {
         textarea.style.height = '0';
         const height = textarea.scrollHeight > 32 ? textarea.scrollHeight : 32;
         textarea.style.height = `${height}px`;
     }, []);
+
+    const onClick = useCallback(
+        (event: React.MouseEvent) => {
+            const target = event.target;
+            if (!(target instanceof HTMLElement)) {
+                return;
+            }
+            resizeTextarea(target);
+        },
+        [resizeTextarea]
+    );
 
     const onInput = useCallback(
         (event: FormEvent) => {
@@ -44,6 +55,7 @@ const TextArea = (
             ref={ref}
             onInput={onInput}
             onChange={onInput}
+            onClick={onClick}
             {...props}
         />
     );
