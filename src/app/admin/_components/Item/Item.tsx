@@ -22,7 +22,7 @@ export function Item({
                     {title}
                     {description}
                 </header>
-                {priceSelector}
+                <div className="flex h-full items-end">{priceSelector}</div>
             </div>
         </article>
     );
