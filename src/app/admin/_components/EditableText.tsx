@@ -82,7 +82,7 @@ export function EditableText({
             let newValue: string | null = fieldRef.current.value.trim();
 
             if (newValue === '') {
-                if (!nullable || defaultValue === undefined) {
+                if (!nullable || !defaultValue) {
                     reset();
                     return;
                 }
