@@ -49,11 +49,17 @@ export default async function Catalog({
                     getLocalizedString(category.name, lang),
                 ]}
             />
-            <ItemGrid
-                categorySlug={categorySlug}
-                items={category.items ?? []}
-                lang={lang}
-            />
+            {(category.items && category.items.length > 0 && (
+                <ItemGrid
+                    categorySlug={categorySlug}
+                    items={category.items}
+                    lang={lang}
+                />
+            )) || (
+                <div className="w-full text-center text-xl">
+                    {dictionary.categoryEmpty}
+                </div>
+            )}
         </>
     );
 }

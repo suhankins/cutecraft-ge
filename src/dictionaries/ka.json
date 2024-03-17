@@ -19,6 +19,7 @@
         "catalogLink": "კატალოგი",
         "cartLink": "კალათა"
     },
+    "categoryEmpty": "There's nothing here right now. Please come back later!",
     "openGraph": {
         "home": {
             "description": "Cute Craft არის პატარა სახელოსნო ქობულეთში, სადაც ყველაფერი სიყვარულით კეთდება."
