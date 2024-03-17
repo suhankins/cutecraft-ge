@@ -85,12 +85,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const [cartLoaded, setCartLoaded] = useState(false);
 
     useEffect(() => {
-        if (cartLoaded)
+        if (cartLoaded) {
             sessionStorage.setItem('cart', JSON.stringify(cartItems));
+        }
     }, [cartItems, cartLoaded, cartItems.length]);
 
     useEffect(() => {
-        if (cartItems.length > 0) return;
+        if (cartItems.length > 0) {
+            return;
+        }
         const cart = sessionStorage.getItem('cart');
         if (cart) {
             try {
