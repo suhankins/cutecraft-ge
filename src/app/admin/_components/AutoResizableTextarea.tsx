@@ -46,7 +46,7 @@ const TextArea = (
     useEffect(() => {
         if (!ref) return;
         if (typeof ref === 'function') return;
-        resizeTextarea(ref.current as HTMLTextAreaElement);
+        setTimeout(() => resizeTextarea(ref.current as HTMLTextAreaElement), 0);
     }, [ref, defaultValue, resizeTextarea]);
 
     return (
