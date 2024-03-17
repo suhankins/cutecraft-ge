@@ -7,28 +7,13 @@ import {
 import { useMemo, useState } from 'react';
 import { mutate } from 'swr';
 
-type MoveButtonProps =
-    | {
-          className?: string;
-          categoryId: string;
-          direction: 'up' | 'down';
-          itemIndex: undefined;
-          imageIndex: undefined;
-      }
-    | {
-          className?: string;
-          categoryId: string;
-          direction: 'up' | 'down';
-          itemIndex: number;
-          imageIndex: undefined;
-      }
-    | {
-          className?: string;
-          categoryId: string;
-          direction: 'left' | 'right';
-          itemIndex: number;
-          imageIndex: number;
-      };
+type MoveButtonProps = {
+    className?: string;
+    categoryId: string;
+    direction: 'up' | 'down' | 'left' | 'right';
+    itemIndex?: number;
+    imageIndex?: number;
+};
 
 function Arrow({ direction }: { direction: 'up' | 'down' | 'left' | 'right' }) {
     switch (direction) {
