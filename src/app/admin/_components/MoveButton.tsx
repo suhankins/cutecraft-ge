@@ -1,30 +1,67 @@
 import {
-    ArrowSmallDownIcon,
-    ArrowSmallUpIcon,
+    ArrowDownIcon,
+    ArrowLeftIcon,
+    ArrowRightIcon,
+    ArrowUpIcon,
 } from '@heroicons/react/24/outline';
 import { useMemo, useState } from 'react';
 import { mutate } from 'swr';
+
+type MoveButtonProps =
+    | {
+          className?: string;
+          categoryId: string;
+          direction: 'up' | 'down';
+          itemIndex: undefined;
+          imageIndex: undefined;
+      }
+    | {
+          className?: string;
+          categoryId: string;
+          direction: 'up' | 'down';
+          itemIndex: number;
+          imageIndex: undefined;
+      }
+    | {
+          className?: string;
+          categoryId: string;
+          direction: 'left' | 'right';
+          itemIndex: number;
+          imageIndex: number;
+      };
+
+function Arrow({ direction }: { direction: 'up' | 'down' | 'left' | 'right' }) {
+    switch (direction) {
+        case 'up':
+            return <ArrowUpIcon className="h-6 w-6" />;
+        case 'down':
+            return <ArrowDownIcon className="h-6 w-6" />;
+        case 'left':
+            return <ArrowLeftIcon className="h-6 w-6" />;
+        case 'right':
+            return <ArrowRightIcon className="h-6 w-6" />;
+    }
+}
 
 export function MoveButton({
     className = '',
     itemIndex,
     categoryId,
+    imageIndex,
     direction,
-}: {
-    className?: string;
-    itemIndex?: number;
-    categoryId: string;
-    direction: 'up' | 'down';
-}) {
+}: MoveButtonProps) {
     const [loading, setLoading] = useState(false);
 
-    const fetchUrl = useMemo(
-        () =>
-            itemIndex === undefined
-                ? `/api/category/${categoryId}/move?direction=${direction}`
-                : `/api/category/${categoryId}/items/${itemIndex}/move?direction=${direction}`,
-        [categoryId, direction, itemIndex]
-    );
+    const fetchUrl = useMemo(() => {
+        if (itemIndex !== undefined) {
+            if (imageIndex !== undefined) {
+                return `/api/category/${categoryId}/items/${itemIndex}/images/${imageIndex}/move?direction=${direction}`;
+            }
+            return `/api/category/${categoryId}/items/${itemIndex}/move?direction=${direction}`;
+        }
+        return `/api/category/${categoryId}/move?direction=${direction}`;
+    }, [categoryId, direction, itemIndex, imageIndex]);
+
     const handleClick = async () => {
         setLoading(true);
         const result = await fetch(fetchUrl, {
@@ -43,15 +80,11 @@ export function MoveButton({
             onClick={handleClick}
             disabled={loading}
             type="button"
-            className={`btn-primary btn-square btn content-center ${className} ${
-                loading && 'loading'
-            }`}
+            className={`btn btn-square btn-primary content-center ${
+                className ?? ''
+            } ${loading && 'loading'}`}
         >
-            {direction === 'up' ? (
-                <ArrowSmallUpIcon className="h-6 w-6" />
-            ) : (
-                <ArrowSmallDownIcon className="h-6 w-6" />
-            )}
+            <Arrow direction={direction} />
         </button>
     );
 }

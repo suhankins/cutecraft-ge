@@ -1,4 +1,5 @@
 import { DeleteButton } from '../DeleteButton';
+import { MoveButton } from '../MoveButton';
 import { UploadButton } from '../UploadButton/UploadButton';
 import { ImageView } from './ImageView';
 import Image from 'next/image';
@@ -15,12 +16,14 @@ function ImageWithControls({
     categoryId,
     imageIndex,
     deleteDisabled,
+    imagesCount,
 }: {
     image: string;
     itemIndex: number;
     categoryId: string;
     imageIndex: number;
     deleteDisabled?: boolean;
+    imagesCount: number;
 }) {
     return (
         <>
@@ -34,6 +37,22 @@ function ImageWithControls({
                     <DeleteButton
                         aria-label="Delete image"
                         fetchUrl={`/api/category/${categoryId}/items/${itemIndex}/images/${imageIndex}`}
+                    />
+                )}
+                {imagesCount > 1 && imageIndex !== 0 && (
+                    <MoveButton
+                        direction="left"
+                        itemIndex={itemIndex}
+                        categoryId={categoryId}
+                        imageIndex={imageIndex}
+                    />
+                )}
+                {imagesCount > 1 && imageIndex < imagesCount - 1 && (
+                    <MoveButton
+                        direction="right"
+                        itemIndex={itemIndex}
+                        categoryId={categoryId}
+                        imageIndex={imageIndex}
                     />
                 )}
             </div>
@@ -61,6 +80,7 @@ export function ImageEditor({
                 itemIndex={itemIndex}
                 categoryId={categoryId}
                 imageIndex={imageIndex}
+                imagesCount={images.length}
             />
         )),
         <ImageWithControls
@@ -70,6 +90,7 @@ export function ImageEditor({
             categoryId={categoryId}
             imageIndex={images.length}
             deleteDisabled
+            imagesCount={0}
         />,
     ];
     return <ImageView images={imagesToRender} />;
