@@ -1,8 +1,8 @@
 import { googleStorage } from '@/lib/googleStorage';
 import { getFileName } from '@/utils/server/getFileName';
 import { handleUploadQuery } from '@/app/api/upload/handleUploadQuery';
-import { GenerateSignedPostPolicyV4Options } from '@google-cloud/storage';
 import { NextRequest, NextResponse } from 'next/server';
+import { type GenerateSignedPostPolicyV4Options } from '@google-cloud/storage';
 
 /**
  * Gets a signed URL for uploading an image to Google Cloud Storage
