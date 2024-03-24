@@ -16,13 +16,6 @@ async function getCategories() {
     return categories;
 }
 
-export const revalidate = false;
-export async function generateStaticParams() {
-    return i18n.locales.map((locale) => ({
-        lang: locale,
-    }));
-}
-
 export default async function Home({
     params: { lang },
 }: {
@@ -38,7 +31,7 @@ export default async function Home({
                 <CategoryGrid categories={categories} lang={lang} />
                 <Link
                     href={`/${lang}/catalog`}
-                    className="btn-primary btn-wide btn mx-auto"
+                    className="btn btn-primary btn-wide mx-auto"
                 >
                     {dictionary.seeMore}
                 </Link>
