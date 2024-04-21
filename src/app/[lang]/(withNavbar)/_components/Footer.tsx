@@ -22,6 +22,8 @@ const Section = ({
                         key={index}
                         className="link-hover link"
                         href={link.href}
+                        replace
+                        prefetch={false}
                     >
                         {link.name}
                     </Link>
@@ -53,7 +55,7 @@ export function Footer({
                             { name: companyName, href: `/` },
                             { name: contactLink, href: `/contact` },
                             { name: catalogLink, href: `/catalog` },
-                            { name: cartLink, href: `/cart` },
+                            { name: cartLink, href: `/checkout` },
                         ]}
                     />
                     <Section
