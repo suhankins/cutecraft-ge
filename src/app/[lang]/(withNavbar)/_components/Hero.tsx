@@ -25,8 +25,8 @@ export function Hero({
                     <p className="mb-5">{bottom}</p>
                 </div>
                 <Link
-                    href={`/${lang}/catalog`}
-                    className="btn-primary btn-wide btn absolute bottom-8 self-end"
+                    href="/catalog"
+                    className="btn btn-primary btn-wide absolute bottom-8 self-end"
                 >
                     {catalogButton}
                 </Link>

@@ -73,12 +73,12 @@ export default async function Catalog({
         <>
             <Breadcrumbs
                 items={[
-                    <Link href={`/${lang}/catalog`} key={`/${lang}/catalog`}>
+                    <Link href="/catalog" key="/catalog">
                         {dictionary.links.catalogLink}
                     </Link>,
                     <Link
-                        href={`/${lang}/catalog/${category.slug}`}
-                        key={`/${lang}/catalog/${category.slug}`}
+                        href={`/catalog/${category.slug}`}
+                        key={`/catalog/${category.slug}`}
                     >
                         {getLocalizedString(category.name, lang)}
                     </Link>,

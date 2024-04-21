@@ -23,16 +23,16 @@ export function CartDisplay() {
 
     return (
         <Link
-            className="btn-ghost btn-square btn relative mr-3"
+            className="btn btn-square btn-ghost relative mr-3"
             type="button"
             aria-label="Shopping cart"
             ref={buttonRef}
             onAnimationEnd={handleAnimationEnd}
-            href={'/checkout'}
+            href="/checkout"
         >
             <div className="indicator absolute">
                 {cartItemCount !== 0 && (
-                    <span className="indicator-start indicator-bottom badge badge-secondary indicator-item">
+                    <span className="badge indicator-item badge-secondary indicator-start indicator-bottom">
                         {cartItemCount}
                     </span>
                 )}

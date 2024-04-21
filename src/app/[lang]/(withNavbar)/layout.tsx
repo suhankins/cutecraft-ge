@@ -30,49 +30,42 @@ export default async function layout({ children, params: { lang } }: Params) {
             <WhatsAppButton>{dictionary.whatsAppButton}</WhatsAppButton>
             <Navbar>
                 <div className="dropdown sm:hidden">
-                    <label tabIndex={0} className="btn-ghost btn m-1">
+                    <label tabIndex={0} className="btn btn-ghost m-1">
                         <Bars3Icon className="h-6 w-6" />
                     </label>
                     <ul
                         tabIndex={0}
-                        className="dropdown-content menu rounded-box z-[1] w-52 bg-base-100 p-2 shadow"
+                        className="menu dropdown-content rounded-box z-[1] w-52 bg-base-100 p-2 shadow"
                     >
                         <li>
-                            <Link href={`/${lang}`}>
-                                {dictionary.links.homeLink}
-                            </Link>
+                            <Link href="/">{dictionary.links.homeLink}</Link>
                         </li>
                         <li>
-                            <Link href={`/${lang}/catalog`}>
+                            <Link href="/catalog">
                                 {dictionary.links.catalogLink}
                             </Link>
                         </li>
                         <li>
-                            <Link href={`/${lang}/contact`}>
+                            <Link href="/contact">
                                 {dictionary.links.contactLink}
                             </Link>
                         </li>
                     </ul>
                 </div>
-                <Link
-                    href={`/${lang}`}
-                    className="btn-ghost btn text-xl normal-case"
-                >
+                <Link href="/" className="btn btn-ghost text-xl normal-case">
                     {dictionary.companyName}
                 </Link>
                 <ul className="menu menu-horizontal hidden flex-grow items-center justify-center sm:inline-flex">
                     <li>
-                        <Link href={`/${lang}`}>
-                            {dictionary.links.homeLink}
-                        </Link>
+                        <Link href="/">{dictionary.links.homeLink}</Link>
                     </li>
                     <li>
-                        <Link href={`/${lang}/catalog`}>
+                        <Link href="/catalog">
                             {dictionary.links.catalogLink}
                         </Link>
                     </li>
                     <li>
-                        <Link href={`/${lang}/contact`}>
+                        <Link href="/contact">
                             {dictionary.links.contactLink}
                         </Link>
                     </li>
