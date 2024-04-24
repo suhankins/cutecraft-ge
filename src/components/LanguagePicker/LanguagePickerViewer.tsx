@@ -19,22 +19,19 @@ export function LanguagePickerViewer({
 
     return (
         <div className={`dropdown ml-auto ${className}`}>
-            <label tabIndex={0} className="btn-ghost btn m-1 flex gap-2">
+            <label tabIndex={0} className="btn btn-ghost m-1 flex gap-2">
                 <span>{selectedLang}</span>
                 <ChevronDownIcon className="h-4 w-4" />
             </label>
             <ul
                 tabIndex={0}
-                className="dropdown-content menu rounded-box bg-base-200 p-2 uppercase text-neutral shadow-lg"
+                className="menu dropdown-content rounded-box bg-base-200 p-2 uppercase text-neutral shadow-lg"
             >
                 {languages.map(
                     (locale) =>
                         locale !== selectedLang && (
                             <li key={locale}>
-                                <Link
-                                    scroll={false}
-                                    prefetch={false}
-                                    replace
+                                <a
                                     href={`/${locale}/${pathnameWithoutLocale}${
                                         searchParams.size > 0
                                             ? `?${searchParams.toString()}`
@@ -42,7 +39,7 @@ export function LanguagePickerViewer({
                                     }`}
                                 >
                                     {locale}
-                                </Link>
+                                </a>
                             </li>
                         )
                 )}
