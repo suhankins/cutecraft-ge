@@ -1,5 +1,5 @@
 import {
-    checkIfAlreadyOnComeBackLater,
+    isOnComeBackLater,
     comeBackLaterMiddleware,
 } from './comeBackLaterMiddleware';
 
@@ -17,9 +17,7 @@ describe('comeBackLaterMiddleware', () => {
         test.each(testCases)(
             'should return %s for %s',
             (expected, pathname) => {
-                expect(checkIfAlreadyOnComeBackLater(pathname as string)).toBe(
-                    expected
-                );
+                expect(isOnComeBackLater(pathname as string)).toBe(expected);
             }
         );
     });
