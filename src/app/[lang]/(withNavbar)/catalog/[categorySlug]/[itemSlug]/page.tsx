@@ -15,6 +15,7 @@ import { ItemPageImageViewer } from './_components/ItemPageImageViewer';
 import { MarkdownWrapper } from './_components/MarkdownWrapper';
 import { AddToCartButton } from '@/components/buttons/AddToCartButton';
 import { ItemClass } from '@/models/Item';
+import { Lari } from '@/components/Lari';
 
 interface Params {
     params: { lang: Locale; categorySlug: string; itemSlug: string };
@@ -103,7 +104,8 @@ export default async function Catalog({
                     </div>
                     <div className="flex items-center gap-4">
                         <span className="text-3xl font-bold">
-                            {item.price}&#8382;
+                            {item.price}
+                            <Lari />
                         </span>
                         <AddToCartButton
                             cartItem={{

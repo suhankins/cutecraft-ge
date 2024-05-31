@@ -11,7 +11,7 @@ import { NewCategory } from './_components/NewCategory';
 import { getPosition } from '@/utils/client/Position';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import { LanguagePickerEditor } from './_components/LanguagePickerEditor';
-import { Navbar } from '@/components/Navbar/Navbar';
+import { Navbar } from '@/components/Navbar';
 import Link from 'next/link';
 import { ChangePassword } from './_components/ChangePassword';
 
@@ -30,7 +30,7 @@ export default function AdminPage() {
     return (
         <>
             <Navbar>
-                <Link className="btn-ghost btn" href="/">
+                <Link className="btn btn-ghost" href="/">
                     Back to website
                 </Link>
                 <LanguagePickerEditor

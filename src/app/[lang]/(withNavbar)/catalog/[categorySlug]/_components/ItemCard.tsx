@@ -1,9 +1,10 @@
 import { ItemClass } from '@/models/Item';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import Image from 'next/image';
-import { ThingCard } from '../ThingCard';
+import { ThingCard } from '@/components/ThingCard';
+import { Lari } from '@/components/Lari';
 
-export function ItemViewer({
+export function ItemCard({
     item,
     categorySlug,
     lang,
@@ -29,7 +30,7 @@ export function ItemViewer({
                 </h2>
                 <div className="justify-end">
                     <p className="text-right text-2xl font-bold">
-                        {item.price} &#8382;{/* Georgian lari symbol */}
+                        {item.price} <Lari />
                     </p>
                 </div>
             </div>

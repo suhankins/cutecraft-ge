@@ -2,7 +2,6 @@
 
 import { Locale, i18n } from '@/lib/i18n-config';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 export function LanguagePickerViewer({

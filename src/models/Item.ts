@@ -15,14 +15,13 @@ import slugify from 'slugify';
     },
 })
 export class ItemClass {
-    static readonly fields = ['name', 'description', 'sizes', 'price', 'image'];
+    static readonly fields = ['name', 'description', 'price', 'image'];
 
     @prop({ type: () => String }, PropType.MAP)
     public name!: LocalizedString;
 
     /**
-     * Ingredients of the item, e.g. milk, sugar, etc.
-     * or whatever else you want to tell about given item
+     * Description. Will be formatted as markdown on the front-end
      */
     @prop({ type: () => String }, PropType.MAP)
     public description?: LocalizedString;

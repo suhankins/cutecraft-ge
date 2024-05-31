@@ -8,7 +8,7 @@ export interface CategoryProps {
     category: SimpleCategory;
 }
 
-export function CategoryViewer({ category, lang }: CategoryProps) {
+export function CategoryCard({ category, lang }: CategoryProps) {
     return (
         <ThingCard href={`/catalog/${category.slug}`}>
             {category.image && (

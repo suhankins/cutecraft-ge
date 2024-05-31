@@ -1,10 +1,8 @@
 import Link from 'next/link';
 
 export function Hero({
-    lang,
     dictionary: { top, bottom, catalogButton },
 }: {
-    lang: string;
     dictionary: {
         top: string;
         bottom: string;

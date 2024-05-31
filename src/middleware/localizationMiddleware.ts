@@ -87,7 +87,8 @@ export function localizationMiddleware(
 
     const chosenLocale = pathname.split('/')[1];
     // Setting a cookie if the locale in the url is different from the locale in the cookie
-    if (chosenLocale !== getLocaleFromCookie(request))
+    if (chosenLocale !== getLocaleFromCookie(request)) {
         setCookie(response, chosenLocale);
+    }
     return response;
 }

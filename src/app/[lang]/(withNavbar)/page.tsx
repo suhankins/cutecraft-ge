@@ -26,7 +26,7 @@ export default async function Home({
 
     return (
         <>
-            <Hero lang={lang} dictionary={dictionary.hero} />
+            <Hero dictionary={dictionary.hero} />
             <MainBodyWidthContainer>
                 <CategoryGrid categories={categories} lang={lang} />
                 <Link

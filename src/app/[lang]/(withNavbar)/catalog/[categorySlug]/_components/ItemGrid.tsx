@@ -1,5 +1,5 @@
 import { Locale } from '@/lib/i18n-config';
-import { ItemViewer } from '@/components/Item/ItemViewer';
+import { ItemCard } from './ItemCard';
 import { ItemClass } from '@/models/Item';
 import { ThingGrid } from '@/components/ThingGrid';
 
@@ -15,7 +15,7 @@ export function ItemGrid({
     return (
         <ThingGrid>
             {items.map((item, index) => (
-                <ItemViewer
+                <ItemCard
                     key={index}
                     categorySlug={categorySlug}
                     item={item}

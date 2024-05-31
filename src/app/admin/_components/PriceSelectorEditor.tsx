@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { EditableText } from './EditableText';
+import { Lari } from '@/components/Lari';
 
 export interface PriceSelectorEdtiorProps {
     categoryId: string;
@@ -24,10 +25,12 @@ export function PriceSelectorEditor({
                 setLoading={setLoading}
                 defaultValue={price.toString()}
                 type="number"
-                className="input-ghost input w-10 rounded px-0 py-1 text-right text-3xl font-bold focus:text-center"
+                className="input input-ghost w-10 rounded px-0 py-1 text-right text-3xl font-bold focus:text-center"
                 fetchUrl={`/api/category/${categoryId}/items/${itemIndex}/price/`}
             />
-            <span>&#8382;{/* Georgian lari symbol */}</span>
+            <span>
+                <Lari />
+            </span>
         </p>
     );
 }

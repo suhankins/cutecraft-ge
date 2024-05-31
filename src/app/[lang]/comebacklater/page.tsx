@@ -1,4 +1,4 @@
-import { LanguagePickerViewer } from '@/components/LanguagePicker/LanguagePickerViewer';
+import { LanguagePickerViewer } from '@/components/LanguagePickerViewer';
 import { MainBodyWidthContainer } from '@/components/MainBodyWidthContainer';
 import DynamicMap from '@/components/Map/DynamicMap';
 import { FacebookButton } from '@/components/buttons/SocialMediaButtons/FacebookButton/FacebookButton';
@@ -24,7 +24,7 @@ export default async function Page({
 
     return (
         <div className="relative flex min-h-screen w-full justify-center sm:items-center">
-            <div className="absolute right-2 bottom-2 z-50 sm:hidden">
+            <div className="absolute bottom-2 right-2 z-50 sm:hidden">
                 <LanguagePickerViewer
                     className="dropdown-top rounded-2xl bg-primary text-primary-content shadow-lg"
                     selectedLang={lang}

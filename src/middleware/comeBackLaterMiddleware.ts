@@ -10,10 +10,10 @@ const redirectLocation = 'comebacklater';
 export function isOnComeBackLater(pathname: string) {
     const splitPathname = pathname.split('/');
     return (
-        splitPathname.at(-1) === redirectLocation &&
-        splitPathname.length <= 3 &&
-        (splitPathname.at(1) === redirectLocation ||
-            splitPathname.at(2) === redirectLocation)
+        splitPathname.at(-1) === redirectLocation ||
+        (splitPathname.length <= 3 &&
+            (splitPathname.at(1) === redirectLocation ||
+                splitPathname.at(2) === redirectLocation))
     );
 }
 

@@ -7,6 +7,7 @@ import {
 } from '@/components/Cart/CartProvider';
 import { Locale, getLocalizedString } from '@/lib/i18n-config';
 import { MinusIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { Lari } from '@/components/Lari';
 
 export function CartViewer({
     lang,
@@ -33,7 +34,7 @@ export function CartViewer({
                             </td>
                             <td className="px-2 pb-2">
                                 <button
-                                    className="btn-primary btn-circle btn"
+                                    className="btn btn-circle btn-primary"
                                     onClick={() => removeFromCart(item)}
                                 >
                                     {item.quantity > 1 ? (
@@ -50,7 +51,7 @@ export function CartViewer({
                             </td>
                             <td className="px-2">
                                 <button
-                                    className="btn-primary btn-circle btn"
+                                    className="btn btn-circle btn-primary"
                                     onClick={() => addToCart(item)}
                                 >
                                     <PlusIcon className="h-6 w-6" />
@@ -58,7 +59,8 @@ export function CartViewer({
                             </td>
                             <td className="px-4">
                                 <p className="text-right text-3xl font-bold">
-                                    {item.price * (item.quantity ?? 1)}&#8382;
+                                    {item.price * (item.quantity ?? 1)}
+                                    <Lari />
                                 </p>
                             </td>
                         </tr>
@@ -79,7 +81,7 @@ export function CartViewer({
                                         acc + item.price * item.quantity,
                                     0
                                 )}
-                                &#8382;
+                                <Lari />
                             </p>
                         </td>
                     </tr>

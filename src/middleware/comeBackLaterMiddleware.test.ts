@@ -71,6 +71,7 @@ describe('comeBackLaterMiddleware', () => {
                 ['/en/comebacklater', true],
                 ['/en/comebacklater/comebacklater', false],
                 ['/anything/else', false],
+                ['/very/really/long/anything/else', false],
             ];
 
             test.each(testCases)(
