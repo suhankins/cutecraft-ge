@@ -12,6 +12,7 @@ import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
 import 'yet-another-react-lightbox/styles.css';
+import { ImageStepper } from './ImageStepper';
 
 export function ItemPageImageViewer({
     images,
@@ -30,7 +31,7 @@ export function ItemPageImageViewer({
                     <>
                         <button
                             type="button"
-                            className="btn-square btn absolute bottom-2 left-2 opacity-50 transition-opacity duration-300 group-hover:opacity-100 md:opacity-0"
+                            className="btn btn-square absolute bottom-2 left-2 opacity-50 transition-opacity duration-300 group-hover:opacity-100 md:opacity-0"
                             onClick={() => setLightboxOpen(true)}
                         >
                             <MagnifyingGlassPlusIcon className="h-8 w-8" />
@@ -78,46 +79,11 @@ export function ItemPageImageViewer({
                 />
             </figure>
             {images.length > 1 && (
-                <div className="flex w-full items-center justify-center gap-2">
-                    <button
-                        onClick={() => {
-                            if (selectedImage <= 0) return;
-                            setSelectedImage(selectedImage - 1);
-                        }}
-                        className="btn-ghost btn h-full px-0"
-                    >
-                        <ChevronLeftIcon className="h-8 w-8" />
-                    </button>
-                    {images.map((image, index) => (
-                        <button
-                            type="button"
-                            className={`${
-                                selectedImage === index
-                                    ? 'btn-primary border-4 border-primary'
-                                    : ''
-                            } btn h-16 w-16 p-0`}
-                            onClick={() => setSelectedImage(index)}
-                            key={index}
-                        >
-                            <Image
-                                className="w-full rounded object-contain"
-                                src={image || '/static/placeholder.png'}
-                                alt={alt ?? ''}
-                                width={64}
-                                height={64}
-                            />
-                        </button>
-                    ))}
-                    <button
-                        onClick={() => {
-                            if (selectedImage >= images.length - 1) return;
-                            setSelectedImage(selectedImage + 1);
-                        }}
-                        className="btn-ghost btn h-full px-0"
-                    >
-                        <ChevronRightIcon className="h-8 w-8" />
-                    </button>
-                </div>
+                <ImageStepper
+                    selectedImage={selectedImage}
+                    setSelectedImage={setSelectedImage}
+                    images={images}
+                />
             )}
         </div>
     );
